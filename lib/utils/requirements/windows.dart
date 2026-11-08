@@ -1,8 +1,12 @@
 import 'dart:io';
 
-import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'package:win32/win32.dart';
+
+if (dart.library.io) {
+  import 'package:ffi/ffi.dart';
+  import 'package:win32/win32.dart';
+}
+
 import 'package:bike_control/utils/windows_store_environment.dart';
 
 const _hive = HKEY_CURRENT_USER;
@@ -76,4 +80,3 @@ class WindowsProtocolHandler {
     return '"$value"';
   }
 }
-
