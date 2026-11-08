@@ -1,0 +1,3380 @@
+{
+  "actionShiftUp": "Shift Up",
+  "actionShiftDown": "Shift Down",
+  "actionFrontShift": "Front Shift (Chainring)",
+  "actionUturn": "U-Turn",
+  "actionTuck": "Tuck",
+  "actionSteerLeft": "Steer Left",
+  "actionSteerRight": "Steer Right",
+  "actionCameraAngle": "Change Camera Angle",
+  "actionEmote": "Emote",
+  "actionToggleUi": "Toggle UI",
+  "actionNavigateLeft": "Navigate Left",
+  "actionNavigateRight": "Navigate Right",
+  "actionIncreaseResistance": "Increase Resistance",
+  "actionDecreaseResistance": "Decrease Resistance",
+  "actionOpenActionBar": "Open Action Bar",
+  "actionUsePowerUp": "Use Power-Up",
+  "actionSelect": "Select",
+  "actionBack": "Back",
+  "actionRideOnBomb": "Ride On Bomb",
+  "actionKudos": "Kudos",
+  "actionPause": "Pause/Resume",
+  "actionHeadwindSpeed": "Headwind Speed",
+  "actionHeadwindSpeedInc": "Headwind Speed Increase",
+  "actionHeadwindSpeedDec": "Headwind Speed Decrease",
+  "actionHeadwindSpeedCyclicInc": "Headwind Speed Cyclic Increase",
+  "actionHeadwindSpeedCyclicDec": "Headwind Speed Cyclic Decrease",
+  "actionHeadwindHeartRateMode": "Headwind HR Mode",
+  "actionInclineIncrease": "Incline Up",
+  "actionInclineDecrease": "Incline Down",
+  "actionInclineZero": "Incline Flatten (0%)",
+  "actionInclineAutoMode": "Incline Auto (Follow Grade)",
+  "inclineActions": "Incline",
+  "kickrClimb": "KICKR Climb",
+  "actionUp": "Up",
+  "actionDown": "Down",
+  "actionHome": "Home",
+  "actionMenu": "Menu",
+  "actionGearSet": "Gear Set",
+  "actionPushToTalk": "Push to Talk",
+  "actionSkipInterval": "Skip Interval",
+  "actionPreviousInterval": "Previous Interval",
+  "actionLap": "Lap",
+  "actionResume": "Resume",
+  "actionChangeMode": "Change Mode",
+  "actionTakeBreak": "Take a Break",
+  "actionJoinRider": "Join Rider",
+  "actionChangeRoute": "Change Route",
+  "actionMapToggle": "Map Toggle",
+  "actionSpectateRider": "Spectate Rider",
+  "actionTrainerSwitchMode": "Trainer: Switch ERG/SIM",
+  "actionTrainerIntensityUp": "Trainer: Intensity Up",
+  "actionTrainerIntensityDown": "Trainer: Intensity Down",
+  "actionWorkoutPauseResume": "Recording: Pause/Resume",
+  "actionScreenRecording": "Record Screen",
+  "actionCalibratePhoneSteering": "Calibrate Steering",
+  "steeringRecalibrating": "Recalibrating steering…",
+  "phoneSteeringNotEnabled": "Phone steering isn't enabled",
+  "phoneSteeringName": "Phone steering",
+  "steeringCalibrating": "Calibrating…",
+  "steeringRideHint": "Turn your handlebar to steer.",
+  "@steeringRideHint": {"description": "Ride tab: line above the live steering gauge of a steering input (phone steering, Elite Sterzo/Rizer), in place of the tap-a-button hint."},
+  "steeringAdjust": "Adjust",
+  "@steeringAdjust": {"description": "Ride tab: link next to 'Your buttons' when the only controller is a steering input; opens its steering page."},
+  "steeringRecalibrate": "Recalibrate",
+  "steeringPageTitle": "Steering",
+  "steeringDescription": "Turn your handlebar and your rider steers in the trainer app. Inside the dead zone you ride straight on.",
+  "steeringReady": "Ready",
+  "steeringHoldStill": "Hold the handlebar straight and still for a moment.",
+  "steeringInTrainerApp": "In the trainer app",
+  "steeringTurnLeft": "Handlebar left",
+  "steeringTurnRight": "Handlebar right",
+  "steeringExactAngle": "Exact angle",
+  "steeringExactAngleBody": "{app} follows your handlebar's exact angle, not just left and right.",
+  "@steeringExactAngleBody": {"description": "Steering page: the trainer app receives the proportional OpenBikeControl steering angle.", "placeholders": {"app": {"type": "String"}}},
+  "steeringExactAngleActive": "Active",
+  "steeringDeadZone": "Dead zone",
+  "steeringDeadZoneBody": "How far you turn before steering starts",
+  "steeringTurnOff": "Turn off phone steering",
+  "openFolder": "Open folder",
+  "openGallery": "Open gallery",
+  "screenRecordingStarted": "Screen recording started",
+  "screenRecordingStopped": "Screen recording saved",
+  "screenRecordingFailed": "Could not start screen recording",
+  "screenRecordingNotSupported": "Screen recording isn't supported on this device",
+  "triggerSingleClick": "Single Click",
+  "triggerDoubleClick": "Double Click",
+  "triggerLongPress": "Long Press",
+  "actionCategoryShifting": "Shifting",
+  "actionCategorySteering": "Steering",
+  "actionCategoryOther": "Other",
+  "trialDaysAvailable": "{days}-day trial period available",
+  "@trialDaysAvailable": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "accessibilityDescription": "BikeControl needs accessibility permission to control your training apps.",
+  "accessibilityDisclaimer": "BikeControl will only access your screen to perform the gestures you configure. No other accessibility features or personal information will be accessed.",
+  "accessibilityReasonControl": "• To enable you to control apps like MyWhoosh, TrainingPeaks, and others using your Zwift devices",
+  "accessibilityReasonTouch": "• To simulate touch gestures on your screen for controlling trainer apps",
+  "accessibilityReasonWindow": "• To detect which training app window is currently active",
+  "accessibilityServiceExplanation": "BikeControl needs to use Android's AccessibilityService API to function properly.",
+  "accessibilityServiceNotRunning": "Accessibility Service is not running.\nFollow instructions at",
+  "accessibilityServicePermissionRequired": "Accessibility Service Permission Required",
+  "accessibilityUsageGestures": "• When you press buttons on your Zwift Click, Zwift Ride, or Zwift Play devices, BikeControl simulates touch gestures at specific screen locations",
+  "accessibilityUsageMonitor": "• The app monitors which training app window is active to ensure gestures are sent to the correct app",
+  "accessibilityUsageNoData": "• No personal data is accessed or collected through this service",
+  "accessories": "Accessories",
+  "account": "Account",
+  "actAsBluetoothKeyboard": "Act as Bluetooth Keyboard",
+  "action": "Action",
+  "activity": "Activity",
+  "additionalTriggerAssignment": "This button already does something",
+  "adjustControllerButtons": "Adjust Controller Buttons",
+  "afterDate": "After {date}",
+  "allow": "Allow",
+  "allowAccessibilityService": "Allow Accessibility Service",
+  "allowBluetoothConnections": "Allow Bluetooth Connections",
+  "allowBluetoothScan": "Allow Bluetooth Scan",
+  "allowLocationForBluetooth": "Allow Location so Bluetooth scan works",
+  "allowPersistentNotification": "Allow Notifications",
+  "allowsRunningInBackground": "Allows BikeControl to keep running in background",
+  "alreadyBoughtTheApp": "Already bought the app? You don't need to pay for BikeControl again. For technical reasons, the app can't tell whether it was bought already.\n\nEnter your Play Store purchase ID (e.g. GPA.3356-1337-1338-1339) to unlock Base. If you can't find it, please get in touch with me directly.",
+  "alreadyBoughtTheAppPreviously": "Already bought the app previously?",
+  "androidAccessibilityHint": "For it to work properly, even when BikeControl is in the background, please enable the \"Accessibility Permission\" for BikeControl. You can do so by enabling the Local Connection Method.",
+  "androidSystemAction": "Android System Action",
+  "anotherTriggerIsAlreadyAssignedForThisButton": "Without Pro, each button does one thing. Go Pro to also use {triggerTitle} on this button, or replace what it does now.",
+  "triggerConflictRemoves": "{trigger}: {action} will be removed",
+  "@triggerConflictRemoves": {
+    "placeholders": {
+      "trigger": {
+        "type": "String"
+      },
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "appIdActions": "{appId} actions",
+  "@appIdActions": {
+    "placeholders": {
+      "appId": {
+        "type": "String"
+      }
+    }
+  },
+  "applyNow": "Apply now",
+  "asAFinalStepYoullChooseHowToConnectTo": "As a final step you'll choose how to connect to {trainerApp}.",
+  "battery": "Battery",
+  "beforeDate": "Before {date}",
+  "bluetoothAdvertiseAccess": "Bluetooth Advertise access",
+  "bridgeMinutesRemainingToday": "{minutes} min of trial left today",
+  "@bridgeMinutesRemainingToday": {
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "bridgeTrialTimeOverTitle": "Today's virtual shifting trial is over",
+  "bridgeTrialTimeOverBody": "Your ride keeps going for now — nothing changes until your trainer app disconnects. After that, BikeControl's trainer won't show up in the app again today: pair the trainer directly in the app and BikeControl keeps sending your shift buttons. Pro removes the daily limit.",
+  "bridgeTrialAlreadyOverBody": "BikeControl's trainer won't show up in your trainer app again until tomorrow. Until then, pair the trainer directly in the app and BikeControl keeps sending your shift buttons. Pro removes the daily limit.",
+  "bridgeTrialEndingSoonTitle": "{minutes, plural, =1{1 minute} other{{minutes} minutes}} left of today's virtual shifting trial",
+  "@bridgeTrialEndingSoonTitle": {"placeholders": {"minutes": {"type": "int"}}},
+  "bridgeTrialEndingSoonBody": "When it runs out, this ride keeps going until your trainer app disconnects. Pro removes the daily limit.",
+  "bluetoothKeyboardExplanation": "This will allow you to use your phone as a Bluetooth keyboard to control compatible apps. Once paired, you can use the buttons on your bike controller to send keyboard inputs to the app.",
+  "bluetoothTurnedOn": "Bluetooth turned on",
+  "bluetoothPermissionRequired": "Allow Bluetooth for BikeControl",
+  "browserNotSupported": "This Browser does not support Web Bluetooth and platform is not supported :(",
+  "button": "button.",
+  "buttonMapping": "Button Mapping",
+  "mappingForApp": "for {app}",
+  "mappingEditMakesCopy": "{app}'s own mapping is built in. Editing it makes your own copy.",
+  "buyFullVersion": "Buy Base",
+  "bySigningInYouAgreeToOur": "By signing in, you agree to our {privacyPolicy}.",
+  "@bySigningInYouAgreeToOur": {
+    "placeholders": {
+      "privacyPolicy": {
+        "type": "String"
+      }
+    }
+  },
+  "cancel": "Cancel",
+  "changelog": "Changelog",
+  "checkMyWhooshConnectionScreen": "Check the connection screen in MyWhoosh to see if \"Link\" is connected.",
+  "checkPurchasingOptions": "Check purchasing options",
+  "chooseAnotherScreenshot": "Choose another screenshot",
+  "chooseBikeControlInConnectionScreen": "Choose BikeControl in the connection screen.",
+  "clear": "Clear",
+  "clickAButtonOnYourController": "Click a button on your controller to edit its action or tap the edit icon.",
+  "clickV2EventInfo": "Your Click V2 may no longer send button events. Please check by tapping a few buttons and see if they are visible in BikeControl.",
+  "clickV2Instructions": "To make your Zwift Click V2 work best, you should connect it in the Zwift app before each training session.\nIf you don't do that, the Click V2 will stop working after a minute.\n\n1. Open Zwift app (not the Companion!)\n2. Log in (subscription not required) and open the device connection screen\n3. Connect your Trainer, then connect the Zwift Click V2\n4. Close the Zwift app again and connect again in BikeControl",
+  "clickV2Onboarding_cardTitle": "Let's get your Zwift Click V2 set up",
+  "clickV2Onboarding_cardSubtitle": "Found nearby · setup needed",
+  "clickV2Onboarding_title": "Zwift Click V2 setup",
+  "clickV2Onboarding_intro": "Zwift locks the Click V2 to their own app. BikeControl works around it in two ways — pick the one that suits you.",
+  "clickV2Onboarding_whyLink": "Why is this needed?",
+  "clickV2Onboarding_rightOnlyTitle": "Use the right side only",
+  "clickV2Onboarding_rightOnlyPro1": "No Zwift unlock — ever",
+  "clickV2Onboarding_rightOnlyPro2": "No restarts, no drop-outs mid-ride",
+  "clickV2Onboarding_rightOnlyCon1": "Only the right controller sends button presses",
+  "clickV2Onboarding_rightOnlyCta": "Use the right side",
+  "clickV2Onboarding_zwiftTitle": "Unlock with Zwift",
+  "clickV2Onboarding_zwiftPro1": "Both controllers work",
+  "clickV2Onboarding_zwiftPro2": "No restarts during your ride",
+  "clickV2Onboarding_zwiftCon1": "Needs unlocking with the Zwift app every 24 hours",
+  "clickV2Onboarding_zwiftCon2": "The unlock can be flaky",
+  "clickV2Onboarding_zwiftCta": "Unlock with Zwift",
+  "clickV2Onboarding_alternativesLink": "Rightfully annoyed by this? See controllers that just work",
+  "clickV2Onboarding_setUpAgain": "Set up again",
+  "clickV2Onboarding_swipeHint": "Swipe to see the other option",
+  "clickV2Onboarding_decisionTitle": "Which one do you want?",
+  "clickV2Onboarding_decisionSubtitle": "Both work. Pick the trade-off you'd rather live with — you can change this later in the controller's settings.",
+  "clickV2Onboarding_rightOnlyRecap": "No Zwift needed · right controller only",
+  "clickV2Onboarding_zwiftRecap": "Both controllers · unlock every 24 hours",
+  "clickV2Onboarding_connectFailed": "Couldn't connect your Zwift Click V2. Tap it to try again.",
+  "close": "Close",
+  "commandsRemainingToday": "{commandsRemainingToday}/{dailyCommandLimit} button presses left today",
+  "configuration": "Configuration",
+  "connect": "Connect",
+  "connectControllerToPreview": "Connect a controller device to preview and customize the button mapping.",
+  "connectControllers": "Connect Controllers",
+  "connectDirectlyOverNetwork": "Connect directly over Network",
+  "connectToTrainerApp": "Connect to Trainer app",
+  "connectUsingBluetooth": "Connect using Bluetooth",
+  "connectUsingMyWhooshLink": "Connect using MyWhoosh \"Link\"",
+  "connected": "Connected",
+  "connectedControllers": "Connected Controllers",
+  "connectedTo": "Connected to {appId}",
+  "@connectedTo": {
+    "placeholders": {
+      "appId": {
+        "type": "String"
+      }
+    }
+  },
+  "connection": "Connection",
+  "connectionWifi": "WiFi",
+  "connectionBluetooth": "Bluetooth",
+  "reconnect": "Reconnect",
+  "batterySaverTitle": "Battery saver",
+  "controllersDisconnectedInactivity": "Controllers disconnected after {minutes} minutes of inactivity to save battery. Turn a controller back on to reconnect it.",
+  "@controllersDisconnectedInactivity": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "continueAction": "Continue",
+  "controlAppUsingModes": "Control {appName} on this device",
+  "@controlAppUsingModes": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "controllerConnectedClickButton": "Great! Your controller is connected. Click a button on your controller to continue.",
+  "controllerSettings": "Controller Settings",
+  "controllers": "Controllers",
+  "couldNotPerformButtonnamesplitbyuppercaseNoKeymapSet": "Could not perform {button}: no button mapping set",
+  "create": "Create",
+  "createNewKeymap": "Create new mapping",
+  "createNewProfileByDuplicating": "Make a new mapping by duplicating \"{profileName}\"",
+  "@createNewProfileByDuplicating": {
+    "placeholders": {
+      "profileName": {
+        "type": "String"
+      }
+    }
+  },
+  "createdNewCustomProfile": "Made your own mapping: {profileName}",
+  "@createdNewCustomProfile": {
+    "placeholders": {
+      "profileName": {
+        "type": "String"
+      }
+    }
+  },
+  "keymapSwitchTitle": "Keep your own buttons?",
+  "keymapSwitchBody": "You're using your own button mapping, “{profile}”. {app} may need different buttons.",
+  "@keymapSwitchBody": {
+    "placeholders": {
+      "profile": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "keymapSwitchUseAppButtons": "Use {app}'s buttons",
+  "@keymapSwitchUseAppButtons": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "keymapSwitchKeepCustom": "Keep my buttons",
+  "currentDeviceIsNotRegistered": "Current Device is not registered",
+  "currentPlan": "Current Plan",
+  "customizeControllerButtons": "Customize Controller buttons for {appName}",
+  "@customizeControllerButtons": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "customizeKeymapHint": "Customize the button mapping if you experience any issues (e.g. wrong keyboard output, or misaligned touch placements)",
+  "dailyCommandLimitReachedNotification": "You've used up today's button presses. Base or Pro makes them unlimited.",
+  "dailyLimitReached": "Daily limit reached ({dailyCommandCount}/{dailyCommandLimit} used)",
+  "delete": "Delete",
+  "deleteProfile": "Delete mapping",
+  "deleteProfileConfirmation": "Are you sure you want to delete \"{profileName}\"? This action cannot be undone.",
+  "@deleteProfileConfirmation": {
+    "placeholders": {
+      "profileName": {
+        "type": "String"
+      }
+    }
+  },
+  "deny": "Deny",
+  "deviceButton": "{deviceName} button",
+  "@deviceButton": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceIsRestarting": "{device} is restarting and will reconnect in a few seconds",
+  "@deviceIsRestarting": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceLimitReached": "Device limit reached for {platform}. Revoke other devices to register a new one.",
+  "devicesActive": "{active} active",
+  "disconnectAndForget": "Disconnect & forget",
+  "disconnectAndForgetForThisSession": "Disconnect",
+  "disconnectDevices": "Disconnect Devices",
+  "disconnected": "Disconnected",
+  "disconnectedFrom": "Disconnected from {appId}",
+  "@disconnectedFrom": {
+    "placeholders": {
+      "appId": {
+        "type": "String"
+      }
+    }
+  },
+  "donateByBuyingFromPlayStore": "by buying the app from Play Store",
+  "donateViaCreditCard": "via Credit Card, Google Pay, Apple Pay and others",
+  "donateViaPaypal": "via PayPal",
+  "download": "Download",
+  "downloadLatestSettings": "Download Latest Settings",
+  "dragToReposition": "Drag to reposition",
+  "duplicate": "Duplicate",
+  "enableAutoRotation": "Enable auto-rotation on your device to make sure the app works correctly.",
+  "enableBluetooth": "Enable Bluetooth",
+  "enableItInTheConnectionSettingsFirst": "Enable it in the connection settings first.",
+  "enableKeyboardAccessMessage": "Enable keyboard access in the following screen for BikeControl. If you don't see BikeControl, please add it manually.",
+  "enableKeyboardMouseControl": "BikeControl sends your controller's button presses to {appName} for you, no typing needed.",
+  "@enableKeyboardMouseControl": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "enable": "Enable",
+  "enableLocalConnectionMethodDescription": "This action uses the Local connection method, which isn't enabled yet. Enable it to use this action.",
+  "enableLocalConnectionMethodTitle": "Enable Local connection method?",
+  "enableLocalConnectionMethodFirst": "Enable Local Connection method, first.",
+  "enableMediaKeyDetection": "Enable Bluetooth Media remotes",
+  "enableMywhooshLinkInTheConnectionSettingsFirst": "Turn on MyWhoosh Link in Connection Settings first.",
+  "enablePairingProcess": "Act as Bluetooth Mouse",
+  "enablePermissions": "Enable Permissions",
+  "enableSteeringWithPhone": "Enable Steering with your phone's sensors",
+  "enableVibrationFeedback": "Enable vibration feedback when shifting gears",
+  "enableZwiftControllerBluetooth": "Enable Zwift Controller (Bluetooth)",
+  "enableZwiftControllerNetwork": "Enable Zwift Controller (Network)",
+  "errorStartingMyWhooshLink": "Error starting MyWhoosh Link server. Please make sure the \"MyWhoosh Link\" app is not already running on this device.",
+  "errorStartingOpenBikeControlBluetoothServer": "Error starting OpenBikeControl Bluetooth server.",
+  "errorStartingOpenBikeControlServer": "Error starting OpenBikeControl server.",
+  "exportAction": "Export",
+  "failedToImportProfile": "Couldn't import the mapping. Invalid format.",
+  "failedToUpdate": "Failed to update: {error}",
+  "@failedToUpdate": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "firmware": "Firmware",
+  "forceCloseToUpdate": "Force-close the app to use the new version",
+  "full": "Base",
+  "fullVersion": "Base",
+  "fullVersionDescription": "The base version includes:\n- Unlimited commands per day\n- Access to all future updates\n- No subscription! A one-time fee only :)",
+  "getSupport": "Get support",
+  "goPro": "Go Pro",
+  "gotIt": "Got it!",
+  "grant": "Grant",
+  "granted": "Granted",
+  "helpRequested": "Help requested for BikeControl v{version}",
+  "@helpRequested": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "howBikeControlUsesPermission": "How does BikeControl use this permission?",
+  "ignoredDevices": "Ignored Devices",
+  "importAction": "Import",
+  "importProfile": "Import mapping",
+  "instructionVideo": "Instruction Video",
+  "instructions": "Instructions",
+  "jsonData": "JSON Data",
+  "justNow": "Just now",
+  "keyboardAccess": "Keyboard access",
+  "lastSeen": "Last seen:",
+  "lastSynced": "Last synced:",
+  "latestVersion": "latest: {version}",
+  "@latestVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "leaveAReview": "Leave a Review",
+  "letsAppConnectOverBluetooth": "Lets {appName} connect to BikeControl over Bluetooth.",
+  "@letsAppConnectOverBluetooth": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "letsAppConnectOverNetwork": "Lets {appName} connect directly over the Network. Choose BikeControl in the connection screen.",
+  "@letsAppConnectOverNetwork": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "letsGetYouSetUp": "Let's get you set up!",
+  "license": "License",
+  "licenseStatus": "License Status",
+  "loadScreenshotForPlacement": "Load in-game screenshot for placement",
+  "localNetworkAccess": "Local Network access",
+  "localNetworkAccessDeniedIos": "BikeControl can't reach your trainer app without Local Network access. Turn it on under Settings \u2192 BikeControl \u2192 Local Network.",
+  "localNetworkAccessDeniedMacos": "BikeControl can't reach your trainer app without Local Network access. Turn it on under System Settings \u2192 Privacy & Security \u2192 Local Network.",
+  "logViewer": "Log Viewer",
+  "loggedInAsMail": "Logged in as {email}",
+  "logout": "Logout",
+  "logs": "Logs",
+  "logsAreAlsoAt": "Logs are also at",
+  "logsHaveBeenCopiedToClipboard": "Logs have been copied to clipboard",
+  "longPress": "long\npress",
+  "longPressMode": "Long Press Mode (vs. repeating)",
+  "longTapExplanation": "tap 1: key down\ntap 2: key up",
+  "mailSupportExplanation": "Providing individual support via email is a lot of work for me.\n\nPlease consider using Reddit, Facebook or GitHub for questions and issues so that the whole community can benefit from it.",
+  "main": "Main",
+  "manageIgnoredDevices": "Manage Ignored Devices",
+  "manageProfile": "Manage mapping",
+  "keymapSyncLabel": "Sync your button mappings across your devices",
+  "keymapManageLabel": "Rename, duplicate, import, export or delete button mappings",
+  "manageSubscription": "Manage Subscription",
+  "manageYourDevices": "Manage your devices",
+  "manualyControllingButton": "Control {trainerApp} manually!",
+  "mediaKeyDetectionTooltip": "Enable this option to allow BikeControl to detect bluetooth remotes.\nIn order to do so BikeControl needs to act as a media player.",
+  "miniWorkoutStart": "Start recording",
+  "miniWorkoutStop": "Stop",
+  "miniWorkoutRecording": "Recording",
+  "miniWorkoutPaused": "Paused",
+  "miniWorkoutNoTrainerConnected": "Connect a smart trainer to record an activity.",
+  "miniWorkoutSummaryDuration": "Duration",
+  "miniWorkoutSummaryAvgPower": "Avg power",
+  "miniWorkoutSummaryMaxPower": "Max power",
+  "miniWorkoutSummaryAvgCadence": "Avg cadence",
+  "miniWorkoutSummaryDistance": "Distance",
+  "miniWorkoutSummaryAvgHeartRate": "Avg heart rate",
+  "miniWorkoutSummaryMaxHeartRate": "Max heart rate",
+  "miniWorkoutShareFit": "Share to Strava, Garmin & more",
+  "miniWorkoutOpenFolder": "Open activities folder",
+  "miuiDeviceDetected": "MIUI Device Detected",
+  "miuiDisableBatteryOptimization": "• Disable battery optimization for BikeControl",
+  "miuiEnableAutostart": "• Enable autostart for BikeControl",
+  "miuiEnsureProperWorking": "To ensure BikeControl works properly:",
+  "miuiLockInRecentApps": "• Lock the app in recent apps",
+  "miuiWarningDescription": "Your device is running MIUI, which is known to aggressively kill background services and accessibility services.",
+  "moreInformation": "More Information",
+  "mustChooseAllowOrDeny": "You must choose to either Allow or Deny this permission to continue.",
+  "myWhooshDirectConnectAction": "MyWhoosh \"Link\" Action",
+  "myWhooshGearHintTitle": "BikeControl handles your gearing",
+  "myWhooshGearHintBody": "This is for when BikeControl's own virtual shifting steers your trainer: disable virtual shifting in MyWhoosh's settings, or hide the gear UI in MyWhoosh. Otherwise both apps may try to control resistance and your shifts can feel inconsistent.",
+  "myWhooshLinkConnected": "MyWhoosh \"Link\" connected",
+  "myWhooshLinkDescriptionLocal": "Connect directly to MyWhoosh via the \"Link\" method. Check the instructions to ensure a connection is possible. The \"MyWhoosh Link\" app must not be active at the same time.",
+  "myWhooshLinkInfo": "Please check the troubleshooting section if you encounter any issues. A much more reliable connection method is coming soon!",
+  "needHelpClickHelp": "Need help? Click on the",
+  "needHelpDontHesitate": "button on top and don't hesitate to contact us.",
+  "never": "Never",
+  "newConnectionMethodAnnouncement": "{trainerApp} will soon support much better, reliable connection methods - stay tuned for updates!",
+  "newCustomProfile": "New mapping",
+  "newProfileName": "New mapping name",
+  "newVersionAvailable": "New version available",
+  "newVersionAvailableWithVersion": "New version available: {version}",
+  "@newVersionAvailableWithVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "newer": "NEWER",
+  "newerSettingsAvailable": "Newer settings available",
+  "next": "Next",
+  "no": "No",
+  "noActionAssigned": "No action assigned",
+  "noActionAssignedShort": "(none)",
+  "@noActionAssignedShort": {
+    "description": "Compact value for a button trigger with no action, shown at the end of a mapping row"
+  },
+  "actionWaitsForConnectionMethod": "Won't work yet: turn on a connection method",
+  "noActionAssignedForButton": "Could not perform {button}: No action assigned",
+  "trainerAppNotConnectedForButton": "Could not perform {button}: {app} is not connected",
+  "@trainerAppNotConnectedForButton": {
+    "placeholders": {
+      "button": {
+        "type": "Object"
+      },
+      "app": {
+        "type": "Object"
+      }
+    }
+  },
+  "trainerAppActionUnsupportedForButton": "Could not perform {button}: {app} does not support it",
+  "@trainerAppActionUnsupportedForButton": {
+    "placeholders": {
+      "button": {
+        "type": "Object"
+      },
+      "app": {
+        "type": "Object"
+      }
+    }
+  },
+  "noActiveWorkout": "No recording running",
+  "noProxyTrainerConnected": "No smart trainer connected",
+  "noConnectionMethodIsConnectedOrActive": "No connection method is connected or active.",
+  "noConnectionMethodSelected": "No Connection Method selected",
+  "noControllerConnected": "None connected",
+  "noControllerUseCompanionMode": "No Controller? Use Companion Mode.",
+  "noDevicesRegistered": "No devices registered",
+  "noIgnoredDevices": "No ignored devices.",
+  "disconnectedForThisSession": "Disconnected for this session",
+  "noTrainerSelected": "No Trainer selected",
+  "notConnected": "Not connected",
+  "notificationDescription": "This keeps the app alive in background and updates you when the connection to your devices changes.",
+  "officiallySupported": "Officially supported",
+  "overlayDisabledIos": "During a ride the trainer overlay floats over your trainer app — or the Dynamic Island on supported iPhones — and the Lock Screen.",
+  "overlayUsePip": "Floating window (Picture-in-Picture)",
+  "overlayUsePipSubtitle": "Show your gear in a floating window over your trainer app, in addition to the Lock Screen (and the Dynamic Island where available).",
+  "overlayEnabled": "Show overlay during ride",
+  "overlayFieldCadence": "Cadence",
+  "overlayFieldControls": "Shift / power buttons",
+  "overlayFieldErgTarget": "ERG target",
+  "overlayFieldGearRatio": "Gear ratio",
+  "overlayFieldPower": "Power",
+  "overlayFieldsLabel": "Fields to show",
+  "overlayGrantAndroidPermission": "Grant overlay permission",
+  "overlayHide": "Hide overlay",
+  "overlayNotificationTitle": "Gear overlay is on",
+  "overlayNotificationText": "Tap to open BikeControl",
+  "overlayNotificationChannel": "Gear overlay",
+  "overlayLowPowerMode": "Live Activities are disabled (Low Power Mode or system setting).",
+  "overlayOpacity": "Overlay opacity",
+  "overlayOpacitySubtitle": "Fade the floating overlay so it blends into your trainer app.",
+  "overlayPermissionExplain": "Android needs permission to draw the overlay over your trainer app.",
+  "overlaySection": "Overlay",
+  "overlaySectionSubtitle": "Live gear display while you ride.",
+  "overlaySettings": "Overlay settings",
+  "overlayWindowsTip": "Run the trainer app in borderless-windowed mode for the overlay to stay visible.",
+  "ok": "OK",
+  "only": "Only",
+  "onboardingMenuEntry": "Setup guide",
+  "onboardingUpdatePatchBody": "Already downloaded — restart to finish setup on the latest version.",
+  "onboardingUpdateStoreBody": "Update first so your setup runs on the latest version.",
+  "onboardingUpdateRestart": "Restart",
+  "onboardingUpdateOpenStore": "Update",
+  "onboardingWelcomeTitle": "Let's get you set up",
+  "onboardingWelcomeSubtitle": "A couple of minutes now, and your controller shifts gears in your trainer app for every ride after this.",
+  "onboardingWelcomePointController": "Pair your controller and see its buttons light up",
+  "onboardingWelcomePointTrainer": "Optionally run your smart trainer through BikeControl for virtual shifting",
+  "onboardingWelcomePointApp": "Connect to your trainer app, step by step",
+  "onboardingWelcomeStart": "Let's go",
+  "onboardingWelcomeLater": "I'll set this up later",
+  "onboardingWelcomeFootnote": "You can reopen this anytime via Menu → Setup guide.",
+  "onboardingStepOf": "Step {current} of {total}",
+  "@onboardingStepOf": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingStepApp": "Trainer app",
+  "onboardingStepAppSub": "Who you ride with",
+  "onboardingStepWhere": "Where it runs",
+  "onboardingStepWhereSub": "This or another device",
+  "onboardingStepController": "Controller",
+  "onboardingStepControllerSub": "Find and connect",
+  "onboardingStepVs": "Virtual shifting",
+  "onboardingStepVsSub": "Optional",
+  "onboardingStepConnection": "Connection",
+  "onboardingStepConnectionSub": "Link the app",
+  "onboardingStepDone": "Ready",
+  "onboardingStepDoneSub": "Test and ride",
+  "onboardingVerified": "Verified",
+  "onboardingAppTitle": "Which app do you ride with?",
+  "onboardingAppSubtitle": "We'll pre-select the right connection method and button mapping for it.",
+  "onboardingAppNote": "Official apps are tested with BikeControl and get verified button mappings. The others work through generic connection methods.",
+  "onboardingAppPickToContinue": "Pick an app to continue",
+  "onboardingAppContinueWith": "Continue with {app}",
+  "@onboardingAppContinueWith": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingWhereTitle": "Where does {app} run?",
+  "@onboardingWhereTitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingWhereSubtitle": "This decides how BikeControl talks to it.",
+  "onboardingWhereEnablesLocal": "BikeControl presses the buttons in {app} for you — no other device needed.",
+  "@onboardingWhereEnablesLocal": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingWhereEnablesBluetooth": "{app} finds BikeControl over Bluetooth.",
+  "@onboardingWhereEnablesBluetooth": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingWhereEnablesNetwork": "{app} finds BikeControl over your Wi-Fi.",
+  "@onboardingWhereEnablesNetwork": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingWhereChangeLater": "You can change this later in Connection Settings.",
+  "onboardingHelp": "Help",
+  "onboardingHelpAndSupport": "Help & Support",
+  "onboardingBack": "Back",
+  "onboardingContinue": "Continue",
+  "onboardingHelpSheetTitle": "Need a hand?",
+  "onboardingHelpSheetIntro": "Setup should take a couple of minutes. If something's stuck, start here.",
+  "onboardingHelpAppTitle": "Which app should I pick?",
+  "onboardingHelpAppBody": "Pick the app you actually ride in. Official integrations are tested with BikeControl; the others connect through generic methods.",
+  "onboardingHelpWhereTitle": "Same device or another?",
+  "onboardingHelpWhereBody": "If your trainer app is on an Apple TV, PC or tablet and BikeControl is elsewhere, choose “Other Device”.",
+  "onboardingHelpControllerTitle": "My controller isn't showing up",
+  "onboardingHelpControllerBody": "Wake it with a button press, close any app already holding it (Zwift especially), and keep it within a couple of metres.",
+  "onboardingHelpVsTitle": "Do I need a smart trainer?",
+  "onboardingHelpVsBody": "No — this step is optional. Connect one only if you want BikeControl to compute your gears and resistance. That's BikeControl's virtual shifting, part of Pro. Without Pro, your trainer app handles virtual shifting.",
+  "onboardingHelpConnectionTitle": "It won't connect",
+  "onboardingHelpConnectionBody": "Check both devices are on the same Wi-Fi for Network, or enable Local as a fallback on macOS, Windows and Android.",
+  "onboardingHelpDoneTitle": "What are the trial limits?",
+  "onboardingHelpDoneBody": "A daily command budget, plus a daily trial of BikeControl's virtual shifting (a Pro feature). Enough to verify your setup works.",
+  "onboardingHelpDoneProTitle": "Where do I change things later?",
+  "onboardingHelpDoneProBody": "Everything from this setup lives in the regular app: controllers and button mappings on the home screen, connection methods under Trainer Connections, and your smart trainer on its device card.",
+  "onboardingHelpGuides": "Setup guides",
+  "onboardingHelpTroubleshooting": "Troubleshooting",
+  "onboardingHelpSupport": "Contact support",
+  "onboardingHelpBackToSetup": "Back to setup",
+  "onboardingPermissionDeniedTitle": "BikeControl can't find devices",
+  "onboardingPermissionDeniedBody": "Without Bluetooth permission there's no way to reach your controller. You can still finish setup and grant it later in Settings.",
+  "onboardingContinueAnyway": "Continue anyway",
+  "onboardingAllowBluetooth": "Allow Bluetooth",
+  "onboardingBluetoothTitle": "Allow Bluetooth for BikeControl",
+  "onboardingBluetoothSubtitle": "BikeControl needs to search for nearby devices and tell you when the connection changes.",
+  "onboardingBluetoothFindTitle": "Find nearby controllers",
+  "onboardingBluetoothFindSub": "Scan for your shifter or click device.",
+  "onboardingBluetoothNotifyTitle": "Keep you posted",
+  "onboardingBluetoothNotifySub": "Tell you when a device connects or drops out.",
+  "onboardingBluetoothPrivacy": "BikeControl never uses this for location or tracking.",
+  "onboardingBluetoothLocationNote": "Android needs the Location permission to find Bluetooth devices. BikeControl doesn't track where you are.",
+  "onboardingNotNow": "Not now",
+  "onboardingScanTitle": "Looking for your controller",
+  "onboardingScanSubtitle": "Make sure it's powered on, in range, and not connected to another app.",
+  "onboardingScanEmptyTitle": "No controllers found",
+  "onboardingScanEmptySubtitle": "Nothing answered the scan. A few things usually fix it:",
+  "onboardingScanEmptyWakeTitle": "Wake the device",
+  "onboardingScanEmptyWakeSub": "Press a button or paddle to wake it up.",
+  "onboardingScanEmptyDisconnectTitle": "Disconnect it elsewhere",
+  "onboardingScanEmptyDisconnectSub": "Close Zwift or any app that already holds the connection.",
+  "onboardingScanEmptyCloserTitle": "Get closer",
+  "onboardingScanEmptyCloserSub": "Keep it within a couple of metres while pairing.",
+  "onboardingScanEmptyFirmwareTitle": "Update the firmware",
+  "onboardingScanEmptyFirmwareSub": "Outdated controllers stay invisible. Update yours in the Zwift Companion app.",
+  "zwiftCompanionApp": "Zwift Companion",
+  "firmwareUpdateRequired": "You may need to update the firmware of {device} in the Zwift Companion app.",
+  "@firmwareUpdateRequired": {"placeholders": {"device": {"type": "String"}}},
+  "firmwareUpdateAvailable": "A new firmware version is available for {device}: {latest} (current: {current}). Update it in the Zwift Companion app.",
+  "@firmwareUpdateAvailable": {"placeholders": {"device": {"type": "String"}, "latest": {"type": "String"}, "current": {"type": "String"}}},
+  "zwiftRideFirmwareNoticeTitle": "This Zwift Ride may not work correctly",
+  "zwiftRideFirmwareNoticeBody": "Your Zwift Ride is running firmware {version}, which can stop it working with third-party apps like this one. Get in touch and we'll help you sort it out.",
+  "@zwiftRideFirmwareNoticeBody": {"placeholders": {"version": {"type": "String"}}},
+  "zwiftRideFirmwareLater": "Later",
+  "zwiftRideFirmwareSupportPrefill": "Hi! My Zwift Ride is on firmware {version} and I think it has stopped working with other apps. Can you help?",
+  "@zwiftRideFirmwareSupportPrefill": {"placeholders": {"version": {"type": "String"}}},
+  "onboardingScanAgain": "Scan again",
+  "onboardingSetUpLater": "Continue without a controller",
+  "onboardingCantFindController": "Can't find your controller?",
+  "onboardingControllerListTitle": "Controllers",
+  "onboardingControllerListSubtitle": "Devices connect automatically as they're found.",
+  "onboardingControllerReadyTitle": "Your controller is ready",
+  "onboardingControllerReadySubtitle": "Give it a try — press a button and watch BikeControl react.",
+  "onboardingStillScanning": "Still scanning…",
+  "onboardingDeviceConnected": "Connected",
+  "onboardingDeviceConnecting": "Connecting…",
+  "onboardingSetupNeeded": "Setup needed",
+  "onboardingControllerMapped": "Your buttons are mapped for {app} already. You can fine-tune every one later.",
+  "@onboardingControllerMapped": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsBlockedTitle": "Optional: connect your smart trainer",
+  "onboardingVsBlockedSubtitle": "BikeControl can compute your gears for any app — with {app} on this device it just needs a different arrangement.",
+  "@onboardingVsBlockedSubtitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsBlockedExplainer": "Virtual shifting works with {app} — just not with both apps on this one device: {app} here pairs trainers over Bluetooth only, and BikeControl can't advertise Bluetooth to an app on the same device.",
+  "@onboardingVsBlockedExplainer": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsBlockedExplainerStoreApp": "Virtual shifting works with {app} — just not with both apps on this one PC: {app} comes from the Microsoft Store, and Windows doesn't let Store apps connect to BikeControl on the same PC. Bluetooth can't reach an app on the same device either.",
+  "@onboardingVsBlockedExplainerStoreApp": {"description": "Why virtual shifting needs a second device when a Microsoft Store trainer app runs on the same Windows PC as BikeControl.", "placeholders": {"app": {"type": "String"}}},
+  "onboardingVsBlockedAlternatives": "Two setups that work",
+  "onboardingVsBlockedAltAppTitle": "Run {app} on another device",
+  "@onboardingVsBlockedAltAppTitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsBlockedAltAppBody": "Keep BikeControl here and ride {app} on another PC, Apple TV, tablet or phone — it finds your trainer through BikeControl. Go back a step and pick “Other Device”.",
+  "@onboardingVsBlockedAltAppBody": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsBlockedAltBtTitle": "Run BikeControl on another device",
+  "@onboardingVsBlockedAltBtTitle": {},
+  "onboardingVsBlockedAltBtBody": "Install BikeControl on a second phone or tablet next to your bike and let it pass the trainer on to {app} from there.",
+  "@onboardingVsBlockedAltBtBody": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingTrainerTitle": "Optional: let BikeControl handle virtual shifting",
+  "onboardingTrainerSubtitle": "Connect your smart trainer and BikeControl computes every gear for you — in any app you ride.",
+  "onboardingNearbyTrainers": "Nearby smart trainers",
+  "onboardingTrainerMeta": "Supports virtual shifting",
+  "onboardingTrainerHowItWorks": "Virtual shifting with and without BikeControl — what's the difference?",
+  "onboardingTrainerConnectedTitle": "Trainer connected",
+  "onboardingTrainerConnectedSubtitle": "BikeControl can now compute your gears and set the resistance.",
+  "onboardingTrainerNextStepNote": "In the next step you'll point {app} at BikeControl's virtual trainer, so your gears come through.",
+  "@onboardingTrainerNextStepNote": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingLetAppHandleVs": "Let {app} handle virtual shifting",
+  "@onboardingLetAppHandleVs": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingConnectionMethods": "Connection methods",
+  "onboardingMethodNetwork": "Network",
+  "onboardingMethodNetworkDesc": "{app} finds BikeControl over your Wi-Fi — on two devices, keep both on the same network.",
+  "@onboardingMethodNetworkDesc": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingMethodBluetooth": "Bluetooth",
+  "onboardingMethodBluetoothBadge": "Best on iOS",
+  "onboardingMethodBluetoothDesc": "{app} also accepts BikeControl over Bluetooth — it keeps working when BikeControl is in the background.",
+  "@onboardingMethodBluetoothDesc": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingMethodLocal": "Local",
+  "onboardingMethodLocalBadge": "macOS · Windows · Android",
+  "onboardingMethodLocalDesc": "Sends keyboard, touch and media actions on this device. A good fallback if the others don't connect.",
+  "onboardingMethodLocalFeature1": "Music and media control",
+  "onboardingMethodLocalFeature2": "Extra trainer actions",
+  "onboardingMethodLocalFeature3": "Full button customization",
+  "onboardingMethodLocalIosNote": "Not available on iOS — use Network.",
+  "onboardingSelectItFor": "Select it for",
+  "onboardingSlotPower": "Power source",
+  "onboardingSlotControllable": "Controllable / Resistance",
+  "onboardingSlotCadence": "Cadence",
+  "onboardingLive": "Live",
+  "onboardingConnectionTitle": "Connect to {app}",
+  "@onboardingConnectionTitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingConnectionSubtitleLocal": "{app} runs on this device, so BikeControl can drive it directly.",
+  "@onboardingConnectionSubtitleLocal": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingConnectionSubtitleNetwork": "BikeControl will announce itself on your network so {app} can find it.",
+  "@onboardingConnectionSubtitleNetwork": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingConnectionSubtitleBluetooth": "BikeControl will appear as a Bluetooth trainer so {app} can connect to it.",
+  "@onboardingConnectionSubtitleBluetooth": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingThenInApp": "Then in {app}",
+  "@onboardingThenInApp": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingFullSetupGuide": "Full {app} setup guide",
+  "@onboardingFullSetupGuide": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingGuideMyWhoosh1": "Open the Connection screen in MyWhoosh",
+  "onboardingGuideMyWhoosh2": "Tap the OpenBikeControl icon in the top right",
+  "onboardingGuideMyWhoosh3": "Tap Yes in the popup to let BikeControl connect",
+  "onboardingGuideRouvy1": "Open Rouvy and go to the connection screen",
+  "onboardingGuideRouvy2": "BikeControl appears as an available controller — connect and ride",
+  "onboardingGuideTp1": "Open the connection screen in TrainingPeaks Virtual",
+  "onboardingGuideTp2": "Pair with BikeControl",
+  "onboardingGuideTp3": "Map the actions you want to your buttons",
+  "onboardingGuideStrappo1": "Open Strappo's connection screen",
+  "onboardingGuideStrappo2": "Pair with BikeControl over the OpenBikeControl protocol",
+  "onboardingGuideGeneric1": "Open {app}'s connection screen",
+  "@onboardingGuideGeneric1": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingGuideGeneric2": "Pair with BikeControl",
+  "onboardingPairAsTrainer": "Pair BikeControl as your trainer",
+  "onboardingPairAsTrainerBody": "On {app}'s pairing screen, don't pick your trainer directly — pick the BikeControl entry. That's what carries your gears across.",
+  "@onboardingPairAsTrainerBody": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVirtualTrainerGears": "Virtual trainer · {gears} gears",
+  "@onboardingVirtualTrainerGears": {
+    "placeholders": {
+      "gears": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingPairAsTrainerWarning": "If you pair {trainer} directly, {app} takes the raw power and your BikeControl gears won't apply.",
+  "@onboardingPairAsTrainerWarning": {
+    "placeholders": {
+      "trainer": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingFinishSetup": "Finish setup",
+  "onboardingConnectionTurnOnMethod": "Turn on a connection method to continue.",
+  "onboardingDoneTitle": "You're ready to ride",
+  "onboardingYourController": "Your controller",
+  "onboardingDoneSubtitle": "{controller} is connected to {app}.",
+  "@onboardingDoneSubtitle": {
+    "placeholders": {
+      "controller": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingDoneSubtitleBridged": "{controller} is connected to {app}, and {app} gets your trainer through BikeControl.",
+  "@onboardingDoneSubtitleBridged": {
+    "placeholders": {
+      "controller": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryReady": "Ready",
+  "onboardingAlmostThereTitle": "Almost there",
+  "onboardingAlmostThereSubtitle": "Everything on BikeControl's side is set — waiting for {app} to connect. Finish these steps in {app}:",
+  "@onboardingAlmostThereSubtitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingSummaryWaitingFor": "Waiting for {app}…",
+  "@onboardingSummaryWaitingFor": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingTestModeTitle": "You're on the trial",
+  "onboardingTestModeBody": "Ride now and check everything works. The trial allows {commands} commands a day — enough to prove the connection, not a whole session.",
+  "onboardingTestModeBodyVs": "Ride now and check everything works. The trial allows {commands} commands a day, and BikeControl's virtual shifting — a Pro feature — runs {minutes} min a day.",
+  "onboardingSeeProOptions": "See Pro & Base options",
+  "onboardingDoneFinishLater": "Finish — I'll connect later",
+  "onboardingDoneStartRiding": "Done — start riding",
+  "openBikeControlActions": "OpenBikeControl actions",
+  "openBikeControlAnnouncement": "Great news — {trainerApp} supports the OpenBikeControl Protocol, so you'll have the best possible experience!",
+  "otherConnectionMethods": "Other Connection Methods",
+  "otherTrainerApps": "Other Trainer apps",
+  "pairingDescription": "This will allow you to use your phone as a Bluetooth mouse to control apps. Once paired, you can use the buttons on your bike controller to send mouse inputs to the app.",
+  "pairingInstructions": "On your {targetName} go into Bluetooth settings and look for BikeControl or your machines name. Pairing is required if you want to use the remote control feature.",
+  "@pairingInstructions": {
+    "placeholders": {
+      "targetName": {
+        "type": "String"
+      }
+    }
+  },
+  "pairingInstructionsIOS": "On your iPad go to Settings > Accessibility > Touch > AssistiveTouch > Pointer Devices > Devices and pair your device. Make sure AssistiveTouch is enabled.",
+  "pasteExportedJsonData": "Paste the exported JSON data below:",
+  "pathCopiedToClipboard": "Path has been copied to clipboard",
+  "paywall_amountOfActions": "Button presses per day",
+  "paywall_billedAtPricemo": "Billed at {price}/mo.",
+  "paywall_billedAtYearly": "Billed at {cost}/yr.",
+  "paywall_configure3ActionsPerButton": "Up to 3 actions per button: single click, double click, long press",
+  "paywall_controlYourDeviceMusic": "Control your device / music",
+  "paywall_createScreenshots": "Create screenshots",
+  "paywall_monthly": "Monthly",
+  "paywall_startAnyCommandShortcutWithAnyButton": "Start any command / shortcut with any button",
+  "paywall_supportDevelopmentOfNewFeaturesDevicesAndMore": "Support development of new features / devices and more",
+  "paywall_synchronizeAndBackup": "Synchronize and backup",
+  "paywall_useBikecontrolOnAllPlatforms": "BikeControl on iPhone & iPad, Android, Mac and Windows, with one account",
+  "paywall_yearly": "Yearly",
+  "permissionsRequired": "In order for BikeControl to search for nearby devices and update you when the connection changes, please enable the following permissions:",
+  "proSubscriptionRequiredForAction": "Pro subscription required for this action",
+  "proSubscriptionRequiredForAdditionalTriggers": "Pro subscription required for additional trigger types",
+  "platformNotSupported": "This {platform} is not supported :(",
+  "@platformNotSupported": {
+    "placeholders": {
+      "platform": {
+        "type": "String"
+      }
+    }
+  },
+  "platformRestrictionNotSupported": "Due to platform restrictions this scenario is not supported.",
+  "platformRestrictionOtherDevicesOnly": "Due to platform restrictions only controlling {appName} on other devices is supported.",
+  "@platformRestrictionOtherDevicesOnly": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "playPause": "Play/Pause",
+  "pleaseSelectAConnectionMethodFirst": "Turn on a connection method in Connection Settings first.",
+  "predefinedAction": "Predefined {appName} action",
+  "@predefinedAction": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "preferences": "Preferences",
+  "pressButtonOnClickDevice": "Press a button on your Click device",
+  "pressKeyToAssign": "Press a key on your keyboard to assign to {buttonName}",
+  "@pressKeyToAssign": {
+    "placeholders": {
+      "buttonName": {
+        "type": "String"
+      }
+    }
+  },
+  "previous": "Previous",
+  "privacyPolicy": "Privacy Policy",
+  "profileExportedToClipboard": "Mapping \"{profileName}\" copied to the clipboard",
+  "@profileExportedToClipboard": {
+    "placeholders": {
+      "profileName": {
+        "type": "String"
+      }
+    }
+  },
+  "profileImportedSuccessfully": "Mapping imported",
+  "profileName": "Mapping name",
+  "purchase": "Purchase",
+  "recommendedConnectionMethods": "Recommended Connection Methods",
+  "registerCurrentDevice": "Register current device",
+  "registeredDevices": "Registered Devices",
+  "removeFromIgnoredList": "Remove from ignored list",
+  "removeOnePressAction": "The {device} does not support long press natively. To use this type you the long press action needs to be removed.",
+  "rename": "Rename",
+  "renameProfile": "Rename mapping",
+  "replaceExisting": "Replace Existing",
+  "requirement": "Requirement",
+  "reset": "Reset",
+  "resetToDefaults": "Reset to defaults",
+  "restart": "Restart",
+  "restorePurchaseInfo": "Click on the button above, then on \"Restore Purchase\". Please contact me directly if you have any issues.",
+  "restorePurchases": "Restore purchases",
+  "runAppOnThisDevice": "Run {appName} on this device.",
+  "@runAppOnThisDevice": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "runScript": "Run Script",
+  "save": "Save",
+  "scan": "SCAN",
+  "scanningForDevices": "Scanning for devices... Make sure they are powered on and in range and not connected to another device.",
+  "lookingForSmartTrainers": "Looking for Smart Trainers…",
+  "selectADeviceToSyncFrom": "Select a device to sync from",
+  "selectKeymap": "Select mapping",
+  "warningInstallOnTargetDevice": "BikeControl is also available on iOS, Android, Windows and macOS. For proper support for {appName} please download BikeControl on that device.",
+  "@warningInstallOnTargetDevice": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "warningAppLocalControlOnly": "{appName} accepts no external controllers, so buttons only reach it through the Local method — that needs BikeControl running on the same device as {appName}.",
+  "@warningAppLocalControlOnly": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "warningAppLocalControlIosNote": "The Local method works on macOS, Windows and Android only. On an iPhone or iPad buttons can't reach {appName} at all — BikeControl can still bridge your trainer to it, so virtual shifting keeps working.",
+  "@warningAppLocalControlIosNote": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "selectTrainerApp": "Select Trainer App",
+  "selectTrainerAppAndTarget": "Select Trainer App & Target Device",
+  "selectTrainerAppPlaceholder": "Select Trainer app",
+  "setting": "Setting",
+  "settingsAppliedFromId": "Settings applied from {deviceId}...",
+  "settingsDownloadedFromServer": "Settings downloaded from server",
+  "settingsSyncedSuccessfully": "Settings synced successfully",
+  "settingsSynchronization": "Settings Synchronization",
+  "setupComplete": "Setup Complete!",
+  "setupTrainer": "Setup Trainer",
+  "share": "Share",
+  "showDonation": "Show your appreciation by donating",
+  "showSupportedControllers": "Show Supported Controllers",
+  "signInToSyncYourSubscriptionAndManageDevices": "Sign in to sync your subscription and manage devices",
+  "signal": "Signal",
+  "simulateButtons": "Trainer Controls",
+  "simulateKeyboardShortcut": "Press a keyboard key",
+  "simulateMediaKey": "Control Music playback",
+  "simulateTouch": "Click any button on screen",
+  "skip": "Skip",
+  "smartTrainerAndAccessories": "Smart Trainer & Accessories",
+  "stop": "Stop",
+  "supportedActions": "Supported Actions",
+  "syncSettings": "Sync Settings",
+  "syncStatus": "Sync Status",
+  "synchronizeAcrossDevices": "Synchronize across devices",
+  "synchronizeYourAppSettingsAcrossAllYourDevicesThisIncludes": "Synchronize your app settings across all your devices. This includes your button mappings, your shifting configs with their gear ratios, and your preferences.",
+  "targetOtherDevice": "Other Device",
+  "targetThisDevice": "This Device",
+  "termsOfUse": "Terms of Use",
+  "theFollowingPermissionsRequired": "The following permissions are required:",
+  "thisFeatureIsOnlyAvailableWithPro": "This feature is only available with Pro. Upgrade to Pro to unlock all features.",
+  "trainerAppDoesNotSupportConnectionYet": "{trainerApp} does not support this, yet",
+  "@trainerAppDoesNotSupportConnectionYet": {
+    "placeholders": {
+      "trainerApp": {
+        "type": "String"
+      }
+    }
+  },
+  "touchAreaInstructions": "1. Create an in-game screenshot of your app (e.g. within MyWhoosh) in landscape orientation\n2. Load the screenshot with the button below\n3. The app is automatically set to landscape orientation for accurate mapping\n4. Press a button on your Click device to create a touch area\n5. Drag the touch areas to the desired position on the screenshot\n6. Save and close this screen",
+  "touchSimulationForegroundMessage": "To simulate touches the app needs to stay in the foreground.",
+  "trainer": "Trainer",
+  "trainerConnection": "Trainer Connection",
+  "trainerMissingFtmsWarning": "{trainerName} does not advertise the FTMS service, so virtual shifting may not work. Please use \"Need help?\" below to report this trainer.",
+  "trainerConnectTimeout": "Couldn't reach {trainer}. Make sure it's awake, nearby and not connected to another app, then try again.",
+  "@trainerConnectTimeout": {"placeholders": {"trainer": {"type": "String"}}},
+  "trainerConnectFailed": "Couldn't connect to {trainer}. Try again in a moment.",
+  "@trainerConnectFailed": {"placeholders": {"trainer": {"type": "String"}}},
+  "@trainerMissingFtmsWarning": {
+    "placeholders": {
+      "trainerName": {
+        "type": "String"
+      }
+    }
+  },
+  "trialDaysRemaining": "Trial period: {trialDaysRemaining} days left",
+  "trialExpired": "Trial period over. Button presses limited to {dailyCommandLimit} per day.",
+  "trialPeriodActive": "Trial period: {trialDaysRemaining} days left",
+  "trialPeriodDescription": "During your trial period you get {dailyCommandLimit} button presses per day. Once it ends the daily limit drops — Base or Pro makes them unlimited.",
+  "troubleshootingGuide": "Help & Support",
+  "tryingToConnectAgain": "Trying to connect again...",
+  "unassignAction": "Unassign action",
+  "unlimited": "Unlimited",
+  "unlockAllFeaturesWithPro": "Unlock all features with Pro",
+  "unlockFullVersion": "Unlock Base Version",
+  "unlockTheFullVersionOrGoPro": "Unlock the Base version - or Go Pro",
+  "unlock_bikecontrolAndZwiftNetwork": "BikeControl and Zwift need to be on the same network or device. It may take a few seconds to appear.",
+  "unlock_confirmByPressingAButtonOnYourDevice": "Confirm by pressing a button on your device.",
+  "unlock_connectToBikecontrol": "Connect to \"{name}\" e.g. as Power source",
+  "@unlock_connectToBikecontrol": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "unlock_deviceIsCurrentlyLocked": "Device is currently locked",
+  "unlock_isnowunlocked": "{device} is now unlocked",
+  "unlock_markAsUnlocked": "Mark as Unlocked",
+  "unlock_mode": "Unlock mode",
+  "unlock_modeRestart": "Restart device every minute",
+  "unlock_modeRestartDescription": "The left controller will automatically reconnect every 60 seconds, resulting in a short downtime.",
+  "unlock_modeZwift": "Unlock using Zwift",
+  "unlock_modeZwiftDescription": "Every 24 hours the device needs to be unlocked using Zwift.",
+  "unlock_notWorking": "Not working?",
+  "unlock_openZwift": "Open Zwift (not the Companion) on this or another device",
+  "deviceSettings": "Device Settings",
+  "deviceSideLeft": "{device} (left)",
+  "deviceSideRight": "{device} (right)",
+  "unlock_newMethod": "Use new unlock method",
+  "unlock_newMethodDescription": "Connect the left and right sides as separate controllers. The right side needs no unlocking. Turn off to use a single combined controller.",
+  "unlock_newMethodReconnecting": "Applying… reconnecting your Zwift Click.",
+  "clickV2_keepAwakeNeedsLeftSide": "This controller stays on by itself, but its lights go dark without the left side. Switch the left side on to keep them lit — it only needs to be nearby, BikeControl does not have to connect to it.",
+  "unlock_useRightSideOnly": "Use the right side only",
+  "unlock_useRightSideOnlyDescription": "The right side needs no unlocking. Drop the left side and let the right side handle shifting — + shifts up, B shifts down.",
+  "unlock_rightSideOnlyConfigured": "Done — using the right side only. Re-enable the left side anytime under Ignored devices.",
+  "unlock_unlockManually": "Unlock manually",
+  "unlock_zwiftNeedsLeftSide": "Unlocking happens on the left controller — switch it on to unlock it with Zwift.",
+  "unlock_unlockNow": "Unlock now",
+  "unlock_unlockedUntilAroundDate": "Unlocked until around {date}",
+  "unlock_waitingForZwift": "Waiting for Zwift to unlock your device...",
+  "unlock_youCanNowCloseZwift": "You can now close Zwift and return to BikeControl.",
+  "unlock_yourTrialPhaseHasExpired": "Your trial period has ended. Get Base or Pro to unlock the comfortable unlocking feature :)",
+  "unlock_yourZwiftClickMightBeUnlockedAlready": "Your Zwift Click might be unlocked already.",
+  "unlockingNotPossible": "Unlocking is currently not yet possible, so enjoy unlimited usage for the time being!",
+  "update": "Update",
+  "uploadSettings": "Upload Settings",
+  "useCustomKeymapForButton": "Use your own mapping to support the",
+  "version": "Version {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "versionPatch": "Patch {number}",
+  "@versionPatch": {
+    "description": "The Shorebird code-push patch the app runs, after the version (e.g. 'Version 7.1.0 · Patch 4').",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "versionBetaTrack": "Beta",
+  "@versionBetaTrack": {
+    "description": "After the version: the app gets its updates from the beta lane."
+  },
+  "versionCopied": "Version copied to clipboard",
+  "viewDetailedInstructions": "View Detailed Instructions",
+  "volumeDown": "Volume Down",
+  "volumeUp": "Volume Up",
+  "waiting": "Waiting...",
+  "waitingForConnectionKickrBike": "Waiting for connection. Choose KICKR BIKE PRO in {appName}'s controller pairing menu.",
+  "@waitingForConnectionKickrBike": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "whatsNew": "What's New",
+  "whyPermissionNeeded": "Why is this permission needed?",
+  "windowsSubscriptionsRequireYouToBeLoggedIn": "Windows subscriptions require you to be logged in",
+  "yes": "Yes",
+  "yourDevices": "Your Devices",
+  "yourSettingsAreAutomaticallySyncedWhenYouMakeChangesTap": "Your settings are automatically synced when you make changes. Tap on a device to apply its settings.",
+  "zwiftControllerAction": "Zwift Controller Action",
+  "zwiftControllerDescription": "Enables BikeControl to act as a Zwift-compatible controller.",
+  "smartTrainer": "Smart Trainer",
+  "needHelpTitle": "Need help?",
+  "needHelpBody": "Something not working as expected? The Help Center has step-by-step guides for your setup and a direct line to support.",
+  "needHelpOpen": "Open Help Center",
+  "virtualShiftingSettings": "Virtual Shifting Settings",
+  "yourTrainerApp": "your trainer app",
+  "proxyMode": "Proxy",
+  "virtualShifting": "Virtual Shifting",
+  "proxyModeHint": "Mirrors your trainer over WiFi without touching gear logic.",
+  "virtualShiftingBluetoothHint": "Adds or adjusts virtual shifting and creates a Bluetooth-advertised trainer.",
+  "virtualShiftingWifiHint": "Adds or adjusts virtual shifting and creates a WiFi-advertised trainer.",
+  "virtualShiftingTransportNeededHint": "Enable a Bluetooth or WiFi Trainer Connection to use Virtual Shifting.",
+  "virtualShiftingHint": "Adds or adjusts virtual shifting and advertises BikeControl as a trainer.",
+  "noConnection": "No connection",
+  "noConnectionHint": "Let {trainerApp} handle virtual shifting, if supported",
+  "@noConnectionHint": {
+    "placeholders": {
+      "trainerApp": {
+        "type": "String"
+      }
+    }
+  },
+  "connectModeLabel": "CONNECT MODE",
+  "helpMeDecide": "Help me decide",
+  "connectingInMode": "Connecting in {mode} mode…",
+  "@connectingInMode": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "connectModeActive": "Connect mode: {mode}",
+  "@connectModeActive": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "bikeWeight": "Bike Weight",
+  "riderWeight": "Rider Weight",
+  "virtualShiftingPhysicsDesc": "Used for virtual shifting physics",
+  "gearSettings": "Gear Settings",
+  "gearsCount": "{count} gears",
+  "@gearsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "smoothingOn": "Smoothing on",
+  "smoothingOff": "Smoothing off",
+  "customRatios": "Custom ratios",
+  "trainerControl": "Resistance mode: SIM or ERG",
+  "fixedTargetPowerMode": "Fixed target power mode",
+  "virtualGearShifting": "Virtual gear shifting",
+  "ergMode": "ERG",
+  "simMode": "SIM",
+  "powerLabel": "POWER",
+  "heartLabel": "HEART",
+  "cadenceLabel": "CADENCE",
+  "speedLabel": "SPEED",
+  "unlockAfterMinuteCheck": "After a minute has passed, double check by pressing a button",
+  "unlockConfirmByButton": "Confirm unlock by pressing a button",
+  "tuneGearsIntro": "Tune each virtual gear to match your ride feel. Changes apply instantly.",
+  "vsResetTitle": "Reset your gears?",
+  "vsResetBody": "The gear count goes back to your trainer app's, grade smoothing turns on, the shifting difficulty goes back to 100%, and your per-gear ratios are replaced by the standard ones. Your own ratios can't be brought back.",
+  "virtualShiftingMode": "Virtual Shifting Mode",
+  "virtualShiftingModeDesc": "How resistance is computed per gear",
+  "targetPowerMode": "Target Power",
+  "trackResistanceMode": "Track Resistance",
+  "basicMode": "Basic",
+  "gearCount": "Gear Count",
+  "gearCountDesc": "Size of the virtual shifter",
+  "gradeSmoothing": "Grade Smoothing",
+  "gradeSmoothingDesc": "Averages sudden slope changes",
+  "cadenceFilter": "Cadence Filter",
+  "cadenceFilterDesc": "Suppresses sensor spikes that cause resistance pulses",
+  "gearStep": "Gear step",
+  "gearStepDesc": "How much harder each gear feels than the last. 100% follows the gear table; higher makes shifts sharper",
+  "shiftTransition": "Shift transition",
+  "shiftTransitionDesc": "How long the resistance takes to reach the new gear. Instant is like a real shift",
+  "shiftTransitionInstant": "Instant",
+  "powerAt30Kph": "Power at 30 km/h",
+  "powerAt30KphDesc": "The power it takes to hold 30 km/h on the flat. Lower it if fast gears feel too heavy",
+  "presetDefault": "Default",
+  "presetCompact": "Compact",
+  "presetWide": "Wide",
+  "preset1x": "1×",
+  "presetsLabel": "PRESETS",
+  "perGearLabel": "PER-GEAR",
+  "gearNumber": "Gear {gear}",
+  "@gearNumber": {
+    "placeholders": {
+      "gear": {
+        "type": "int"
+      }
+    }
+  },
+  "currentBadge": "CURRENT",
+  "neutralBadge": "NEUTRAL",
+  "referenceBaseRatio": "Reference — base ratio",
+  "closeToNeutral": "close to neutral",
+  "harderThanNeutral": "+{magnitude} harder than neutral",
+  "@harderThanNeutral": {
+    "placeholders": {
+      "magnitude": {
+        "type": "String"
+      }
+    }
+  },
+  "easierThanNeutral": "−{magnitude} easier than neutral",
+  "@easierThanNeutral": {
+    "placeholders": {
+      "magnitude": {
+        "type": "String"
+      }
+    }
+  },
+  "nameHint": "Name",
+  "newShiftingConfig": "New shifting config",
+  "manageShiftingConfigs": "Manage shifting configs",
+  "active": "Active",
+  "configCopySuffix": "{name} copy",
+  "@configCopySuffix": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "newAction": "New",
+  "manageAction": "Manage",
+  "defaultName": "Default",
+  "trainerFeedbackTitle": "Send Trainer Feedback",
+  "signInToSendFeedback": "Sign in to send feedback",
+  "feedbackAccountTied": "Feedback is tied to your BikeControl account so we can follow up on trainer-specific issues.",
+  "signIn": "Sign in",
+  "yourRating": "Your rating",
+  "requiredField": "Required",
+  "ratingWorks": "Works",
+  "ratingNeedsAdjustment": "Needs adjustment",
+  "ratingDoesntWork": "Doesn't work",
+  "yourFeedback": "Your feedback",
+  "feedbackPlaceholder": "Describe how your trainer works with BikeControl…",
+  "diagnosticDataTitle": "Diagnostic data being sent",
+  "diagnosticDataSubtitle": "Read-only — automatically collected",
+  "sendFeedback": "Send feedback",
+  "feedbackSubmitFailed": "Failed to submit feedback",
+  "diagBluetoothName": "Bluetooth name",
+  "diagManufacturer": "Manufacturer",
+  "diagFirmware": "Firmware",
+  "diagSupportsVirtualShifting": "Supports virtual shifting",
+  "diagControlMode": "Control mode",
+  "diagVirtualShiftingMode": "Virtual shifting mode",
+  "diagGradeSmoothing": "Grade smoothing",
+  "diagGearRatios": "Gear ratios",
+  "diagTrainerApp": "Trainer app",
+  "diagFtmsMachineFeatures": "FTMS machine features",
+  "diagFtmsTargetSettings": "FTMS target settings",
+  "diagAppVersion": "App version",
+  "diagAppPlatform": "App platform",
+  "enabledLabel": "Enabled",
+  "disabledLabel": "Disabled",
+  "notAvailable": "Not available",
+  "editingTrigger": "Editing {trigger}",
+  "@editingTrigger": {
+    "placeholders": {
+      "trigger": {
+        "type": "String"
+      }
+    }
+  },
+  "longPressFallbackHint": "This device uses long press toggle mode: first click sends key down, second click sends key up.",
+  "trainerDirectControl": "Trainer Direct Control",
+  "repeatSingleClick": "Repeat single click action",
+  "localRemoteSetting": "Local / Remote Setting",
+  "broadcastIntent": "Broadcast Custom Intent",
+  "broadcastIntentDesc": "For automation apps like MacroDroid or Tasker",
+  "otherActions": "Other Actions",
+  "takeScreenshot": "Take Screenshot",
+  "accessoryNoControllerYet": "Connect a controller to assign these actions to its buttons.",
+  "accessorySetUpOnController": "Set up on {device}",
+  "accessoryActions": "Accessory Actions",
+  "kickrHeadwind": "KICKR Headwind",
+  "setHeadwindSpeedTo": "Set Speed to {value}%",
+  "@setHeadwindSpeedTo": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "setSpeed": "Set Speed",
+  "increaseSpeed": "Increase Speed",
+  "decreaseSpeed": "Decrease Speed",
+  "increaseSpeedCyclic": "Increase Speed Cyclically",
+  "decreaseSpeedCyclic": "Decrease Speed Cyclically",
+  "setHeartRateMode": "Set to Heart Rate Mode",
+  "noExecutableSelected": "No executable file selected",
+  "launchShortcut": "Launch Shortcut",
+  "shortcutNameHint": "Shortcut name",
+  "launchShortcutDesc": "Runs a macOS Shortcuts shortcut by its exact name when this button is pressed.",
+  "noPathSelected": "No path selected",
+  "cannotWriteFolder": "Cannot write to this folder. Please grant write permission and try again.",
+  "intentSuffixHint": "one",
+  "broadcastIntentExplanation": "Sends an Android broadcast with action \"{prefix}<your suffix>\" when the button is pressed. Apps like MacroDroid or Tasker can listen for the intent and run your automations.",
+  "@broadcastIntentExplanation": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "customModeAction": "Custom {mode} action",
+  "@customModeAction": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "customLabel": "Custom",
+  "blogTab": "Blog",
+  "activityTabNews": "News",
+  "newsEmpty": "No news yet.",
+  "newsLoadFailed": "Couldn't load the news. Check your connection and try again.",
+  "newsNewBadge": "New",
+  "openConnectionSettings": "Open connection settings",
+  "noTargetSelected": "No target selected",
+  "stay": "Stay",
+  "leave": "Leave",
+  "showExperimental": "Show experimental",
+  "language": "Language",
+  "languageSystemDefault": "System default",
+  "notSupportedOnWeb": "Not Supported on Web :)",
+  "recommended": "Recommended",
+  "workoutPaused": "Recording paused",
+  "workoutResumed": "Recording resumed",
+  "connectionSettings": "Connection Settings",
+  "needsTargetLeavePrompt": "{appName} needs a target before it can connect. Leave without picking one?",
+  "@needsTargetLeavePrompt": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "feedbackQuestion": "Does it work?",
+  "supportChat": "Support Chat",
+  "supportDiagnosticsNotice": "To help fix your issue, this chat attaches a screenshot of BikeControl and diagnostic info. You can review or remove them before sending.",
+  "supportRetentionNotice": "Conversations are deleted automatically 30 days after the last message. Anonymised trainer data (model, firmware, test results) is kept to improve compatibility.",
+  "supportDeleteConversation": "Delete conversation",
+  "supportDeleteAccount": "Delete account & all data",
+  "supportDeleteConversationTitle": "Delete conversation?",
+  "supportDeleteConversationBody": "This permanently deletes your support conversation, including every message, screenshot and diagnostic report you sent. This cannot be undone.",
+  "supportDeleteAccountTitle": "Delete account & all data?",
+  "supportDeleteAccountBody": "This permanently deletes your support conversation and your BikeControl account, including your email address. A one-time purchase stays in the store you bought it from, and a Pro subscription keeps running there too, but this device will be signed out. This cannot be undone.",
+  "supportDeleteSuccess": "Your data was deleted.",
+  "supportDeleteFailed": "Couldn't delete your data. Please try again.",
+  "supportAccountStatusAnonymous": "Anonymous · not signed in",
+  "supportAccountStatusSignedIn": "Signed in",
+  "supportAccountLinkTitle": "Get the reply",
+  "supportAccountLinkBody": "Your message is already with support. Add your email and the answer lands in this chat on any device — and you get notified.",
+  "supportAccountLinkAddButton": "Add",
+  "supportAccountLinkedNote": "Signed in — this chat now follows your account.",
+  "supportAccountLinkFailed": "Something went wrong. Try again.",
+  "supportAccountAlreadyLinked": "This account already belongs to another BikeControl account. Sign out and sign in with it instead.",
+  "supportAccountLinkEmailTaken": "{email} already has a BikeControl account, so it can't be added to this chat. To use that account, sign in under Settings → Plan & account. This conversation won't move over, so send your message again from there. Or enter a different email.",
+  "@supportAccountLinkEmailTaken": {"placeholders": {"email": {"type": "String"}}},
+  "retry": "Retry",
+  "supportChatEmpty": "Send a message to start the conversation.",
+  "supportChatIntro": "You'll be talking to Jonas from BikeControl",
+  "supportChatIntroFatherNote": "I'll be a father, soon, so it might take a few hours for me to respond :-)",
+  "supportIntakeTitle": "Tell us about the problem",
+  "supportIntakeSubtitle": "A couple of dropdowns help us answer faster — and may surface a tutorial that solves it on the spot.",
+  "supportIntakeCategoryLabel": "What's going on?",
+  "supportIntakeCategoryPlaceholder": "Pick a category",
+  "supportIntakeCategoryTrainerApp": "Connection to a trainer app",
+  "supportIntakeCategoryController": "Connection to a controller",
+  "supportIntakeCategorySmartTrainer": "Connection to a smart trainer",
+  "supportIntakeCategoryAccount": "Account / purchase",
+  "supportIntakeCategorySomethingElse": "Something else",
+  "supportIntakeWhichApp": "Which trainer app?",
+  "supportIntakeWhichAppPlaceholder": "Pick the app",
+  "supportIntakeWhichController": "Which controller?",
+  "supportIntakeWhichControllerPlaceholder": "Pick the controller",
+  "supportIntakeWhatHappens": "What's happening?",
+  "supportIntakeWhatHappensPlaceholder": "Pick the closest match",
+  "supportIntakeAccountQuestion": "What's the issue?",
+  "supportIntakeContinue": "Continue",
+  "supportIntakeEdit": "Edit",
+  "supportIntakeRecommendedHelp": "Recommended help",
+  "supportIntakeReadTutorial": "Read tutorial",
+  "supportIntakeWatchVideo": "Watch video",
+  "messageComposerPlaceholder": "Type a message…",
+  "attachImage": "Pick image",
+  "attachDocument": "Pick file",
+  "attachmentOnlyMessageBody": "(screenshot)",
+  "attachmentTooLarge": "Attachment exceeds 10 MB",
+  "attachmentMimeUnsupported": "Unsupported file type",
+  "failedToSendMessage": "Failed to send message",
+  "failedToOpenChat": "Failed to open support chat",
+  "senderYou": "You",
+  "senderAdmin": "Support",
+  "viewThread": "Reply",
+  "threadTitle": "Thread",
+  "replyCount": "Replies ({count})",
+  "@replyCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dontWantToSignInWriteAMail": "Don't want to sign in? Write a mail instead",
+  "proxyConnectFor": "Connect your {name} for:",
+  "@proxyConnectFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "proxyFeatureAddVirtualShifting": "Add virtual shifting capability",
+  "proxyFeatureAdjustGears": "Adjust virtual shifting gears",
+  "proxyFeatureDirectControl": "Direct gear / intensity / mode changes via {controller}",
+  "@proxyFeatureDirectControl": {
+    "placeholders": {
+      "controller": {
+        "type": "String"
+      }
+    }
+  },
+  "proxyFeatureMiniWorkout": "Record your ride as an activity",
+  "proxyFeatureWifiProxy": "Proxy to WiFi",
+  "trainerErgTarget": "ERG target: {watts} W",
+  "@trainerErgTarget": {
+    "placeholders": {
+      "watts": {
+        "type": "int"
+      }
+    }
+  },
+  "trainerErgTargetGameControlled": "ERG target is controlled by the app",
+  "trainerShiftedUp": "Shifted up to gear {gear}",
+  "@trainerShiftedUp": {
+    "placeholders": {
+      "gear": {
+        "type": "int"
+      }
+    }
+  },
+  "trainerShiftedDown": "Shifted down to gear {gear}",
+  "@trainerShiftedDown": {
+    "placeholders": {
+      "gear": {
+        "type": "int"
+      }
+    }
+  },
+  "trainerAlreadyHighestGear": "Already in highest gear",
+  "trainerAlreadyLowestGear": "Already in lowest gear",
+  "trainerSwitchedToSim": "Switched to sim mode",
+  "trainerSwitchedToErg": "Switched to erg mode @ {watts} W",
+  "@trainerSwitchedToErg": {
+    "placeholders": {
+      "watts": {
+        "type": "int"
+      }
+    }
+  },
+  "trainerIntensityIncreased": "Intensity +5%",
+  "trainerIntensityDecreased": "Intensity -5%",
+  "trainerFrontShiftedLarge": "Front: large ring",
+  "trainerFrontShiftedSmall": "Front: small ring",
+  "trainerFrontShiftNotEnabled": "Enable front shift in the gear settings",
+  "trainerFrontShiftUnavailable": "Front shift unavailable",
+  "successRatingMessage": "Thank you for using BikeControl! Please consider rating BikeControl in the {store} — it helps a lot!",
+  "@successRatingMessage": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "rateBikeControl": "Rate BikeControl",
+  "smartTrainerConsentTitle": "Connecting to {trainerName}",
+  "@smartTrainerConsentTitle": {
+    "placeholders": {
+      "trainerName": {
+        "type": "String"
+      }
+    }
+  },
+  "smartTrainerConsentMessage": "BikeControl will now connect to your Smart Trainer and take over control over Virtual Shifting. Any shifting will happen directly in BikeControl, and no longer through your {appName}. In {appName} you will then connect to the BikeControl virtual trainer, instead of directly to {trainerName}.\n\nTo revert to the default behavior, click on the \"{disconnectLabel}\" button and connect {appName} directly to your {trainerName} again.",
+  "@smartTrainerConsentMessage": {
+    "placeholders": {
+      "trainerName": {
+        "type": "String"
+      },
+      "appName": {
+        "type": "String"
+      },
+      "disconnectLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "connectingToDevice": "Connecting to: {device}",
+  "@connectingToDevice": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "connectionSucceeded": "Connection succeeded: {device}",
+  "@connectionSucceeded": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "connectionFailed": "Connection failed: {device} - {error}",
+  "@connectionFailed": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "connectionGaveUpAfterAttempts": "Couldn't connect to {device} after several attempts.",
+  "@connectionGaveUpAfterAttempts": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "wheeltopClaimedByDerailleurHint": "The shifter is likely claimed by its rear derailleur. Power the derailleur down or let it sleep, then press a shifter button while scanning.",
+  "bleSensorConnectGuidance": "The sensor may be in use by another app or device. Pair it directly in your trainer app instead, or tap Reconnect to try again.",
+  "unableToConnectToDeviceTimeout": "Unable to connect to {device}: Timeout",
+  "@unableToConnectToDeviceTimeout": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "scanningForDevicesShort": "Scanning for devices...",
+  "disconnectingAllDevices": "Disconnecting all devices",
+  "configureButtonMapping": "Configure button mapping",
+  "notWellSupportedByMyWhoosh": "Note: this action is not well supported by MyWhoosh, yet",
+  "vsIntroTitle": "Virtual Shifting",
+  "vsIntroSubtitle": "Shift gears on any smart trainer, right inside BikeControl.",
+  "vsIntroSupportedTitle": "Works with dozens of trainers",
+  "vsIntroSupportedBody": "Many smart trainers already work great — though some may not work perfectly just yet, and the list keeps growing.",
+  "vsIntroBetaTitle": "Still in beta",
+  "vsIntroBetaBody": "Virtual Shifting customization in BikeControl is a new feature, so you might run into the occasional rough edge.",
+  "vsIntroFeedbackTitle": "We've got your back",
+  "vsIntroFeedbackBody": "We love your feedback and are always happy to help get your setup dialed in just right.",
+  "vsIntroSupportedTrainersCta": "See supported trainers",
+  "vsIntroGotIt": "Got it",
+  "useControllerWithApp": "Use {controller} with {app}",
+  "@useControllerWithApp": {
+    "placeholders": {
+      "controller": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "frontShiftEnableLabel": "Virtual front derailleur",
+  "frontShiftEnableDesc": "Adds a second chainring (2× drivetrain). Press both shifters together to change ring, like SRAM AXS.",
+  "frontShiftSmallRingLabel": "Small chainring (teeth)",
+  "frontShiftLargeRingLabel": "Large chainring (teeth)",
+  "done": "Done",
+  "sramSetup": "Set up SRAM control",
+  "sramRestore": "Restore original shifting",
+  "sramPanelIntro": "Let BikeControl control your shifting: it backs up your current shifter configuration, then disables the derailleur's own shifting so it only sends button presses. You can restore it anytime.",
+  "sramSetupIntro": "BikeControl backs up your current shifter configuration and disables the derailleur's own shifting, so the paddles send button presses instead. You can restore it anytime.",
+  "sramSetupSuccess": "BikeControl now controls your gears. Each shifter button is a controller input you can map in the app.",
+  "sramRestoreIntro": "If you want to go back riding outdoors, use this to reset your SRAM configuration to re-enable shifting",
+  "sramRestoreSuccess": "Your original shifter configuration has been restored.",
+  "sramDialogRunning": "Talking to your derailleur — keep it close and awake.",
+  "sramAuthorizeTitle": "Authorize BikeControl",
+  "sramAuthorizeBody": "Hold the AXS button on your derailleur until its light flashes, then tap Retry.",
+  "sramErrorTitle": "That didn't work",
+  "sramGenericError": "Something went wrong. Please try again.",
+  "sramLinkResetError": "The derailleur stopped responding, so BikeControl is reconnecting to it. Wait until it shows as connected again, then retry.",
+  "sramShiftingOff": "On-device shifting is off — BikeControl controls your gears.",
+  "sramSettingUp": "Setting up",
+  "sramRestoringShifting": "Restoring shifting",
+  "sramAllSet": "You're all set",
+  "sramRestoredTitle": "Original shifting restored",
+  "sramChecklistPairing": "Pairing with derailleur",
+  "sramChecklistBackingUp": "Backing up your configuration",
+  "sramChecklistDisabling": "Disabling on-device shifting",
+  "sramChecklistRestoring": "Restoring original shifting",
+  "sramPressHold": "Press & hold on the derailleur",
+  "shimanoSetup": "Use Di2 buttons",
+  "shimanoDflyExplanation": "Press a D-Fly button to configure it.",
+  "@shimanoDflyExplanation": {"description": "Di2 controller settings, before any button is known: a Di2 without the E-TUBE config service sends its D-Fly buttons, so the rider presses one to add it."},
+  "shimanoPanelIntro": "Use your Di2 shifters as BikeControl buttons. Nothing on your Di2 is changed: while BikeControl is connected, the paddles send button presses instead of shifting.",
+  "shimanoSetupIntro": "While BikeControl is connected, your Di2 doesn't shift. Its paddles become BikeControl buttons instead. Disconnect and it shifts normally again. No Di2 setting is changed.",
+  "shimanoSetupSuccess": "Your Di2 paddles are now BikeControl buttons. Disconnect BikeControl to shift normally again.",
+  "shimanoDialogRunning": "Talking to your Di2 — keep it close and awake.",
+  "shimanoAuthorizeTitle": "Wake your Di2",
+  "shimanoAuthorizeBody": "Your Di2 didn't respond. Press any shifter button to wake it, keep it close, then tap Retry.",
+  "shimanoErrorTitle": "That didn't work",
+  "shimanoGenericError": "Something went wrong. Please try again.",
+  "shimanoShiftingOff": "Di2 buttons are active. Your Di2 doesn't shift while BikeControl is connected.",
+  "shimanoSettingUp": "Setting up",
+  "shimanoAllSet": "You're all set",
+  "shimanoChecklistAuthenticating": "Authenticating with Di2",
+  "shimanoWakeUp": "Press a shifter button to wake it",
+  "shimanoChecklistActivating": "Switching your Di2 to button mode",
+  "shimanoTurnOff": "Stop using Di2 buttons",
+  "shimanoPasskeyLabel": "E-TUBE passkey",
+  "shimanoPasskeyHint": "Keep 000000 unless you set your own passkey in the E-TUBE app.",
+  "shimanoPasskeyWrongTitle": "Wrong passkey",
+  "shimanoPasskeyWrongBody": "Your Di2 rejected the passkey. Enter the passkey you set in the E-TUBE app.",
+  "shimanoPairTitle": "Pair your Di2 with Windows",
+  "@shimanoPairTitle": {"description": "Di2 button-mode setup sheet, Windows only: the Di2's settings service needs a Bluetooth pairing that Windows could not set up on its own."},
+  "shimanoPairBody": "Di2 buttons need your Di2 paired with Windows, and Windows couldn't pair it. Open Windows Settings → Bluetooth & devices → Add device → Bluetooth and choose your Di2 (press a shifter button to wake it). If it's already listed, remove it and add it again. Then tap Retry.",
+  "shimanoUseDfly": "Use D-Fly channels instead",
+  "@shimanoUseDfly": {"description": "Di2 setup sheet and device panel: skip button mode and keep using the buttons the rider set to D-Fly channels in E-TUBE, which work without pairing."},
+  "shimanoDflyActive": "Your Di2 shifts normally. Buttons you set to D-Fly channels in the E-TUBE app show up here when you press them.",
+  "chainReadyTitle": "Ready to ride",
+  "chainReadySubtitle": "Your buttons are reaching {app}.",
+  "@chainReadySubtitle": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReadySubtitleNoApp": "Everything BikeControl needs is set up.",
+  "chainStepsLeftTitle": "{count, plural, =1{1 step left} other{{count} steps left}}",
+  "@chainStepsLeftTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainBrokenTitle": "{name} lost connection",
+  "@chainBrokenTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chainBrokenSubtitle": "Your buttons won't do anything until it reconnects.",
+  "chainPendingSubtitleSingle": "Finish the {name} setup and you're set.",
+  "@chainPendingSubtitleSingle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chainPendingSubtitleMultiple": "{names} still need setting up.",
+  "@chainPendingSubtitleMultiple": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "chainBannerFix": "Fix",
+  "chainBannerShow": "Show",
+  "readyBannerSettlingSubtitle": "Looking for your devices and apps",
+  "readyBannerMoreSteps": "+{count} more",
+  "@readyBannerMoreSteps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainOptional": "Optional",
+  "chainEdit": "Edit",
+  "chainSetUp": "Set up",
+  "chainShowMeHow": "Show me how",
+  "chainSomethingNotWorking": "Something not working?",
+  "chainStatusOutOfRange": "Out of range",
+  "chainStatusAsleep": "Asleep – press a button to wake it",
+  "chainStatusLostConnection": "Lost connection",
+  "chainStatusConnecting": "Connecting…",
+  "chainStatusNotSetUp": "Not set up",
+  "chainStatusReceivingCommands": "Receiving commands",
+  "chainStatusWaitingForApp": "Waiting for {app}",
+  "@chainStatusWaitingForApp": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStatusHandledByApp": "{app} handles shifting",
+  "@chainStatusHandledByApp": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainControllerTitle": "Controller",
+  "chainTrainerTitle": "Smart Trainer",
+  "sensorsChainEyebrow": "Sensors",
+  "sensorsNoSensorsYet": "No sensors yet",
+  "sensorsWith": "with {names}",
+  "@sensorsWith": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "sensorsStatusOff": "Off",
+  "sensorsStatusOffSetup": "Off — tap to set up",
+  "sensorsStatusBroadcasting": "Broadcasting as “BikeControl”",
+  "sensorsClientConnected": "{client} connected",
+  "@sensorsClientConnected": {
+    "placeholders": {
+      "client": {
+        "type": "String"
+      }
+    }
+  },
+  "sensorsUseSensorsOnlyQuestionApp": "Trainer paired directly in {app}?",
+  "@sensorsUseSensorsOnlyQuestionApp": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "sensorsUseSensorsOnlyQuestion": "Trainer not going through BikeControl?",
+  "sensorsUseSensorsOnly": "Share sensors instead",
+  "sensorsConnectTrainerQuestion": "Let BikeControl control your trainer?",
+  "sensorsConnectTrainer": "Connect trainer",
+  "sensorsPageTitle": "Sensors",
+  "sensorsBroadcastEyebrow": "Broadcast",
+  "sensorsBroadcastTitle": "Share sensors",
+  "sensorsBroadcastLive": "Live as “BikeControl”",
+  "sensorsBroadcastPickSource": "Pick a source below first",
+  "sensorsTransportBluetooth": "Bluetooth",
+  "sensorsTransportNetwork": "Network",
+  "sensorsTransportBluetoothHint": "Pair “BikeControl” like a heart-rate strap in any app on a phone, tablet or Apple TV nearby.",
+  "sensorsTransportNetworkHint": "Apps on this Wi-Fi find “BikeControl” by themselves — Zwift, MyWhoosh or Rouvy on a PC or Apple TV.",
+  "sensorsEmptyTitle": "Looking for sensors…",
+  "sensorsEmptyBody": "Wake a heart-rate strap, cadence sensor or power meter nearby — it shows up here by itself.",
+  "sensorsOffHint": "Sources connect when you switch Broadcast on — nothing runs until then.",
+  "sensorsSignalsHeader": "Signals",
+  "sensorsOpen": "Open",
+  "chainAppTitle": "Trainer app",
+  "chainStepBluetoothReady": "Bluetooth is on",
+  "chainStepBluetoothReadyPending": "Turn on Bluetooth",
+  "chainStepBluetoothReadyHint": "BikeControl needs Bluetooth to find your controller and keep hold of it.",
+  "chainStepControllerPaired": "Paired over Bluetooth",
+  "chainStepControllerPairedPending": "Find your controller",
+  "chainStepControllerPairedHint": "Wake it with a button press first.",
+  "chainStepButtonsMapped": "Buttons mapped",
+  "chainStepButtonsMappedPending": "Map your buttons",
+  "chainStepButtonsMappedHint": "Assign an action to at least one button.",
+  "chainStepInRange": "In range",
+  "chainStepInRangePending": "Bring it back in range",
+  "chainStepInRangeHint": "Press any button to wake it, and close any other app that might be holding it.",
+  "chainStepWakePending": "Wake it up",
+  "chainStepUnlocked": "Unlocked",
+  "chainStepUnlockedPending": "Unlock it with Zwift",
+  "chainStepUnlockedHint": "Zwift locks the Click V2 to their own app — open Zwift once and it keeps working for 24 hours.",
+  "chainStepUnlockedUntil": "Unlocked until {date}",
+  "chainStepUnlockedLikelyUntil": "Likely unlocked until {date}",
+  "chainStepSramSetup": "Controls set up",
+  "chainStepSramSetupHint": "Its own shifting still runs the gears — hand them to BikeControl so the paddles send button presses.",
+  "chainStepShimanoSetup": "Di2 buttons active",
+  "chainStepShimanoSetupHint": "Your Di2 still shifts by itself — switch it to button mode so the paddles send button presses. Nothing on the Di2 is changed.",
+  "chainStepClickV2Setup": "Choose how it unlocks",
+  "chainStepClickV2SetupHint": "Zwift locks the Click V2 to their own app. Pick how BikeControl works around it and it connects straight away.",
+  "chainStepClickV2KeepAwake": "Switch the left side on to keep the lights on",
+  "chainStepClickV2KeepAwakeHint": "BikeControl already stops the right side switching itself off. Its lights still go dark on their own, though — switching the left side on nearby keeps them lit. It only needs to be in range, not paired.",
+  "chainStepTrainerPaired": "Trainer connected",
+  "chainStepTrainerPairedPending": "Connect your trainer",
+  "chainStepOverlayDone": "Gear overlay is on",
+  "chainStepOverlayHint": "{appName} can't display BikeControl's virtual gears. Enable the gear overlay to see your current gear during the ride.",
+  "@chainStepOverlayHint": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepOverlayAction": "Enable overlay",
+  "chainStepLocalControl": "Add keyboard and mouse actions",
+  "chainStepLocalControlDone": "Keyboard and mouse actions are on",
+  "chainStepLocalControlHint": "Local control lets a button press a key or click in {appName} on this device — screenshots, ERG controls, anything the app has a shortcut for.",
+  "@chainStepLocalControlHint": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepLocalControlAction": "Enable local control",
+  "chainStepAppSelected": "Trainer app chosen",
+  "chainStepAppSelectedPending": "Choose your trainer app",
+  "chainStepAppSelectedHint": "Pick the app you ride in.",
+  "chainStepAppConnectionMethod": "Connection method enabled",
+  "chainStepAppConnectionMethodPending": "Enable a connection method",
+  "chainStepAppConnectionMethodHint": "Choose how BikeControl reaches your app.",
+  "chainStepAppLocalNetwork": "Local Network allowed",
+  "chainStepAppLocalNetworkPending": "Allow Local Network access",
+  "chainStepAppLocalNetworkHint": "Without it BikeControl can't be seen on your network, and nothing it sends leaves this device.",
+  "chainStepAppConnected": "Connected to {app}",
+  "@chainStepAppConnected": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepAppConnectedPending": "Waiting for {app} to connect",
+  "@chainStepAppConnectedPending": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepAppConnectedHint": "Open the app and pick BikeControl in its pairing screen.",
+  "chainTrialTitle": "Trial",
+  "chainTrialExpiredTitle": "Trial expired",
+  "chainTrialDaysMeter": "Trial days",
+  "chainTrialDaysLeft": "{count, plural, =0{Ends today} =1{1 day left} other{{count} days left}}",
+  "@chainTrialDaysLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chainTrialCommandsMeter": "Commands today",
+  "chainTrialCommandsLimited": "Commands limited to {limit} per day",
+  "@chainTrialCommandsLimited": {
+    "placeholders": {
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "chainTrialBridgeMeter": "Virtual shifting today",
+  "chainTrialBridgeMeterSuffix": "min",
+  "chainTrialRestoreRow": "Already bought it? Restore purchases",
+  "chainOfflineEditNotice": "Not connected — you can still change what its buttons do.",
+  "chainForgotten": "{name} forgotten",
+  "@chainForgotten": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chainUndo": "Undo",
+  "chainUpgrade": "Upgrade",
+  "chainMoreOptions": "More options",
+  "chainStepTrainerBridged": "Picked up by {app}",
+  "@chainStepTrainerBridged": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepTrainerBridgedPending": "Waiting for {app} to connect to “{bridge}”",
+  "@chainStepTrainerBridgedPending": {"placeholders": {"app": {"type": "String"}, "bridge": {"type": "String"}}},
+  "chainStepTrainerBridgedHint": "Choose “{bridge}” as the trainer in {app}.",
+  "@chainStepTrainerBridgedHint": {
+    "placeholders": {
+      "bridge": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStatusBridged": "Connected through BikeControl",
+  "chainCloseAndQuit": "Close connections & quit app",
+  "ratioCurveLabel": "RATIO CURVE",
+  "easier": "Easier",
+  "harder": "Harder",
+  "frontShiftRangeLabel": "RANGE",
+  "frontShiftFactorLabel": "CHAINRINGS",
+  "frontShiftRingActive": "{teeth}T ring active",
+  "@frontShiftRingActive": {
+    "placeholders": {
+      "teeth": {
+        "type": "int"
+      }
+    }
+  },
+  "frontShiftChainringCount": "2 chainrings",
+  "vsStageAppsLabel": "Works in every app",
+  "vsStageAppsHint": "With almost any smart trainer",
+  "vsStageRatiosLabel": "Your gearing, your way",
+  "vsStageRatiosHint": "Presets or gear by gear",
+  "vsStageFrontHint": "Add a second chainring",
+  "vsStageTrainersHeading": "SMART TRAINERS",
+  "vsStageAppsHeading": "TRAINING APPS",
+  "onboardingTrainersFound": "{count, plural, =1{1 trainer found} other{{count} trainers found}}",
+  "@onboardingTrainersFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "forget": "Forget",
+  "vsStageMoreLabel": "And there's more",
+  "vsStageMoreHint": "Fine-tuning for every ride",
+  "vsStageMoreInstantTitle": "Direct gear changes",
+  "vsStageMoreInstantSub": "No round trip through the app",
+  "vsStageMoreWifiTitle": "Bluetooth → Wi-Fi",
+  "vsStageMoreWifiSub": "Reaches Apple TV too",
+  "vsStageMoreControllersTitle": "Full controller support",
+  "vsStageMoreControllersSub": "Every paired shifter shifts",
+  "vsStageMoreGearCountTitle": "Adjust the gear count",
+  "vsStageMoreGearCountSub": "Anything from 1 to 30",
+  "vsStageMoreModesTitle": "Full SIM & ERG support",
+  "vsStageMoreModesSub": "Workouts and free rides alike",
+  "vsStageMoreProfilesTitle": "Switch setting profiles",
+  "vsStageMoreProfilesSub": "Race mode, climb mode, your own",
+  "signInWithEmail": "Sign in with email",
+  "emailAddress": "Email address",
+  "sendMeACode": "Send me a code",
+  "checkYourInbox": "Check your inbox",
+  "weSentACodeTo": "We sent a 6-digit code to {email}",
+  "@weSentACodeTo": {"placeholders": {"email": {"type": "String"}}},
+  "sendANewCode": "Send a new code",
+  "sendANewCodeIn": "Send a new code in {seconds}s",
+  "@sendANewCodeIn": {"placeholders": {"seconds": {"type": "int"}}},
+  "useADifferentEmailAddress": "Use a different address",
+  "pleaseEnterAValidEmailAddress": "Please enter a valid email address",
+  "theCodeIsIncorrectOrExpired": "That code is incorrect or has expired. Request a new one.",
+  "password": "Password",
+  "thatPasswordIsIncorrect": "That password is incorrect.",
+  "tooManyCodeRequestsPleaseWait": "Too many requests. Please wait a minute, then try again.",
+  "couldNotSendTheCodePleaseTryAgain": "We couldn't send the code. Please try again.",
+  "orSeparator": "or",
+  "selfTestTitle": "Resistance self-test",
+  "selfTestIntro": "Checks in about a minute whether your trainer applies the resistance BikeControl commands.",
+  "selfTestStart": "Test resistance control",
+  "selfTestPrecheckDisconnected": "Connect your trainer first to run the test.",
+  "selfTestPrecheckTrainerApp": "Close or disconnect your trainer app first — the test needs exclusive control of the trainer.",
+  "selfTestPedalPrompt": "Pedal at a steady, comfortable pace.",
+  "selfTestPhaseBaseline": "Measuring baseline",
+  "selfTestPhaseErg": "Testing power targets",
+  "selfTestPhaseShift": "Testing gear shifts",
+  "selfTestKeepPedaling": "Keep pedaling to continue the test",
+  "selfTestNoCadence": "Your trainer doesn't report cadence, so this test scores on power alone.",
+  "selfTestCancel": "Stop test",
+  "selfTestRerun": "Run again",
+  "selfTestLastResult": "Last test: {result}",
+  "@selfTestLastResult": {"placeholders": {"result": {"type": "String"}}},
+  "selfTestVerdictPassTitle": "Your trainer responds correctly",
+  "selfTestVerdictPassBody": "BikeControl can control this trainer. If shifting feels dead during rides, your trainer app isn't riding through BikeControl — or you just can't see the gear. The gear overlay fixes the visibility part.",
+  "selfTestVerdictErgOkTitle": "Power targets work, shifting doesn't",
+  "selfTestVerdictErgOkBody": "The trainer obeys direct power targets but ignored the virtual-shifting mode. Switching the shifting mode often fixes this.",
+  "selfTestVerdictVsOkErgFailTitle": "Shifting works, power targets don't",
+  "selfTestVerdictVsOkErgFailBody": "Your virtual shifting is working — the trainer followed every gear change. It ignored direct power targets, so ERG workouts need a different control protocol.",
+  "selfTestVerdictNoControlTitle": "Trainer isn't responding to BikeControl",
+  "selfTestVerdictNoControlBody": "The trainer ignored all commands. Check for a firmware update in the manufacturer's app, then send us the result — it pinpoints the problem.",
+  "selfTestVerdictNoDataTitle": "No data from the trainer",
+  "selfTestVerdictNoDataHeldBody": "No power readings arrived. Another app or device may be holding the trainer. Close other apps using the trainer, and remove the trainer from {app}'s pairing if it's paired directly — pair “{bridge}” instead. Then reconnect the trainer.",
+  "@selfTestVerdictNoDataHeldBody": {"placeholders": {"app": {"type": "String"}, "bridge": {"type": "String"}}},
+  "selfTestVerdictNoDataHeldBodyNoApp": "No power readings arrived. Another app or device may be holding the trainer. Close other apps using the trainer, and if your trainer app pairs it directly, remove it there — pair “{bridge}” instead. Then reconnect the trainer.",
+  "@selfTestVerdictNoDataHeldBodyNoApp": {"placeholders": {"bridge": {"type": "String"}}},
+  "selfTestVerdictAbortedTitle": "Test stopped",
+  "selfTestVerdictAbortedBody": "The test didn't finish. It needs steady pedaling from start to end — keep pedaling throughout and try again.",
+  "selfTestCtaOverlay": "Show gear overlay setup",
+  "selfTestCtaSwitchMode": "Switch mode & run again",
+  "selfTestCtaReport": "Send result to support",
+  "selfTestCtaTryProtocol": "Try via {protocol} & run again",
+  "@selfTestCtaTryProtocol": {"placeholders": {"protocol": {"type": "String"}}},
+  "controlProtocolLabel": "Control protocol",
+  "controlProtocolHint": "How BikeControl talks to this trainer. Auto is right unless a test told you otherwise.",
+  "controlProtocolIgnored": "Your trainer is not acknowledging gear commands on the protocol you picked. BikeControl would normally switch, but your manual choice is kept.",
+  "controlProtocolIgnoredNoFallback": "Your trainer is not acknowledging gear commands, and offers no other protocol to fall back to.",
+  "controlProtocolUseAuto": "Switch to Auto",
+  "controlProtocolNativeShiftingAvailable": "This trainer supports BikeControl's native virtual shifting: it applies your gear itself. Set the protocol to Auto for the most realistic shifting.",
+  "controlProtocolAuto": "Auto (recommended)",
+  "controlProtocolFtms": "FTMS",
+  "controlProtocolFec": "FE-C",
+  "controlProtocolZwift": "Zwift protocol",
+  "networkSummaryMethodListening": "The network connection method is switched on and serving",
+  "networkSummaryAdvertisedAddress": "The address BikeControl tells your app to connect to",
+  "networkSummaryVpn": "Whether a tunnel is intercepting local traffic",
+  "networkSummaryAdvertisementVisible": "Whether BikeControl's announcement reaches the network",
+  "networkSummaryLocalNetworkPermission": "Permission to talk to devices on your network",
+  "networkSummaryBackend": "Which service is publishing BikeControl's name",
+  "networkSummaryResolveOwnHostname": "This device can look up the name it advertises",
+  "networkSummaryTcpSelfConnect": "The port accepts a connection, so nothing is blocking it",
+  "networkSummaryGuidedWatch": "A real connection attempt from your trainer app",
+  "networkSummaryBonjourService": "Apple's Bonjour service, which Windows needs for this",
+  "networkSummaryBonjourNsp": "The Windows name-lookup plug-in Bonjour installs",
+  "networkSummaryWindowsMdnsResolver": "Windows' own name lookup for .local addresses",
+  "networkSummaryNetworkProfile": "Whether Windows treats this network as Private, which discovery needs",
+  "networkSummaryNetworkProfilePublic": "Windows treats this network as Public, which blocks discovery — set it to Private",
+  "networkSummaryFirewallRule": "A firewall rule lets BikeControl through",
+  "networkSummaryMulticastLock": "Android keeps the Wi-Fi radio listening for announcements",
+  "networkGroupThisDevice": "This device",
+  "networkGroupOnTheNetwork": "On the network",
+  "networkGroupReaching": "Reaching BikeControl",
+  "networkGroupLiveTest": "Live test",
+  "networkChecksPassedOf": "of {total}",
+  "networkOverallPassBody": "Nothing here is blocking BikeControl. If your app still can't find it, the live test below is the one that settles it.",
+  "networkNextStepControllerTile": "The network is fine — in {app}, tap the BikeControl tile under Controllers.",
+  "@networkNextStepControllerTile": {"placeholders": {"app": {"type": "String"}}},
+  "networkNextStepPairingScreen": "The network is fine — open {app}'s pairing screen and pick BikeControl.",
+  "@networkNextStepPairingScreen": {"placeholders": {"app": {"type": "String"}}},
+  "networkOverallWarnBody": "BikeControl is reachable, but something on this network could interfere. Worth a look if the connection drops.",
+  "networkOverallFailBody": "Something here stops your trainer app reaching BikeControl. Fix the marked check and run this again.",
+  "networkOverallUnknownBody": "Some checks couldn't be read on this system. The live test below tells you what actually matters: whether your app gets through.",
+  "networkWatchTitle": "Waiting for your trainer app",
+  "networkWatchEndsItself": "The test ends by itself once your app connects.",
+  "networkFooterTitle": "Still not connecting?",
+  "networkFooterBody": "Try the fixes above first. If it still fails, tell us what you see in your trainer app — the full report is attached automatically.",
+  "@networkChecksPassedOf": {
+    "placeholders": { "total": { "type": "int" } }
+  },
+  "networkTroubleshootingTitle": "Network troubleshooting",
+  "networkTroubleshootRun": "Run checks",
+  "networkTroubleshootRunAgain": "Run again",
+  "networkTroubleshootCancel": "Cancel",
+  "networkTroubleshootConnectedRefusal": "Connected to {app} — everything is working. Run the checks anyway?",
+  "@networkTroubleshootConnectedRefusal": { "placeholders": { "app": { "type": "String" } } },
+  "networkTroubleshootRecommendedFix": "Recommended fix",
+  "networkTroubleshootCopyResults": "Copy results",
+  "networkTroubleshootResultsCopied": "Results copied to clipboard",
+  "networkTroubleshootSendToSupport": "Send to support",
+  "networkTroubleshootTroubleshoot": "Troubleshoot",
+  "networkAnalyze": "Analyze network",
+  "networkCheckMethodListening": "Network method running",
+  "networkCheckAdvertisedAddress": "Advertised address",
+  "networkCheckVpn": "VPN",
+  "networkCheckAdvertisementVisible": "Advertisement visible on the network",
+  "networkCheckLocalNetworkPermission": "Local Network permission",
+  "networkCheckBackend": "mDNS responder",
+  "networkCheckResolveOwnHostname": "This computer can resolve BikeControl's address",
+  "networkCheckTcpSelfConnect": "Connection to BikeControl's port",
+  "networkCheckGuidedWatch": "Live connection attempt",
+  "networkCheckBonjourService": "Apple Bonjour service",
+  "networkCheckBonjourNsp": "Bonjour resolver hook (mdnsNSP)",
+  "networkCheckWindowsMdnsResolver": "Windows mDNS name resolution",
+  "networkCheckNetworkProfile": "Network profile",
+  "networkCheckFirewallRule": "Firewall rule for BikeControl",
+  "networkCheckMulticastLock": "Multicast lock",
+  "networkVerdictPass": "OK",
+  "networkVerdictWarn": "Check this",
+  "networkVerdictFail": "Problem found",
+  "networkVerdictUnknown": "Could not check",
+  "networkVerdictSkipped": "Skipped",
+  "networkFixRestartMethod": "Restart the network method",
+  "networkFixUseOsResponder": "Use the system mDNS service",
+  "networkFixRegisterBonjour": "Register through Bonjour",
+  "networkFixUseResponder": "Back to BikeControl's responder",
+  "networkFixSwitchToLocal": "Use the Local method instead",
+  "networkFixOpenFirewallSettings": "Open firewall settings",
+  "networkFixOpenNetworkProfileSettings": "Open network settings",
+  "networkFixOpenBonjourDownload": "Get Apple Bonjour",
+  "networkFixOpenLocalNetworkSettings": "Open settings",
+  "networkFixOpenAppLocalNetworkSettings": "Open Local Network settings",
+  "networkFixFailed": "That didn't work. Try again, or contact support: Help Center → Tell us what's wrong.",
+  "networkFixRefusedConnected": "Not while {app} is connected.",
+  "@networkFixRefusedConnected": { "placeholders": { "app": { "type": "String" } } },
+  "networkFixRefusedConnectedNoApp": "Not while the trainer app is connected.",
+  "networkFixBonjourMissing": "Apple Bonjour is not installed — install it first.",
+  "networkWatchPrompt": "Now open the pairing screen in {app} and tap the BikeControl button.",
+  "@networkWatchPrompt": { "placeholders": { "app": { "type": "String" } } },
+  "networkWatchFoundUs": "{app} found BikeControl",
+  "@networkWatchFoundUs": { "placeholders": { "app": { "type": "String" } } },
+  "networkWatchResolved": "Looked up connection details",
+  "networkWatchAddressAsks": "Asked for our address ×{count}",
+  "@networkWatchAddressAsks": { "placeholders": { "count": { "type": "int" } } },
+  "networkWatchConnected": "Connected",
+  "networkWatchSkip": "Skip",
+  "networkWatchRemaining": "{seconds}s left",
+  "@networkWatchRemaining": { "placeholders": { "seconds": { "type": "int" } } },
+  "networkOverallPass": "Everything looks good",
+  "networkOverallWarn": "Working, with warnings",
+  "networkOverallFail": "We found what's blocking the connection",
+  "networkOverallUnknown": "Some checks could not run",
+  "networkHintBonjourService": "MyWhoosh needs Apple's Bonjour service. Start it, then restart MyWhoosh.",
+  "networkHintBonjourStartedAfterApp": "Bonjour was started after MyWhoosh, and MyWhoosh only checks for it when it starts. Restart MyWhoosh.",
+  "networkHintBonjourNsp": "Bonjour's resolver hook is missing. Reinstall Bonjour — without it the BikeControl button in MyWhoosh cannot work.",
+  "networkHintResolveFail": "This computer could not look up BikeControl's address — the exact step the trainer app fails at. On Windows a broken Bonjour install can cause this even when its service is running; a clean reinstall fixes it.",
+  "networkHintVpn": "A VPN is on, and it can block {app} from reaching BikeControl. Turn off the VPN, or allow local network access in the VPN app.",
+  "@networkHintVpn": {"placeholders": {"app": {"type": "String"}}},
+  "networkHintNoWifi": "This device isn't on Wi-Fi, so {app} can't reach BikeControl over mobile data. Join the same Wi-Fi as {app}.",
+  "@networkHintNoWifi": {"placeholders": {"app": {"type": "String"}}},
+  "networkHintNoQuery": "{app} never searched for BikeControl. Make sure {app} is on the same Wi-Fi as this device and allowed to use the local network — on a Mac: System Settings › Privacy & Security › Local Network, turn on {app}; on iPhone or iPad: Settings › {app} › Local Network.",
+  "@networkHintNoQuery": {"placeholders": {"app": {"type": "String"}}},
+  "feedbackPromptTitle": "How is BikeControl working for you?",
+  "feedbackPromptNotNow": "Not now",
+  "feedbackPositiveTitle": "Great to hear!",
+  "feedbackRateButton": "Rate BikeControl",
+  "feedbackSuggestButton": "Send a suggestion",
+  "feedbackComposerSuggestionHint": "What could make BikeControl better for you?",
+  "feedbackComposerComplaintHint": "What went wrong? The more detail, the better.",
+  "feedbackComposerSend": "Send",
+  "feedbackComposerAnonymousNote": "Sent anonymously — no account needed.",
+  "feedbackThanksTitle": "Thank you!",
+  "feedbackThanksBody": "Your feedback goes straight to the developer.",
+  "feedbackEmailLinkPrompt": "Want updates on what happens with your feedback? Add your email.",
+  "feedbackEmailLinkButton": "Add email",
+  "feedbackEmailCodeHint": "Enter the 6-digit code from your email",
+  "feedbackEmailVerifyButton": "Verify",
+  "feedbackEmailLinked": "Email added — you'll hear back about this.",
+  "feedbackSkipButton": "Skip",
+  "feedbackAlsoRateLink": "Enjoying the app? You can also rate it",
+  "feedbackNegativeTitle": "Sorry to hear that — let's fix it.",
+  "feedbackNegativeBody": "Most problems have a quick solution — guides for your exact setup, known issues, and support are all in one place.",
+  "feedbackGetHelpButton": "Get help",
+  "feedbackSendFailed": "Could not send. Your text is kept — try again.",
+  "feedbackRetryButton": "Retry",
+  "helpCenterTitle": "Help Center",
+  "helpCenterYourSetup": "Your setup",
+  "helpCenterYourSetupMicroLabel": "Personalized",
+  "helpCenterKnownIssues": "Known issues",
+  "helpCenterPricingFaq": "Pricing & account",
+  "helpCenterPricingFaqSubtitle": "Base, Pro, trials, restoring purchases",
+  "helpCenterGuides": "Tutorials & Videos",
+  "helpCenterContact": "Contact & community",
+  "helpCenterChatLanguageHint": "You can write to support in your own language.",
+  "helpCenterReportTitle": "Tell us what's wrong",
+  "helpCenterReportSubtitle": "Chat with support · no account needed",
+  "helpCenterNetworkEntry": "Test your network connection",
+  "helpCenterClickV2Entry": "Zwift Click V2 setup options",
+  "helpCenterNoSetup": "No controllers set up yet — the setup wizard is the best place to start.",
+  "helpCenterGearOverlayEntry": "Shifting works, but the gear doesn't change",
+  "helpAnswerGearBody": "BikeControl can't make your trainer app show its own virtual gear — when BikeControl is steering the trainer, the overlay is what displays the gear instead. Open Settings → During the ride → Overlay (the row is there while BikeControl is connected to your trainer) → \"Show overlay during ride\": a Live Activity or Dynamic Island on iOS (Picture-in-Picture optional), a floating window on Windows and Android.\n\nIf shifting doesn't register at all, check the other connection: BikeControl's link to your trainer and its link to your controller are separate. Data can flow from the trainer even while no trainer app is connected to BikeControl as a controller, and the other way round — so \"the trainer works but I can't shift\" usually means your trainer app hasn't connected to BikeControl as a controller yet.\n\nStill stuck? Some trainer apps can shift gears themselves instead of through BikeControl — worth comparing before you troubleshoot further.",
+  "helpAnswerGearOverlayAction": "Open overlay settings",
+  "helpAnswerGearFallbackAction": "Compare virtual shifting with and without BikeControl",
+  "helpCenterControllerDisconnectingEntry": "My controller keeps disconnecting",
+  "helpAnswerControllerDisconnectingBody": "A few different things cause this — check which matches:\n\nDropping only after a while, not right away: that's BikeControl's own battery saver. While your trainer app is connected there's no timer at all — it never disconnects your controller from under you. The moment it disconnects, your controller gets about 5 more minutes before BikeControl drops it to save its battery; without any trainer-app connection at all, that stretches to about 60 minutes. Any button press resets the countdown. In practice, a controller dropping mid-ride almost always means BikeControl stopped seeing your trainer app — fix that connection first.\n\nA Zwift Click V2 set to \"Unlock with Zwift\": it restarts roughly once a minute by design. A quick flash and a reconnect every minute is expected, not a fault.\n\nA Zwift Click V1 (the single-puck model) dropping every few seconds: almost always a weak coin-cell contact. Take the CR2032 out, reseat it, and gently bend the contact tab up. Its battery percentage is only a rough voltage estimate, so a high reading doesn't rule this out.",
+  "helpAnswerControllerDisconnectingAction": "Why does it restart every minute?",
+  "helpCenterControllerNotFoundEntry": "My controller isn't found",
+  "helpCenterButtonsStoppedEntry": "My buttons stopped working",
+  "faqOneTimeQ": "I paid for the app once — what did that include?",
+  "faqOneTimeA": "The one-time purchase unlocks Base: connecting your controllers, basic button mapping (one action per button), and unlimited button presses per day in your trainer app. It was never a subscription and it doesn't expire.",
+  "faqProQ": "Why is there a Pro subscription now?",
+  "faqProA": "Pro covers virtual shifting, advanced button mapping (3 actions per button), cross-platform use, and the other premium features — they create ongoing work and server costs, since trainer-app protocols and integrations change constantly and need continuous updates. The one-time price alone couldn't sustain that.",
+  "faqStillTrialQ": "I paid, but the app still shows the trial or Base",
+  "faqStillTrialA": "Pro needs two things: being signed in with the same BikeControl account you subscribed with, and this device registered for Pro — if it isn't, Settings → Plan & account shows \"Register this device\" (each platform has its own device limit). A one-time Base purchase just needs the same store account you bought it with — use Restore purchases in Settings → Plan & account. Bought on Windows outside the Microsoft Store? There's no store to restore from there, so sign in with the same BikeControl account you paid with instead.",
+  "faqTrialQ": "Why is virtual shifting limited to 20 minutes?",
+  "faqTrialA": "BikeControl's own virtual shifting is a Pro feature. Without Pro you can try it 20 minutes a day — the trial resets daily, not per ride. Without Pro, your trainer app can do the virtual shifting instead. With Pro, BikeControl's virtual shifting has no limit.",
+  "faqGrandfatherQ": "I bought the app before the subscription existed. What do I keep?",
+  "faqGrandfatherA": "Everything the one-time purchase included, you keep forever — unlimited button presses, basic button mapping, connecting your controllers. Virtual shifting (connecting your Smart Trainer to BikeControl) was always part of Pro, even for early purchases, so it isn't included automatically.",
+  "faqRefundQ": "Can I get a refund?",
+  "faqRefundA": "Refunds are handled by the store you bought from (App Store, Google Play, Microsoft Store) under their policies. If something doesn't work, contact support first — most issues are fixable, and I'd rather fix yours than lose you.",
+  "faqCrossStoreQ": "I bought on one store — can I use BikeControl on another?",
+  "faqCrossStoreA": "The one-time purchase belongs to the store you bought it on (App Store, Google Play, Mac App Store, Microsoft Store) and can't move to a different one — buying again is the only way to unlock a different store's build. Pro is different: it belongs to your BikeControl account rather than a store, so signing into that account unlocks it on other platforms too. For that, be signed in when you buy Pro — or sign in afterwards on the device you bought it on.",
+  "faqRestoreQ": "Restore Purchases isn't bringing my purchase back",
+  "faqRestoreA": "Restore purchases only checks the store account signed in on this device right now — it has to be the exact account (Apple ID, Google account, Microsoft account) that made the purchase, and a one-time purchase only ever restores on the store it was bought on, never a different one. On Windows outside the Microsoft Store, purchases don't go through a store, so there's nothing for Restore purchases to find — sign in with your BikeControl account there instead. Still stuck? Contact support from this page with your purchase email.",
+  "ltwooHintCloseApp": "Close the LTWOO app while riding — the derailleur only accepts one Bluetooth connection at a time.",
+  "ltwooHintCassetteEnds": "Shifting at the ends of the cassette sends no signal — the derailleur can't move further.",
+  "ltwooWrongPinAlert": "The L-TWOO derailleur rejected the PIN. Check the device PIN in this controller's preferences.",
+  "ltwooPinLabel": "Device PIN",
+  "sensorSourceListHeader": "SOURCE",
+  "sensorSourceTrainer": "Trainer",
+  "sensorSourceTrainerSubtitle": "The trainer's own built-in reading.",
+  "sensorSourceNotConnectedSubtitle": "External sensor.",
+  "sensorSourceConnectedSubtitle": "Streaming its own reading.",
+  "sensorSourceConnectedElsewhereSubtitle": "Connected — usable here too.",
+  "sensorSourceConnectingGhostSubtitle": "Waiting to come back into range.",
+  "sensorQuantityHeartRate": "Heart Rate",
+  "sensorQuantityCadence": "Cadence",
+  "sensorQuantityPower": "Power",
+  "sensorQuantitySpeed": "Speed",
+  "sensorConnecting": "Connecting…",
+  "sensorAwaitingFirstReading": "Waiting for first reading…",
+  "sensorDroppedOut": "Signal lost — using trainer.",
+  "sensorConnectFailed": "Couldn't connect",
+  "sensorDisconnectFailed": "Couldn't disconnect",
+  "sensorSourceHealthKitSubtitle": "AirPods Pro 3 or Apple Watch.",
+  "sensorSourceHealthKitPassiveSubtitle": "Needs a workout running in Fitness on this iPhone.",
+  "sensorHealthKitDenied": "Allow heart rate in Settings › Health › Data Access.",
+  "sensorKindHeartRateMonitor": "Heart rate monitor",
+  "sensorKindCadenceSensor": "Cadence sensor",
+  "sensorKindPowerMeter": "Power meter",
+  "sensorValueHeartRate": "{value} bpm",
+  "@sensorValueHeartRate": {"placeholders": {"value": {"type": "int"}}},
+  "sensorValueCadence": "{value} rpm",
+  "@sensorValueCadence": {"placeholders": {"value": {"type": "int"}}},
+  "sensorValuePower": "{value} W",
+  "@sensorValuePower": {"placeholders": {"value": {"type": "int"}}},
+  "ltwooAnchorGearTitle": "Keep derailleur in place",
+  "ltwooAnchorGearDescription": "After each shift, BikeControl shifts the derailleur back so the chain stays on one cog. The derailleur will briefly move with every press.",
+  "shiftFeedbackSound": "Play a sound when shifting",
+  "shiftFeedbackSoundSubtitle": "Distinct cues for shifting up, shifting down and reaching the last gear",
+  "shiftFeedbackHaptics": "Vibrate this device when shifting",
+  "shiftFeedbackHapticsSubtitle": "A short buzz on this phone or tablet, twice when there is no next gear. Controller vibration is set per controller.",
+  "supportPinnedContextChip": "Attached: {label}",
+  "@supportPinnedContextChip": {"placeholders": {"label": {"type": "String"}}},
+  "supportPinnedNetworkTest": "network check result",
+  "supportPinnedResistanceTest": "resistance test result",
+  "supportDescribeProblemPlaceholder": "What are you trying to do, and what happens instead?",
+  "supportDescribeProblemHint": "A test result alone doesn't tell us what went wrong — one sentence is enough.",
+  "networkFooterPassTitle": "Everything checks out on this device",
+  "networkFooterPassBody": "If your trainer app still won't connect, the problem is on its side or the network between you. Tell us exactly what you see and we'll look at it.",
+  "networkFooterGetHelp": "Get help",
+  "chainStepOverlayPending": "{appName} will keep showing its own gear",
+  "@chainStepOverlayPending": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepOverlayPendingNoApp": "Your trainer app will keep showing its own gear",
+  "chainStepOverlayDecline": "Not now",
+  "chainStepAppControllerPending": "{app} isn't connected to your buttons yet",
+  "@chainStepAppControllerPending": {"placeholders": {"app": {"type": "String"}}},
+  "chainStepAppControllerHint": "{app} is already reading your trainer through BikeControl. Your buttons need a second link: in {app}'s pairing screen, tap the BikeControl tile under Controllers — it's a separate tile from the trainer.",
+  "@chainStepAppControllerHint": {"placeholders": {"app": {"type": "String"}}},
+  "chainStepTrainerBridgedHint2": "In {app}'s pairing screen choose “{bridge}” as the trainer — not “{trainer}” under its own name, that bypasses BikeControl.",
+  "@chainStepTrainerBridgedHint2": {"placeholders": {"app": {"type": "String"}, "bridge": {"type": "String"}, "trainer": {"type": "String"}}},
+  "chainPendingSubtitleController": "{app} has your trainer through BikeControl, but your buttons won't reach {app} until you also connect the BikeControl controller in its pairing screen.",
+  "@chainPendingSubtitleController": {"placeholders": {"app": {"type": "String"}}},
+  "chainStatusWaitingForPickup": "Waiting for {app} to connect to “{bridge}”",
+  "@chainStatusWaitingForPickup": {"placeholders": {"app": {"type": "String"}, "bridge": {"type": "String"}}},
+  "vsTransportSameDeviceNote": "Bluetooth can't reach an app on this same device — using WiFi.",
+  "vsSameDeviceBlockedFix": "What works: BikeControl on a phone or tablet next to your bike, or {app} on another device.",
+  "@vsSameDeviceBlockedFix": {"description": "Trainer page: the setups that work when the trainer app on this device can't reach BikeControl's bridge.", "placeholders": {"app": {"type": "String"}}},
+  "trainerTwinSubtitle": "Same trainer over {transport} — connecting switches to this path",
+  "@trainerTwinSubtitle": {"placeholders": {"transport": {"type": "String"}}},
+  "trainerTwinStillConnecting": "{trainer} is still connecting over {transport}. Wait a moment, then try again.",
+  "@trainerTwinStillConnecting": {"placeholders": {"trainer": {"type": "String"}, "transport": {"type": "String"}}},
+  "paywall_shiftInYourApp": "Your buttons shift & steer in your trainer app, using the app's own virtual shifting",
+  "paywall_bikeControlShifts": "BikeControl shifts your trainer itself — custom gears, front shifting, any trainer",
+  "paywall_baseStoreNote": "One-time purchase for the {store} version. It doesn't transfer to other stores or platforms — Pro does.",
+  "@paywall_baseStoreNote": {"placeholders": {"store": {"type": "String"}}},
+  "paywall_storeDirectDownload": "direct download",
+  "purchaseBaseDoneTitle": "You now have Base",
+  "purchaseBaseDoneBody": "Unlimited button presses in your trainer app. BikeControl's own virtual shifting is part of Pro — you can keep trying it 20 min a day.",
+  "purchaseProDoneTitle": "Pro is active on your account",
+  "purchaseProSignInTitle": "Pro is active on this device",
+  "purchaseProSignInBody": "Sign in so Pro works on your other devices too. You can also do this later in Settings → Plan & account.",
+  "purchaseProUnregisteredBody": "This device isn't registered yet, so Pro features stay off here.",
+  "registerThisDevice": "Register this device",
+  "proUnregisteredTitle": "Pro is on your account, not on this device",
+  "proUnregisteredBody": "Virtual shifting stays limited here until you register this device.",
+  "vsModeTrackResistanceDesc": "Simulates a road grade per gear — resistance follows your speed and changes the moment you shift, like a real bike. Best for free rides and races.",
+  "vsModeTargetPowerDesc": "Holds a target wattage per gear, like ERG. Your cadence cancels part of the change, so shifts feel softer and climbs pull the power up. For trainers that can't simulate grade.",
+  "vsModeBasicDesc": "Like Target Power but with a fixed step per gear and no terrain feel. A last resort for trainers that ignore the other modes.",
+  "vsModeRecommended": "Recommended",
+  "vsModeUnsupported": "Not supported by this trainer. ",
+  "chainStepNetworkAddressPending": "Your network looks unusual",
+  "chainStepNetworkAddressHint": "BikeControl is advertising {address}, which looks like a VPN or hotspot address. {app} may not reach it. Turn the VPN off, or use the Local method on this device.",
+  "@chainStepNetworkAddressHint": {
+    "placeholders": {
+      "address": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "chainStepNetworkAddressNoWifiHint": "This device isn't on Wi-Fi, and {app} can't reach BikeControl over mobile data. Join the same Wi-Fi as {app}.",
+  "@chainStepNetworkAddressNoWifiHint": {"placeholders": {"app": {"type": "String"}}},
+  "chainStepNetworkAddressTwoNetworksHint": "This device is on more than one network, and BikeControl is advertising {address}. If {app} is on the other one, it won't find BikeControl — put both on the same Wi-Fi.",
+  "@chainStepNetworkAddressTwoNetworksHint": {"placeholders": {"address": {"type": "String"}, "app": {"type": "String"}}},
+  "chainStepNetworkAddressAction": "Run network check",
+  "chainStatusAppDisconnected": "{app} disconnected",
+  "@chainStatusAppDisconnected": {"placeholders": {"app": {"type": "String"}}},
+  "chainPendingSubtitleAppDropped": "{app} disconnected. Reconnect it from its pairing screen when you ride again.",
+  "@chainPendingSubtitleAppDropped": {"placeholders": {"app": {"type": "String"}}},
+  "chainPendingSubtitleOpenApp": "Everything else is set up — just open {app}.",
+  "@chainPendingSubtitleOpenApp": {"placeholders": {"app": {"type": "String"}}},
+  "chainPendingSubtitleAsleep": "Your controller is asleep. Press any button on it and it reconnects on its own.",
+  "healthRideDiscard": "Discard",
+  "healthRideDiscardConfirmTitle": "Discard this ride?",
+  "healthRideDiscardConfirmAction": "Discard ride",
+  "perGearCount": "{count, plural, =1{1 gear} other{{count} gears}}",
+  "@perGearCount": {"description": "How many gears the per-gear list in the gear editor shows.", "placeholders": {"count": {"type": "int"}}},
+  "a11yBack": "Back",
+  "@a11yBack": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yMoreOptions": "More options",
+  "@a11yMoreOptions": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11ySendMessage": "Send message",
+  "@a11ySendMessage": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yAttachFile": "Attach a file",
+  "@a11yAttachFile": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yRemoveAttachment": "Remove attachment",
+  "@a11yRemoveAttachment": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yDismiss": "Dismiss",
+  "@a11yDismiss": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yDecrease": "Decrease",
+  "@a11yDecrease": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yIncrease": "Increase",
+  "@a11yIncrease": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yRefresh": "Refresh",
+  "@a11yRefresh": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yOpenWebsite": "Open website",
+  "@a11yOpenWebsite": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yHelp": "Help",
+  "@a11yHelp": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yEditButtonMapping": "Change what {button} does",
+  "@a11yEditButtonMapping": {"description": "Screen-reader label for a tap area that remaps a controller button.", "placeholders": {"button": {"type": "String"}}},
+  "a11yShowDetails": "Show details",
+  "@a11yShowDetails": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "a11yDragOverlay": "Move overlay",
+  "@a11yDragOverlay": {"description": "Screen-reader label (and desktop tooltip) for an icon-only button."},
+  "gearOfMax": "of {max}",
+  "@gearOfMax": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gearOfMaxWithRatio": "of {max} · ratio {ratio}",
+  "@gearOfMaxWithRatio": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      },
+      "ratio": {
+        "type": "String"
+      }
+    }
+  },
+  "restoringPurchases": "Restoring purchases…",
+  "purchaseErrorTitle": "Purchase error",
+  "purchaseErrorBody": "Something went wrong starting your purchase. Please try again.",
+  "paywall_perMonth": "{price}/mo",
+  "@paywall_perMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_aboutPerMonth": "About {price}/mo",
+  "@paywall_aboutPerMonth": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_billedYearly": "Billed yearly",
+  "paywall_aboutOneTime": "About {price} — one-time",
+  "@paywall_aboutOneTime": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywall_discountOff": "{percent}% OFF",
+  "@paywall_discountOff": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "waitingForConnection": "Waiting for connection…",
+  "unlockAgain": "Unlock again",
+  "unlock_clickUnlocked": "Zwift Click is unlocked! You can now close this page.",
+  "purchaseSuccessfulTitle": "Purchase successful",
+  "purchaseSuccessfulBody": "Purchase complete. Sync may take a moment.",
+  "checkoutErrorTitle": "Checkout error",
+  "checkoutErrorBody": "Failed to start checkout. Please try again.",
+  "billingPortalErrorTitle": "Billing portal error",
+  "billingPortalErrorBody": "Failed to open the billing portal. Please try again.",
+  "loginRequiredTitle": "Login required",
+  "loginRequiredWindowsBody": "Pro on Windows needs you to be signed in. That's how your subscription follows you to your other devices, and how you manage it.",
+  "loginRequiredCta": "Please log in or create an account to continue.",
+  "goToLogin": "Go to login",
+  "fullVersionOfferingUnavailable": "Base isn't available right now.",
+  "subscriptionOfferingUnavailable": "Subscription offering not available right now.",
+  "enableNotificationsAndroid": "Enable notifications for BikeControl in Android Settings",
+  "enableNotificationsApple": "Enable notifications for BikeControl in System Settings → Notifications → BikeControl",
+  "keyboardShortcuts": "Keyboard shortcuts",
+  "keyboardShortcutsSimulatorHint": "Assign keyboard shortcuts to simulator buttons",
+  "trainerControlsNoConnection": "Turn on a connection to your trainer app to send button presses from here.",
+  "@trainerControlsNoConnection": {"description": "Trainer Controls page: shown when no connection to a trainer app is turned on, so the on-screen buttons have nowhere to send."},
+  "pressAKey": "Press a key…",
+  "setShortcut": "Set",
+  "ignore": "Ignore",
+  "subscription": "Subscription",
+  "tutorials": "Tutorials",
+  "wheeltopShifterBattery": "Shifter battery: {volts} V",
+  "@wheeltopShifterBattery": {
+    "placeholders": {
+      "volts": {
+        "type": "String"
+      }
+    }
+  },
+  "wheeltopSlideSwitchHint": "Slide switch on R: top/bottom buttons shift. Slide switch on T: the buttons become two extra assignable buttons.",
+  "wheeltopKeepaliveTitle": "Keepalive experiment (beta)",
+  "wheeltopKeepaliveBody": "TX shifters drop the connection a few seconds after connecting because the app does not yet know how to answer their status frames. This experiment (on by default) automatically tries one candidate answer per reconnect and records the outcome in the log — sharing that log with support helps find the answer that keeps the shifter connected. Turn it off to stop the reconnect attempts instead.",
+  "noNewerSettingsOnServer": "No newer settings on server",
+  "noNewerSettingsAvailable": "No newer settings available",
+  "syncSettingsVersion": "Version: {version}",
+  "@syncSettingsVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "syncDeviceSummary": "Version: {version} • Mappings: {count} • Shifting configs: {shiftingCount}",
+  "@syncDeviceSummary": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      },
+      "shiftingCount": {
+        "type": "String"
+      }
+    }
+  },
+  "unknown": "Unknown",
+  "diagnosticsTitle": "Diagnostics",
+  "diagnosticsScanning": "scanning…",
+  "noDiagnosticsYet": "No diagnostics yet",
+  "logsFile": "Logs file:",
+  "useMagnetometerMode": "Use magnetometer mode",
+  "useMagnetometerModeBody": "Lets the compass take the gyroscope's slow drift out.",
+  "steeringCompassLearningHint": "Turn the handlebar fully left and right once so the compass can learn your mount.",
+  "steeringCompassReady": "Compass is correcting drift.",
+  "steeringAngle": "Steering angle",
+  "calibratingSensorsHint": "Calibrating the sensors now. Attach your phone/tablet on your handlebar and keep it still for a second.",
+  "scriptSavedFor": "Script saved for {device}.",
+  "@scriptSavedFor": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "scriptDeletedFor": "Script deleted for {device}.",
+  "@scriptDeletedFor": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteScriptTitle": "Delete script?",
+  "deleteScriptBody": "This will remove the saved script for {device}.",
+  "@deleteScriptBody": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "characteristicUuidRequired": "Characteristic UUID is required.",
+  "runScriptTitle": "Run script",
+  "scriptDeviceType": "Device type: {device}",
+  "@scriptDeviceType": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "scriptRunsOnValue": "This script will run whenever a value is received via Bluetooth.\nRequired signature: {signature}",
+  "@scriptRunsOnValue": {
+    "placeholders": {
+      "signature": {
+        "type": "String"
+      }
+    }
+  },
+  "scriptPlaceholder": "Write your script here…",
+  "tryScriptTitle": "Try script",
+  "characteristicUuid": "Characteristic UUID",
+  "hexInputHint": "Hex input (e.g. {example})",
+  "@hexInputHint": {
+    "placeholders": {
+      "example": {
+        "type": "String"
+      }
+    }
+  },
+  "tryingEllipsis": "Trying…",
+  "tryAction": "Try",
+  "deletingEllipsis": "Deleting…",
+  "savingEllipsis": "Saving…",
+  "scriptOutputCharacteristic": "Output characteristic: {value}",
+  "@scriptOutputCharacteristic": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "scriptOutputHex": "Output data (hex): {value}",
+  "@scriptOutputHex": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "overlayCouldNotStart": "Couldn't show the overlay. Please try again.",
+  "secondsAgo": "{seconds}s ago",
+  "@secondsAgo": {
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "minutesAgo": "{minutes}m ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "scanning": "Scanning",
+  "a11yTabHasErrors": "{tab}, has errors",
+  "@a11yTabHasErrors": {
+    "placeholders": {
+      "tab": {
+        "type": "String"
+      }
+    }
+  },
+  "a11yTabHasNewPosts": "{tab}, new posts",
+  "@a11yTabHasNewPosts": {
+    "placeholders": {
+      "tab": {
+        "type": "String"
+      }
+    }
+  },
+  "statusConnected": "Connected",
+  "statusConnecting": "Connecting",
+  "statusOff": "Off",
+  "unlock_importantSetupInfo": "Important setup information",
+  "instructionsQa": "Q&A",
+  "remoteControl": "Remote Control",
+  "proFeature": "Pro feature",
+  "trainerAppAction": "{app} action",
+  "@trainerAppAction": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "open": "Open",
+  "couldNotLaunchAssistant": "Could not launch the assistant",
+  "supportChatOpenFailed": "Failed to open support chat",
+  "supportChatLoadFailed": "Failed to load support chat",
+  "supportChatSendFailed": "Failed to send message",
+  "supportChatUnsupportedFile": "Unsupported file type",
+  "supportChatUploadFailed": "Failed to upload attachment",
+  "supportChatDeleteFailed": "Failed to delete your data",
+  "youtubeVideo": "YouTube video",
+  "supportChatIssuesFailed": "Failed to load issues",
+  "onboardingDoneNoControllerTitle": "Almost there: pair a controller",
+  "onboardingDoneNoControllerSubtitle": "{app} is connected, but BikeControl can't shift without a controller. Pair one now, or later from the home screen.",
+  "onboardingSummaryNotPaired": "Not paired",
+  "onboardingPairControllerAction": "Pair",
+  "onboardingRunTrainerCheck": "Run the trainer check",
+  "onboardingTrialKeepVs": "To keep virtual shifting: Pro",
+  "onboardingTrialUnlimited": "For unlimited commands: Base or Pro",
+  "onboardingSkipControllerNote": "BikeControl can't shift without a controller. You can pair one later from the home screen.",
+  "onboardingZwiftNoteZwift": "Zwift reads your {device} natively — you don't need BikeControl to ride with it. BikeControl can still help if you want to remap buttons, add actions Zwift doesn't assign, free up a Bluetooth slot, or control virtual shifting directly.",
+  "@onboardingZwiftNoteZwift": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingZwiftNoteOfficial": "The {device} was designed for Zwift, so it works best there. {app} is officially supported by BikeControl: shifting and the main controls work, but a few buttons have no {app} equivalent. BikeControl maps everything {app} supports.",
+  "@onboardingZwiftNoteOfficial": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingZwiftNoteActions": "The {device} was designed for Zwift, so it works best there. {app} only offers a few controls BikeControl can trigger: {actions}. Other buttons have nothing to do in {app} — but every control {app} has works from the {device}.",
+  "@onboardingZwiftNoteActions": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      },
+      "actions": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingZwiftNoteAppDefined": "The {device} was designed for Zwift, so it works best there. Each {app} app decides which controls it accepts, so some buttons may have nothing to do there. BikeControl maps everything the app offers.",
+  "@onboardingZwiftNoteAppDefined": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingZwiftNoteCustom": "The {device} was designed for Zwift, so it works best there. BikeControl has no preset for your trainer app, so you choose what each button does — for example a keyboard shortcut or a screen tap.",
+  "@onboardingZwiftNoteCustom": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingZwiftNoteNoInput": "The {device} was designed for Zwift, so it works best there. {app} doesn't take button input, so the buttons have nothing to control there. BikeControl can still use them for its own virtual shifting.",
+  "@onboardingZwiftNoteNoInput": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingVsProNote": "BikeControl's virtual shifting is part of Pro. Without Pro you get a {minutes}-minute trial every day; Base doesn't include it.",
+  "onboardingStillNotConnected": "Still not connected? Test your network",
+  "paywall_vsByBikeControl": "Virtual shifting by BikeControl (any trainer, custom gears)",
+  "paywall_shareSensors": "Share heart rate & sensors with your trainer app",
+  "vsWithoutProNote": "Without Pro, {app} handles virtual shifting and you lose the advantages BikeControl Pro offers: snappy gear changes, direct control, virtual front derailleur and full customization.",
+  "@vsWithoutProNote": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "vsWithoutProNoteYourApp": "Without Pro, your trainer app handles virtual shifting and you lose the advantages BikeControl Pro offers: snappy gear changes, direct control, virtual front derailleur and full customization.",
+  "vsWithoutProLearnMore": "Learn more ›",
+  "paywall_startProYearly": "Start Pro yearly",
+  "paywall_startProMonthly": "Start Pro monthly",
+  "paywall_buyBase": "Buy Base",
+  "paywall_planQuestions": "Questions about plans?",
+  "paywall_oneTimePurchase": "One-time purchase",
+  "vsBudgetProRemovesLimit": "Pro removes the limit",
+  "supportDescribeFirstMessageHint": "Tell us what you're trying to do and what happens instead. A screenshot alone doesn't say what went wrong — one sentence is enough.",
+  "supportIntakeTryThisFirst": "Try this first",
+  "supportIntakeDidThisSolveIt": "Did this solve it?",
+  "supportIntakeSolvedYes": "Yes, all good",
+  "supportIntakeSolvedNo": "No, contact support",
+  "intakeSelfHelpNetworkBody": "The network test checks, step by step, whether your trainer app can find BikeControl on this network, and tells you what to change if it can't.",
+  "intakeSelfHelpNetworkAction": "Run the network test",
+  "intakeSelfHelpSelfTestTitle": "Run the resistance self-test",
+  "intakeSelfHelpSelfTestBody": "It checks whether BikeControl can change your trainer's resistance, and says what to fix if it can't.",
+  "intakeSelfHelpSelfTestAction": "Run the self-test",
+  "intakeSelfHelpOpenPlanAccount": "Open Plan & account",
+  "intakeSelfHelpPlanBody": "Base, the one-time purchase, makes button presses unlimited — your trainer app does the virtual shifting. BikeControl's own virtual shifting is part of Pro: without Pro, its 20 minutes a day are a daily trial, and that stays so after buying Base.",
+  "intakeSelfHelpPlanSignInTitle": "Pro: sign in with the account you bought it with",
+  "intakeSelfHelpPlanSignInBody": "Pro belongs to your BikeControl account, not to a store. In Plan & account, check that you're signed in with the email you used when you bought Pro.",
+  "intakeSelfHelpPlanRegisterTitle": "Pro: register this device",
+  "intakeSelfHelpPlanRegisterBody": "If Plan & account shows \"Register this device\", tap it. Each platform has its own device limit — if it's full, remove a device you no longer use there.",
+  "intakeSelfHelpPlanRestoreTitle": "Base: restore it",
+  "intakeSelfHelpPlanRestoreBody": "A one-time Base purchase comes back with Restore purchases in Plan & account, as long as this device uses the same store account you bought it with.",
+  "intakeSelfHelpRestoreBody": "Restore purchases only finds what the store account signed in on this device right now has bought.",
+  "intakeSelfHelpRestoreStoreAccountTitle": "Use the store account you bought with",
+  "intakeSelfHelpRestoreStoreAccountBody": "iPhone, iPad and Mac: the Apple ID you paid with. Android: the Google account the Play Store used for the purchase — if it's a different one, switch accounts in the Play Store (tap your profile picture), then tap Restore purchases again. Windows: the Microsoft account in the Microsoft Store.",
+  "intakeSelfHelpRestoreProTitle": "Pro: sign in instead",
+  "intakeSelfHelpRestoreProBody": "Pro isn't restored through a store: it follows your BikeControl account on every platform. Sign in with the account you bought Pro with, in Plan & account.",
+  "intakeSelfHelpRestoreOtherStoreTitle": "Bought Base in a different store?",
+  "intakeSelfHelpRestoreOtherStoreBody": "A one-time Base purchase stays with the store you bought it in (App Store, Google Play, Microsoft Store) and can't be restored in another one. Bought BikeControl on Google Play in 2025, when it was a paid download? Tell me in the chat and I'll send you a code to unlock it again.",
+  "intakeSelfHelpRefundTitle": "Refunds depend on where you bought",
+  "intakeSelfHelpRefundBody": "Bought on Google Play or as the Windows download from the website? Write me in the chat and I'll take care of the refund. Purchases in the App Store or the Microsoft Store are refunded by the store itself — this is where to ask:",
+  "intakeSelfHelpRefundAppleTitle": "App Store (iPhone, iPad, Mac)",
+  "intakeSelfHelpRefundAppleBody": "On reportaproblem.apple.com, sign in with your Apple ID, choose \"Request a refund\" and pick BikeControl.",
+  "intakeSelfHelpRefundMicrosoftTitle": "Microsoft Store",
+  "intakeSelfHelpRefundMicrosoftBody": "In the order history of your Microsoft account, find BikeControl and choose \"Request a refund\".",
+  "intakeSelfHelpRefundLink": "Open the refund page",
+  "intakeSelfHelpRefundNote": "Anything else about your purchase? Write me in the chat.",
+  "helpCenterRunSetupGuide": "Run the setup guide",
+  "onboardingDonePickTrainerTitle": "One more step: pick your trainer",
+  "onboardingDonePickTrainerSubtitle": "{app} is connected but hasn't picked up your trainer yet. Choose it in {app} like this:",
+  "@onboardingDonePickTrainerSubtitle": {"placeholders": {"app": {"type": "String"}}},
+  "onboardingDonePairLater": "Finish — I'll pair later",
+  "intakeControllerPlayLeft": "Zwift Play (left)",
+  "intakeControllerPlayRight": "Zwift Play (right)",
+  "intakeControllerGamepad": "Gamepad",
+  "intakeControllerHidKeyboard": "Keyboard / media remote (HID)",
+  "intakeControllerGyroscope": "Phone steering (gyroscope)",
+  "intakeControllerOther": "Other / not listed",
+  "intakeSomethingElse": "Something else",
+  "intakeControllerNoPairing": "Not pairing",
+  "intakeControllerNoResponse": "Pairs but button presses do nothing",
+  "intakeControllerButtonsPartial": "Only some buttons work",
+  "intakeControllerDropouts": "Disconnects mid-ride",
+  "intakeAppShiftsNotRecognized": "BikeControl shifts, the app doesn't react",
+  "intakeAppNetworkBridgeFails": "Network connection stuck on \"Waiting\"",
+  "intakeAppNoPairing": "Can't pair from the app",
+  "intakeAppGearIndicator": "Gear number stuck on screen",
+  "intakeTrainerNoResistanceChange": "No resistance change when shifting",
+  "intakeTrainerWrongResistance": "Resistance feels wrong / random",
+  "intakeTrainerGearShiftNotWorking": "Gear shift not working",
+  "intakeTrainerNoPairing": "Trainer not pairing",
+  "intakeTrainerDropouts": "Drops mid-ride",
+  "intakeTrainerNoData": "No power / cadence / heart rate",
+  "intakeTrainerNotSupported": "Trainer not detected / FTMS missing",
+  "intakeAccountPurchaseNotRestored": "Can't restore purchase",
+  "intakeAccountTrialExpiredAfterPurchase": "Trial expired even though I paid",
+  "intakeAccountWrongPlan": "App shows the wrong plan",
+  "intakeAccountRefund": "Refund request",
+  "helpAnswerChecksIntro": "A few quick checks, in order:",
+  "helpCheckDisconnectSub": "Only one app can hold a controller at a time. Close any other app connected to it, or turn off Bluetooth on the device holding it.",
+  "helpCheckFirmwareDi2Sub": "Outdated firmware can keep it invisible. Update it with Shimano's E-TUBE PROJECT app.",
+  "helpCheckFirmwareSramSub": "Outdated firmware can keep it invisible. Update it in the SRAM AXS app.",
+  "helpCheckFirmwareMakerSub": "Outdated firmware can keep a controller invisible. Check its maker's app for an update.",
+  "helpAnswerAppNotReactingTitle": "Check the connection first",
+  "helpCheckAppConnectedTitle": "Is your trainer app connected?",
+  "helpCheckAppConnectedSub": "Your trainer app connects to BikeControl separately from your trainer. The home screen shows whether it's connected; if it isn't, run the network test.",
+  "helpCheckGearOverlayTitle": "Shifts land, but the gear number doesn't change?",
+  "helpCheckGearOverlaySub": "When BikeControl steers your trainer, your trainer app keeps showing its own gear. The overlay shows BikeControl's gear instead. The overlay appears on the device running BikeControl, not on a TV or Apple TV. If your trainer app runs there, keep BikeControl's screen in view to see your gear.",
+  "helpCheckDailyLimitTitle": "Used up today's button presses?",
+  "helpCheckDailyLimitSub": "Without Base or Pro, BikeControl carries out {limit} button presses a day, during the trial too. Once they're used up, presses do nothing until tomorrow and BikeControl tells you the daily limit is reached. Base or Pro removes the limit.",
+  "@helpCheckDailyLimitSub": {
+    "placeholders": {
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "helpCheckControllerAwakeTitle": "Is your controller awake and connected?",
+  "helpCheckControllerAwakeSub": "Controllers go to sleep when you don't use them. Press a button to wake it, then look under Devices: if it isn't connected there, connect it again.",
+  "helpCheckConnectionMethodTitle": "Is the connection to your trainer app on?",
+  "helpCheckConnectionMethodSub": "Open Settings → Trainer app & connection and check that the connection method you use (Bluetooth, Network or Local) is switched on and your trainer app is connected.",
+  "helpSelfTestNeedsTrainer": "Connect your trainer in BikeControl first. The self-test needs a live connection. You'll then find it in your trainer's virtual shifting settings.",
+  "onboardingDoneOverlayNote": "{app} keeps showing its own gear number. BikeControl's gear is shown in the overlay.",
+  "@onboardingDoneOverlayNote": {"placeholders": {"app": {"type": "String"}}},
+  "onboardingDoneShowOverlay": "Show the gear overlay",
+  "onboardingNetworkChecking": "Checking your network…",
+  "onboardingNetworkCheckPassed": "Network check passed",
+  "onboardingNetworkCheckFailedTitle": "The network check found a problem",
+  "onboardingNetworkCheckFailedBody": "{app} probably won't find BikeControl on this network until this is fixed.",
+  "@onboardingNetworkCheckFailedBody": {"placeholders": {"app": {"type": "String"}}},
+  "onboardingNetworkRecheck": "Check again",
+  "onboardingNetworkContinueAnyway": "Continue anyway",
+  "onboardingNetworkContinuedNote": "The network check found a problem. If {app} doesn't connect, check again here.",
+  "@onboardingNetworkContinuedNote": {"placeholders": {"app": {"type": "String"}}},
+  "onboardingSummaryTrainerInApp": "In {app} via BikeControl",
+  "@onboardingSummaryTrainerInApp": {"placeholders": {"app": {"type": "String"}}},
+  "supportDiagSummaryTitle": "What's sent with your message",
+  "supportDiagAppVersion": "App version",
+  "supportDiagPlatform": "System",
+  "supportDiagDevices": "Connected devices",
+  "supportDiagConnections": "Connection methods",
+  "supportDiagLogLines": "Log lines",
+  "supportDiagScreenshot": "Screenshot",
+  "supportDiagScreenshotAttached": "Attached",
+  "supportDiagScreenshotNone": "Not attached",
+  "supportDiagNone": "None",
+  "supportDiagShowTechnical": "Show technical details",
+  "supportDiagHideTechnical": "Hide technical details",
+  "purchaseProDeviceLimitBody": "This device can't be activated yet: your account already has the maximum of {max} devices on {platform}. Remove one you no longer use and this device is activated right after.",
+  "@purchaseProDeviceLimitBody": {"placeholders": {"max": {"type": "String"}, "platform": {"type": "String"}}},
+  "purchaseManageDevices": "Manage devices",
+  "purchaseProActiveOnDevice": "Pro is now active on this device",
+  "supportPinnedDeviceLimit": "device limit details",
+  "onboardingNetworkResolvedByConnection": "{app} connected over the network, so the network works.",
+  "@onboardingNetworkResolvedByConnection": {"placeholders": {"app": {"type": "String"}}},
+  "targetOtherDeviceDescription": "Run {appName} on another device and control it remotely from this one.",
+  "@targetOtherDeviceDescription": {"placeholders": {"appName": {"type": "String"}}},
+  "targetOtherDeviceDescriptionObc": "Run {appName} on another device and control it remotely from this one, e.g. over an OpenBikeControl connection.",
+  "@targetOtherDeviceDescriptionObc": {"placeholders": {"appName": {"type": "String"}}},
+  "targetOtherDeviceDescriptionMyWhoosh": "Run {appName} on another device and control it remotely from this one, e.g. with MyWhoosh Link.",
+  "@targetOtherDeviceDescriptionMyWhoosh": {"placeholders": {"appName": {"type": "String"}}},
+  "targetOtherDeviceDescriptionNoApp": "Run your trainer app on another device and control it remotely from this one.",
+  "targetThisDeviceDescriptionNoApp": "Run your trainer app on this device.",
+  "purchaseProDeviceLimitTitle": "Pro is on your account, but not on this device yet",
+  "helpAnswerStillStuckContactSupport": "Still stuck? Contact support",
+  "paywallYourPlan": "Your plan",
+  "supportDiagnosticsNoticeNoScreenshot": "To help fix your issue, this chat attaches diagnostic info. You can review it with {infoIcon} before sending.",
+  "@supportDiagnosticsNoticeNoScreenshot": {"placeholders": {"infoIcon": {"type": "String"}}},
+  "rideV2SupportLine": "Don't want to unlock every day? Contact support.",
+  "rideV2Explainer_title": "Zwift Ride V2 setup",
+  "rideV2Explainer_heading": "Unlock it with Zwift",
+  "rideV2Explainer_intro": "Zwift locks the Zwift Ride V2 to its own app. Unlock it in the Zwift app and it works with BikeControl for about 24 hours.",
+  "rideV2Explainer_row2": "Unlock it in the Zwift app — BikeControl shows you how",
+  "rideV2Explainer_row3": "An unlock lasts about 24 hours, then it needs another one",
+  "rideV2Explainer_gotIt": "Got it",
+  "rideV2LockedToast": "Your Zwift Ride V2 is locked. Unlock it in the Zwift app first.",
+  "chainStepUnlockedHintRideV2": "Zwift locks the Zwift Ride V2 to its own app — unlock it in Zwift and it keeps working for about 24 hours.",
+  "unlock_rideV2Unlocked": "Zwift Ride V2 is unlocked! You can now close this page.",
+  "unlock_rideV2MightBeUnlockedAlready": "Your Zwift Ride V2 might be unlocked already.",
+  "rideV2Instructions": "Zwift locks the Zwift Ride V2 to its own app. Unlock it there and it works with BikeControl for about 24 hours.\n\n1. Open the Zwift app (not the Companion!)\n2. Log in (subscription not required) and open the device connection screen\n3. Connect your trainer, then connect the Zwift Ride V2\n4. Close the Zwift app again and connect again in BikeControl",
+  "rideV2SupportPrefill": "Hi! My Zwift Ride V2 is on firmware {version} and I'd rather not unlock it in Zwift every day. Can you help?",
+  "@rideV2SupportPrefill": {"placeholders": {"version": {"type": "String"}}},
+  "intakeControllerRideV2Lock": "Zwift Ride V2 lock",
+  "navRide": "Ride",
+  "@navRide": {"description": "Main navigation section: the ride screen (shifting, buttons)."},
+  "navDevices": "Devices",
+  "@navDevices": {"description": "Main navigation section: controllers, trainer, sensors."},
+  "navSettings": "Settings",
+  "@navSettings": {"description": "Main navigation section: app settings."},
+  "settingsSectionRidingWith": "Riding with",
+  "@settingsSectionRidingWith": {"description": "Settings group header: trainer app and connection settings."},
+  "settingsTrainerAppConnection": "Trainer app & connection",
+  "settingsSectionApp": "App",
+  "@settingsSectionApp": {"description": "Settings group header: language, changelog, license."},
+  "rideVirtualShifting": "Virtual shifting",
+  "@rideVirtualShifting": {"description": "Ride tab: title of the card with the live gear, drivetrain and shift buttons."},
+  "rideVsInviteBody": "Connect your smart trainer and BikeControl shifts its gears.",
+  "@rideVsInviteBody": {"description": "Ride tab: shown instead of the virtual shifting card while no smart trainer is connected."},
+  "rideRatio": "Ratio",
+  "@rideRatio": {"description": "Ride tab: label under the current gear ratio (e.g. ×2.4)."},
+  "rideYourButtons": "Your buttons",
+  "rideControllerLocked": "Locked",
+  "@rideYourButtons": {"description": "Ride tab: section header above the controller picture with its button actions."},
+  "rideEditButtons": "Edit buttons",
+  "@rideEditButtons": {"description": "Ride tab: link next to 'Your buttons' that opens the controller's button mapping."},
+  "rideTapButtonHint": "Tap a button to change what it does.",
+  "@rideTapButtonHint": {"description": "Ride tab: hint above the controller picture on touch devices."},
+  "rideClickButtonHint": "Click a button to change what it does.",
+  "@rideClickButtonHint": {"description": "Ride tab: hint above the controller picture on desktop."},
+  "rideJustPressed": "Just pressed {button}",
+  "@rideJustPressed": {"description": "Ride tab: strip under the controller picture naming the last button pressed; the action it sent follows after an arrow.", "placeholders": {"button": {"type": "String"}}},
+  "rideChange": "Change",
+  "@rideChange": {"description": "Ride tab: action on the last-press strip that opens the pressed button's assignment."},
+  "rideNoControllerTitle": "No controller connected",
+  "@rideNoControllerTitle": {"description": "Ride tab: title of the card shown under 'Your buttons' while no controller is connected."},
+  "rideNoControllerBody": "Wake your controller or pair a new one — its buttons show up here.",
+  "@rideNoControllerBody": {"description": "Ride tab: body of the card shown while no controller is connected."},
+  "rideControllerAsleepTitle": "Your controller is asleep",
+  "@rideControllerAsleepTitle": {"description": "Ride tab: title of the card under 'Your buttons' while a remembered controller has not reconnected yet."},
+  "rideControllerAsleepBody": "Press any button on it to wake it — it reconnects on its own and its buttons show up here.",
+  "@rideControllerAsleepBody": {"description": "Ride tab: body of the card while a remembered controller has not reconnected yet."},
+  "rideControllerPairNew": "Pair a new one",
+  "@rideControllerPairNew": {"description": "Ride tab: secondary button on the controller card that opens pairing for a new controller."},
+  "rideSeeAll": "See all",
+  "@rideSeeAll": {"description": "Ride tab: link from the recent activity preview to the Activity section."},
+  "statusOn": "On",
+  "@statusOn": {"description": "Value of a setting that is switched on (e.g. Overlay: On)."},
+  "devicesOtherInputs": "Other inputs",
+  "@devicesOtherInputs": {"description": "Devices tab: group header for phone steering, media remotes and ignored devices."},
+  "devicesPhoneSteering": "Phone steering",
+  "@devicesPhoneSteering": {"description": "Devices tab: toggle that steers with the phone's motion sensors."},
+  "devicesMediaRemotes": "Bluetooth media remotes",
+  "@devicesMediaRemotes": {"description": "Devices tab: toggle that listens to Bluetooth media remotes."},
+  "devicesShareSensorsSubtitle": "Heart rate, power & cadence",
+  "@devicesShareSensorsSubtitle": {"description": "Devices tab: subtitle of the Share sensors row."},
+  "devicesSignalGood": "Signal good",
+  "@devicesSignalGood": {"description": "Devices tab: a controller's Bluetooth signal is fine."},
+  "devicesSignalWeak": "Weak signal",
+  "@devicesSignalWeak": {"description": "Devices tab: a controller's Bluetooth signal is weak."},
+  "devicesBridgedTo": "to {app}",
+  "@devicesBridgedTo": {"description": "Devices tab: under \"Bridged\", which trainer app holds the trainer.", "placeholders": {"app": {"type": "String"}}},
+  "activityLastMinute": "Last minute",
+  "@activityLastMinute": {"description": "Activity: group header for events from the last minute."},
+  "activityEarlier": "Earlier",
+  "@activityEarlier": {"description": "Activity: group header for older events."},
+  "activityFooter": "Shows the last {count} events since BikeControl started.",
+  "@activityFooter": {"description": "Activity: note under the list.", "placeholders": {"count": {"type": "int"}}},
+  "activityEmptyTitle": "No activity yet",
+  "@activityEmptyTitle": {"description": "Activity: title shown while nothing has happened yet."},
+  "activityEmptyBody": "Press a button on your controller and it shows up here.",
+  "@activityEmptyBody": {"description": "Activity: body shown while nothing has happened yet."},
+  "settingsSectionDuringRide": "During the ride",
+  "@settingsSectionDuringRide": {"description": "Settings group header: overlay, shift feedback, saving rides."},
+  "rideGear": "Gear",
+  "@rideGear": {"description": "Label under the current gear number (e.g. 12 / 24)."},
+  "shellTrainerChipLabel": "{trainer}, sending to {app}",
+  "@shellTrainerChipLabel": {
+    "description": "Spoken label of the desktop header chip showing the bridged trainer and the trainer app it sends to",
+    "placeholders": {
+      "trainer": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "vsGroupGears": "Gears",
+  "vsGroupPhysics": "Physics",
+  "perGearRatiosTitle": "Per-gear ratios",
+  "perGearRatiosSubtitle": "Fine-tune each gear on its own",
+  "rideOverlayOff": "Gear overlay is off",
+  "rideOverlayOfferNote": "{app} shows its own gear",
+  "@rideOverlayOfferNote": {"placeholders": {"app": {"type": "String"}}},
+  "rideOverlayOfferShow": "Show overlay",
+  "rideOverlayOtherScreen": "{app} on your other screen keeps showing its own gear. Your gear is the one here, so keep this screen in view.",
+  "@rideOverlayOtherScreen": {"description": "Ride tab: note on the virtual shifting card when the trainer app runs on another device (e.g. Apple TV), where the gear overlay cannot appear.", "placeholders": {"app": {"type": "String"}}},
+  "a11yChangeChainring": "Change chainring",
+  "rideVsSettingsLink": "Gear settings",
+  "rideVsTrainerNotConnected": "{trainer} isn't connected — you won't feel shifts until it's back.",
+  "@rideVsTrainerNotConnected": {"description": "Ride tab: line on the dimmed virtual shifting card while the smart trainer is not connected to BikeControl.", "placeholders": {"trainer": {"type": "String"}}},
+  "rideVsTrialOver": "Today's virtual shifting trial is over. This ride keeps going until your trainer app disconnects.",
+  "@rideVsTrialOver": {"description": "Ride tab: line on the virtual shifting card once today's virtual shifting trial has run out."},
+  "changelogKindAdded": "New",
+  "changelogKindImproved": "Improved",
+  "changelogKindFixed": "Fixed",
+  "changelogKindOther": "Changes",
+  "changelogYourVersion": "Your version",
+  "changelogEarlierVersions": "Earlier versions",
+  "changelogAllVersions": "All versions",
+  "changelogLoadFailed": "The changelog couldn't be loaded.",
+  "changelogWhatsNewSince": "What changed since your last update.",
+  "holdWarningSteering": "Steering only works while the button is held. Assign it to Long Press instead.",
+  "holdWarningAction": "{action} only works while the button is held. Assign it to Long Press instead.",
+  "holdAssignToLongPress": "Assign to Long Press",
+  "holdReplaceLongPress": "Long Press already does {current}. Replace it with {action}?",
+  "holdMovedToLongPress": "{action} now runs on Long Press.",
+  "holdOnlyWhileHeld": "Only works while held",
+  "paywall_shiftInNamedApp": "Shift & steer in {app} — {app} computes the gears",
+  "@paywall_shiftInNamedApp": {"placeholders": {"app": {"type": "String"}}},
+  "paywall_shiftInYourAppShort": "Shift & steer in your trainer app",
+  "paywall_shiftInNamedAppShort": "Shift & steer in {app}",
+  "@paywall_shiftInNamedAppShort": {"placeholders": {"app": {"type": "String"}}},
+  "paywall_watchClip": "Watch: {feature}",
+  "@paywall_watchClip": {"placeholders": {"feature": {"type": "String"}}},
+  "paywall_playClip": "Play clip",
+  "paywall_pauseClip": "Pause clip",
+  "paywall_openClipInBrowser": "Open in browser",
+  "paywall_clipLoadError": "Couldn't load the clip. Check your connection and try again.",
+  "planAccountTitle": "Plan & account",
+  "planOneTimePurchase": "One-time purchase",
+  "planBaseUnlimitedCommands": "Unlimited button presses",
+  "planBaseAppShifts": "Your buttons shift & steer in your trainer app, using the app's own virtual shifting",
+  "planProAdds": "What Pro adds",
+  "planBaseIncludes": "What Base includes",
+  "planBoughtBefore": "Already bought BikeControl in 2025, but restoring the purchase doesn't work?",
+  "planBoughtBeforeAction": "Message me in the app",
+  "supportPrefillBoughtBefore": "I bought BikeControl on Google Play in 2025, but restoring the purchase doesn't work. My Google Play order number (GPA.…): ",
+  "planQuestions": "Questions about the plans?",
+  "proActiveOnThisDevice": "Active on this device",
+  "proNotOnThisDevice": "Not active on this device",
+  "subscriptionRenewsOn": "Renews on {date}",
+  "@subscriptionRenewsOn": {"placeholders": {"date": {"type": "String"}}},
+  "subscriptionActiveUntil": "Active until {date}",
+  "@subscriptionActiveUntil": {"placeholders": {"date": {"type": "String"}}},
+  "subscriptionTrialUntil": "Pro trial until {date}",
+  "@subscriptionTrialUntil": {"placeholders": {"date": {"type": "String"}}},
+  "subscriptionBillingIssue": "Payment problem",
+  "subscriptionBillingIssueBody": "Your last payment didn't go through. Update your payment method to keep Pro.",
+  "signInWithApple": "Sign in with Apple",
+  "signInWithGoogle": "Sign in with Google",
+  "signInWithGithub": "Sign in with GitHub",
+  "signInWithFacebook": "Sign in with Facebook",
+  "moreSignInOptions": "More options",
+  "signedInWith": "Signed in with {provider}",
+  "@signedInWith": {"placeholders": {"provider": {"type": "String"}}},
+  "signInMethodEmailCode": "email code",
+  "signInFailed": "Sign-in didn't work. Please try again.",
+  "signInToBringProToOtherDevices": "Sign in to bring Pro to your other devices.",
+  "thisDevice": "This device",
+  "deviceNotRegistered": "Not registered",
+  "removeDevice": "Remove",
+  "deviceRemoved": "Removed",
+  "removeDeviceTitle": "Remove {device}?",
+  "@removeDeviceTitle": {"placeholders": {"device": {"type": "String"}}},
+  "removeDeviceBody": "Pro stops working on that device until it's registered again. Its slot becomes free.",
+  "removeDeviceFailed": "The device couldn't be removed. Please try again.",
+  "registerDeviceFailedRetry": "This device couldn't be registered. Please try again.",
+  "devicesLoadFailed": "Your devices couldn't be loaded.",
+  "deviceLimitRemoveOne": "Device limit for {platform} reached. Remove a device below to register this one.",
+  "@deviceLimitRemoveOne": {"placeholders": {"platform": {"type": "String"}}},
+  "devicesRegisteredCount": "{count, plural, =1{1 device registered} other{{count} devices registered}}",
+  "@devicesRegisteredCount": {"placeholders": {"count": {"type": "int"}}},
+  "syncTitle": "Sync",
+  "syncSettingsRow": "Sync settings",
+  "syncRowSubtitle": "Settings on all your devices",
+  "syncAndDevices": "Sync & devices",
+  "lastSyncedAt": "Last synced: {time}",
+  "@lastSyncedAt": {"placeholders": {"time": {"type": "String"}}},
+  "relativeMinutesAgo": "{count} min ago",
+  "@relativeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "relativeHoursAgo": "{count} h ago",
+  "@relativeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "relativeDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@relativeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "purchasesHeader": "Purchases",
+  "manageInAppStore": "In the App Store",
+  "manageInMacAppStore": "In the Mac App Store",
+  "manageInGooglePlay": "In Google Play",
+  "manageInBillingPortal": "In the billing portal",
+  "restorePurchasesDone": "Purchases restored.",
+  "restorePurchasesNone": "No purchases found for this store account.",
+  "restorePurchasesFailed": "Purchases couldn't be restored. Please try again.",
+  "helpHeader": "Help",
+  "syncFailed": "Sync didn't work. Please try again.",
+  "ridesGearChangeCount": "{count, plural, =1{1 gear change} other{{count} gear changes}}",
+  "@ridesGearChangeCount": {"placeholders": {"count": {"type": "int"}}},
+  "ridesHealthDenied": "{store} access is off",
+  "@ridesHealthDenied": {"placeholders": {"store": {"type": "String"}}},
+  "ridesHealthOpenSettings": "Open permissions",
+  "ridesTooShort": "Not saved: the ride was shorter than 2 minutes.",
+  "ridesHealthSaved": "Ride saved to {store}",
+  "@ridesHealthSaved": {"placeholders": {"store": {"type": "String"}}},
+  "ridesHealthFailed": "Couldn't save the ride to {store}",
+  "@ridesHealthFailed": {"placeholders": {"store": {"type": "String"}}},
+  "ridesTab": "Rides",
+  "ridesAppleHealth": "Apple Health",
+  "ridesAutoRecordTitle": "Record rides automatically",
+  "ridesAutoRecordSubtitle": "Starts at the first pedal stroke once power or cadence comes in. Pauses after 10 s.",
+  "ridesAutoRecordOffFooter": "Off: start a recording yourself on Ride.",
+  "ridesHealthToggle": "Save rides to {store}",
+  "@ridesHealthToggle": {"placeholders": {"store": {"type": "String"}}},
+  "ridesHealthOnlyRecorded": "Recorded rides only.",
+  "ridesHealthDuplicateHint": "{app} may already save this ride to {store}, so it could show up twice.",
+  "@ridesHealthDuplicateHint": {"placeholders": {"app": {"type": "String"}, "store": {"type": "String"}}},
+  "ridesHealthConnectNotInstalled": "Health Connect isn't installed. Tap to install it.",
+  "ridesAutoStarted": "started automatically",
+  "ridesResumesOnPedal": "resumes when you pedal",
+  "ridesAutoOff": "Automatic recording is off",
+  "ridesDiscardBody": "The recording is deleted and saved nowhere.",
+  "ridesRideTitle": "Ride",
+  "ridesToday": "Today",
+  "ridesYesterday": "Yesterday",
+  "ridesMoving": "moving",
+  "ridesTotal": "total",
+  "ridesWork": "Work",
+  "ridesMaxCadence": "Max cadence",
+  "ridesGearChangesLabel": "Gear changes",
+  "ridesValues": "Values",
+  "ridesTimeline": "Over time",
+  "ridesChartLegend": "Dashed: avg power. Hatched: pause.",
+  "ridesChartA11y": "Power, heart rate, cadence and gear over the ride",
+  "ridesPause": "Pause",
+  "ridesExport": "Export",
+  "ridesDetails": "Details",
+  "ridesInHealth": "In {store}",
+  "@ridesInHealth": {"placeholders": {"store": {"type": "String"}}},
+  "ridesHealthKeptNote": "Already saved. Deleting it in BikeControl doesn't remove it there.",
+  "ridesSaveToHealth": "Save to {store}",
+  "@ridesSaveToHealth": {"placeholders": {"store": {"type": "String"}}},
+  "ridesHealthFields": "Power, heart rate, calories, distance",
+  "ridesSaveFit": "Save .fit file",
+  "ridesSaveFitIos": "Keep it in the Files app",
+  "ridesSaveFitAndroid": "Keep it in Downloads",
+  "ridesShareFitSub": "Send the .fit file to Strava, Garmin Connect, TrainingPeaks or another app",
+  "ridesFitSaved": ".fit file saved",
+  "ridesExportFailed": "Couldn't export the ride. Please try again.",
+  "ridesDeleteTitle": "Delete ride?",
+  "ridesDeleteBody": "The ride and its .fit file are removed from this device. Anything already in {store} stays there.",
+  "@ridesDeleteBody": {"placeholders": {"store": {"type": "String"}}},
+  "ridesDeleteBodyNoHealth": "The ride and its .fit file are removed from this device.",
+  "ridesAskHealth": "Save rides to {store}?",
+  "@ridesAskHealth": {"placeholders": {"store": {"type": "String"}}},
+  "ridesAskHealthBody": "Applies to every ride from now on. You can change it in Settings → During the ride.",
+  "ridesGearChangesNoun": "{count, plural, =1{gear change} other{gear changes}}",
+  "@ridesGearChangesNoun": {"placeholders": {"count": {"type": "int"}}},
+  "ridesThisWeek": "This week",
+  "ridesLastWeek": "Last week",
+  "ridesCount": "{count, plural, =1{1 ride} other{{count} rides}}",
+  "@ridesCount": {"placeholders": {"count": {"type": "int"}}},
+  "ridesBadgeHealth": "Health",
+  "ridesEmptyTitle": "No rides yet",
+  "ridesEmptyBody": "Rides are recorded while your trainer (or a power or cadence sensor) is connected in BikeControl. Just start pedalling: recording starts as soon as power or cadence comes in.",
+  "ridesEmptyBodyManual": "Automatic recording is off. Start a ride yourself, or turn it on in Settings.",
+  "ridesDeleteAll": "Delete all",
+  "ridesDeleteAllTitle": "Delete all rides?",
+  "ridesDeleteAllBodyNoHealth": "{count, plural, =1{1 ride and its .fit file is removed from this device.} other{{count} rides and their .fit files are removed from this device.}}",
+  "@ridesDeleteAllBodyNoHealth": {"placeholders": {"count": {"type": "int"}}},
+  "activityClearLog": "Clear log",
+  "ridesHealthStaysNote": "Anything already in {store} stays there.",
+  "@ridesHealthStaysNote": {"placeholders": {"store": {"type": "String"}}},
+  "ridesFtpTitle": "FTP",
+  "ridesMaxHeartRateTitle": "Max heart rate",
+  "ridesFtpBody": "FTP (Functional Threshold Power) is the highest power you can hold for about an hour. Power zones are based on it. Don't know yours? Use the FTP from your trainer app's profile.",
+  "ridesMaxHeartRateBody": "The highest heart rate you reach in an all-out effort. Heart rate zones are based on it.",
+  "ridesValueRange": "Enter a value from {min} to {max}.",
+  "@ridesValueRange": {"placeholders": {"min": {"type": "int"}, "max": {"type": "int"}}},
+  "ridesValueSaveFailed": "Couldn't save the value. Please try again.",
+  "ridesGear": "Gear",
+  "ridesElevation": "Elevation",
+  "ridesTimeInGear": "Time in gear",
+  "ridesPowerZones": "Power zones",
+  "ridesHeartRateZones": "Heart rate zones",
+  "ridesSetFtpForZones": "Set your FTP to see power zones",
+  "ridesSetMaxHeartRateForZones": "Set your max heart rate to see heart rate zones",
+  "ridesFtpValue": "FTP {watts} W",
+  "@ridesFtpValue": {"placeholders": {"watts": {"type": "int"}}},
+  "ridesMaxHeartRateValue": "Max {bpm} bpm",
+  "@ridesMaxHeartRateValue": {"placeholders": {"bpm": {"type": "int"}}},
+  "ridesPowerZoneActiveRecovery": "Active recovery",
+  "ridesPowerZoneEndurance": "Endurance",
+  "ridesPowerZoneTempo": "Tempo",
+  "ridesPowerZoneThreshold": "Threshold",
+  "ridesPowerZoneVo2max": "VO2max",
+  "ridesPowerZoneAnaerobic": "Anaerobic",
+  "ridesPowerZoneNeuromuscular": "Neuromuscular",
+  "ridesHeartRateZoneVeryLight": "Very light",
+  "ridesHeartRateZoneLight": "Light",
+  "ridesHeartRateZoneModerate": "Moderate",
+  "ridesHeartRateZoneHard": "Hard",
+  "ridesHeartRateZoneMaximum": "Maximum",
+  "vsCalibrateTitle": "Calibrate shifting feel",
+  "vsCalibrateRowSubtitle": "Difficulty {pct}%",
+  "@vsCalibrateRowSubtitle": {"placeholders": {"pct": {"type": "int"}}},
+  "vsCalibrateIntro": "If the gears feel too heavy or too light on this trainer, ride three short grades and say how each one feels. BikeControl then adjusts every virtual gear for this trainer.",
+  "vsCalibrateStepCloseApp": "Close your trainer app. The trainer stays connected to BikeControl.",
+  "vsCalibrateStepPedal": "Pedal at your usual cadence the whole time.",
+  "vsCalibrateStepRate": "On each grade, shift to the gear you would ride there, then rate how it feels.",
+  "vsCalibrateStart": "Start calibration",
+  "vsCalibrateManual": "Set difficulty manually",
+  "vsCalibrateFirmware": "This trainer computes its gears in its own firmware, so their feel can't be calibrated in BikeControl.",
+  "vsCalibratePrecheckDisconnected": "Connect your trainer first.",
+  "vsCalibratePrecheckTrainerApp": "Close or disconnect your trainer app first. The calibration needs the trainer to itself.",
+  "vsCalibrateStepOf": "Grade {current} of {total}",
+  "@vsCalibrateStepOf": {"placeholders": {"current": {"type": "int"}, "total": {"type": "int"}}},
+  "vsCalibrateGradeFlat": "Flat road",
+  "vsCalibrateGradeGentle": "Gentle climb",
+  "vsCalibrateGradeSteady": "Steady climb",
+  "vsCalibrateGear": "Gear {gear} of {max}",
+  "@vsCalibrateGear": {"placeholders": {"gear": {"type": "int"}, "max": {"type": "int"}}},
+  "vsCalibrateAsk": "How does your gear feel on this grade?",
+  "vsCalibrateTooHeavy": "Too heavy",
+  "vsCalibrateAboutRight": "About right",
+  "vsCalibrateTooLight": "Too light",
+  "vsCalibrateAdjusted": "Difficulty now {pct}%. Ride it for a moment, then rate it again.",
+  "@vsCalibrateAdjusted": {"placeholders": {"pct": {"type": "int"}}},
+  "vsCalibrateKeepPedaling": "Keep pedaling so you can feel the gear.",
+  "vsCalibrateStop": "Stop calibration",
+  "vsCalibrateResultTitle": "Shifting difficulty",
+  "vsCalibrateResultBody": "Lower makes every gear lighter, higher makes every gear heavier. 100% is the default.",
+  "vsCalibrateDifficulty": "Difficulty",
+  "vsCalibratePct": "{pct}%",
+  "@vsCalibratePct": {"placeholders": {"pct": {"type": "int"}}},
+  "vsCalibrateReset": "Reset to 100%",
+  "vsCalibrateAgain": "Calibrate again",
+  "vsGroupCheck": "Check and calibrate",
+  "vsCalibrateControllerAnswered": "{answer}, from your controller",
+  "@vsCalibrateControllerAnswered": {"placeholders": {"answer": {"type": "String"}}},
+  "vsCalibrateHintTooHeavy": "Hold shift down",
+  "vsCalibrateHintAboutRight": "Press both shifters",
+  "vsCalibrateHintTooLight": "Hold shift up",
+  "chainHintTitle": "Move your chain to a middle gear",
+  "chainHintVeryBigGear": "Your chain on the trainer is in a very big gear (gear ratio about {ratio}). Virtual gears feel realistic with the chain in a middle gear, e.g. 34/17 or 50/25. Leave it there and only shift virtually.",
+  "@chainHintVeryBigGear": {"placeholders": {"ratio": {"type": "String"}}},
+  "chainHintVerySmallGear": "Your chain on the trainer is in a very small gear (gear ratio about {ratio}). Virtual gears feel realistic with the chain in a middle gear, e.g. 34/17 or 50/25. Leave it there and only shift virtually.",
+  "@chainHintVerySmallGear": {"placeholders": {"ratio": {"type": "String"}}},
+  "ignoredDevicesNearby": "Found ignored devices nearby",
+  "trainerActionGearUpErgUp": "Trainer: Gear Up / ERG up",
+  "trainerActionGearDownErgDown": "Trainer: Gear Down / ERG down",
+  "vsGroupRealChain": "Chain on the trainer",
+  "realChainringLabel": "Chainring on the bike",
+  "realCogLabel": "Cog on the trainer",
+  "realChainFooter": "The gear your chain really sits in on the trainer: {chain}. BikeControl takes it into account, so every virtual gear feels like the real one. Leave the chain there and only shift virtually. Used by Track Resistance.",
+  "@realChainFooter": {"placeholders": {"chain": {"type": "String"}}},
+  "chainHintSetTitle": "Your chain isn't where you set it",
+  "chainHintSetBody": "Your chain on the trainer seems to be in a different gear (gear ratio about {measured}) than the one set under \"Chain on the trainer\" ({set}). Move it back, or change the setting.",
+  "@chainHintSetBody": {"placeholders": {"measured": {"type": "String"}, "set": {"type": "String"}}},
+  "vsGroupErg": "ERG",
+  "ergStartPowerLabel": "ERG start power",
+  "ergStartPowerDesc": "Where the target starts when you switch to ERG",
+  "ergStartLastTarget": "Last target",
+  "ergStartCurrentPower": "Current power",
+  "ergStepLabel": "ERG step",
+  "ergStepDesc": "Watts per − / + press",
+  "ergSettingsFooter": "If the chosen start power is not available, the other one is used, then 150 W."
+}

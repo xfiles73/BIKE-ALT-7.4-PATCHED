@@ -1,0 +1,763 @@
+import 'package:bike_control/widgets/ui/bk_bottom_sheet.dart';
+import 'package:bike_control/widgets/ui/bk_icon_button.dart';
+import 'dart:async' show unawaited;
+import 'dart:convert' show jsonDecode;
+import 'dart:io' show File;
+
+import 'package:bike_control/main.dart' show recordError;
+import 'package:bike_control/pages/support_chat/widgets/support_clipboard.dart';
+import 'package:bike_control/utils/i18n_extension.dart';
+import 'package:bike_control/widgets/ui/small_progress_indicator.dart';
+import 'package:bike_control/widgets/ui/type_scale.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show LogicalKeyboardKey;
+import 'package:image_picker/image_picker.dart';
+import 'package:shadcn_flutter/shadcn_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
+/// A staged attachment ready to be uploaded — wraps the platform file plus
+/// a lightweight thumbnail for image previews.
+class StagedAttachment {
+  final PlatformFile file;
+  StagedAttachment(this.file);
+
+  String get name => file.name;
+  bool get isImage {
+    final lower = name.toLowerCase();
+    return lower.endsWith('.jpg') ||
+        lower.endsWith('.jpeg') ||
+        lower.endsWith('.png') ||
+        lower.endsWith('.gif') ||
+        lower.endsWith('.webp');
+  }
+}
+
+/// The rider-facing summary of a diagnostics payload (the text `debugText()`
+/// builds): the few facts a rider can check at a glance before sending.
+/// Values that are empty, "-" or "?" read as null.
+class SupportDiagnosticsSummary {
+  const SupportDiagnosticsSummary({this.appVersion, this.platform, this.devices, this.connections, this.logLines = 0});
+
+  final String? appVersion;
+  final String? platform;
+  final String? devices;
+  final String? connections;
+  final int logLines;
+
+  /// Reads either `debugText()` output or a JSON-encoded telemetry snapshot
+  /// (its fields, plus the `debugText()` in its `freetext`).
+  static SupportDiagnosticsSummary parse(String payload) {
+    final trimmed = payload.trimLeft();
+    if (trimmed.startsWith('{')) {
+      try {
+        final json = jsonDecode(trimmed);
+        if (json is Map) {
+          final text = json['freetext'] is String
+              ? _parseText(json['freetext'] as String)
+              : const SupportDiagnosticsSummary();
+          String? field(String key) =>
+              json[key] is String && (json[key] as String).isNotEmpty ? json[key] as String : null;
+          return SupportDiagnosticsSummary(
+            appVersion: field('app_version') ?? text.appVersion,
+            platform: field('app_platform') ?? text.platform,
+            devices: text.devices ?? field('bluetooth_name'),
+            connections: text.connections,
+            logLines: text.logLines,
+          );
+        }
+      } on FormatException {
+        // Not JSON after all: read it as text.
+      }
+    }
+    return _parseText(payload);
+  }
+
+  static SupportDiagnosticsSummary _parseText(String payload) {
+    final lines = payload.split('\n');
+    String? value(String key) {
+      for (final line in lines) {
+        if (line.startsWith('$key:')) {
+          final v = line.substring(key.length + 1).trim();
+          return v.isEmpty || v == '-' || v == '?' ? null : v;
+        }
+      }
+      return null;
+    }
+
+    var logLines = 0;
+    final logsAt = lines.indexWhere((l) => l.trim() == 'Logs:');
+    if (logsAt >= 0) {
+      for (final line in lines.skip(logsAt + 1)) {
+        if (line.trim().isEmpty || line.startsWith('Wire trace:')) break;
+        logLines++;
+      }
+    }
+    return SupportDiagnosticsSummary(
+      appVersion: value('App Version'),
+      platform: value('Platform'),
+      devices: value('Connected Controllers'),
+      connections: value('Connected Trainers'),
+      logLines: logLines,
+    );
+  }
+}
+
+class SupportComposer extends StatefulWidget {
+  final bool sending;
+
+  /// Sends [body] with every staged attachment, in the order they were added.
+  final Future<void> Function(String body, List<StagedAttachment> attachments) onSend;
+
+  /// When non-empty, a collapsible chip is rendered above the composer
+  /// showing the diagnostic payload that will be attached to the next
+  /// outgoing message. Right-aligned so it doesn't span the full width.
+  final String? diagnosticPreview;
+
+  /// Optional text to prefill the composer with on first build. The text
+  /// field is auto-focused when this is non-empty so the user can start
+  /// typing immediately.
+  final String? initialText;
+
+  /// Optional attachment to pre-stage on first build (e.g. an
+  /// OverviewPage screenshot captured before navigating to the chat).
+  /// The user can still remove it via the chip's X button before sending.
+  final StagedAttachment? initialAttachment;
+
+  /// A diagnostic line (e.g. `Network self-test: …`) that rides along with
+  /// the first message instead of being prefilled into the input. Unlike
+  /// [initialText] the rider cannot edit or delete it, and send stays
+  /// disabled until they have typed a short description of their own: a
+  /// bare test result used to be the whole message in a third of all chats
+  /// and every one of those cost support a "what actually isn't working?"
+  /// round trip. Consumed by the first successful send, like [initialText].
+  final String? pinnedContext;
+
+  /// What [pinnedContext] is, in the rider's language (e.g. "network check
+  /// result"), for the "Attached: …" chip above the input. Required when
+  /// [pinnedContext] is set.
+  final String? pinnedContextLabel;
+
+  /// True for the first message of a conversation: send stays disabled until
+  /// the rider has described the problem in [minDescriptionLength]
+  /// characters, whatever is attached. A pre-staged screenshot on its own
+  /// said nothing about what went wrong. Follow-ups (false) may be
+  /// attachment-only.
+  final bool requireDescription;
+
+  /// What Cmd/Ctrl+V attaches instead of pasting text; injectable for tests.
+  final ClipboardAttachmentReader readClipboardAttachment;
+
+  const SupportComposer({
+    super.key,
+    required this.sending,
+    required this.onSend,
+    this.diagnosticPreview,
+    this.initialText,
+    this.initialAttachment,
+    this.pinnedContext,
+    this.pinnedContextLabel,
+    this.requireDescription = false,
+    ClipboardAttachmentReader? readClipboardAttachment,
+  }) : readClipboardAttachment = readClipboardAttachment ?? readSupportClipboardAttachment,
+       assert(pinnedContext == null || pinnedContextLabel != null, 'pinnedContext needs a pinnedContextLabel');
+
+  /// The shortest description that unlocks send while a [pinnedContext] is
+  /// attached, or for the first message ([requireDescription]). Trimmed length, so whitespace alone counts as nothing.
+  static const int minDescriptionLength = 12;
+
+  @override
+  State<SupportComposer> createState() => _SupportComposerState();
+}
+
+class _SupportComposerState extends State<SupportComposer> {
+  final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+
+  /// Everything staged for the next message: picking or pasting another adds
+  /// to it, never replaces what is already there.
+  final List<StagedAttachment> _attachments = [];
+
+  /// The pending [SupportComposer.pinnedContext]; null once it has gone out
+  /// with a message, so a follow-up "yes, still happening" is neither gated
+  /// nor carries the (multi-line) result a second time.
+  String? _pinnedContext;
+
+  @override
+  void initState() {
+    super.initState();
+    final initial = widget.initialText;
+    if (initial != null && initial.isNotEmpty) {
+      _controller.text = initial;
+      _controller.selection = TextSelection.collapsed(offset: initial.length);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _focusNode.requestFocus();
+      });
+    }
+    if (widget.initialAttachment case final initial?) _attachments.add(initial);
+    _pinnedContext = widget.pinnedContext;
+    _controller.addListener(() {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  bool get _isApple => defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.iOS;
+
+  /// True while a pinned result is waiting on a description the rider has
+  /// not typed yet — the one case where send is disabled despite there
+  /// being something to send.
+  bool get _describing => _pinnedContext != null || widget.requireDescription;
+
+  bool get _needsDescription => _describing && _controller.text.trim().length < SupportComposer.minDescriptionLength;
+
+  bool get _canSend {
+    if (widget.sending) return false;
+    // A staged screenshot does not stand in for the description: a picture
+    // plus a test result still doesn't say what the rider expected to happen.
+    if (_describing) return !_needsDescription;
+    if (_attachments.isNotEmpty) return true;
+    return _controller.text.trim().isNotEmpty;
+  }
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked == null) return;
+    final bytes = await picked.readAsBytes();
+    if (!mounted) return;
+    setState(() {
+      _attachments.add(
+        StagedAttachment(
+          PlatformFile(
+            name: picked.name,
+            size: bytes.length,
+            bytes: bytes,
+            path: kIsWeb ? null : picked.path,
+          ),
+        ),
+      );
+    });
+  }
+
+  Future<void> _pickFile() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: const ['jpg', 'jpeg', 'png', 'gif', 'webp', 'pdf', 'txt', 'log', 'zip'],
+      allowMultiple: false,
+      withData: kIsWeb,
+    );
+    if (result == null || result.files.isEmpty) return;
+    if (!mounted) return;
+    setState(() {
+      _attachments.add(StagedAttachment(result.files.single));
+    });
+  }
+
+  /// Cmd/Ctrl+V or Paste in the text field's menu: a screenshot or copied file
+  /// on the clipboard is staged next to what already is, anything else is
+  /// pasted into the text field as usual.
+  Future<void> _paste() async {
+    StagedAttachment? pasted;
+    try {
+      pasted = await widget.readClipboardAttachment();
+    } catch (e, s) {
+      recordError(e, s, context: 'Support composer paste');
+    }
+    if (!mounted) return;
+    if (pasted != null) {
+      setState(() => _attachments.add(pasted!));
+      return;
+    }
+    final editable = _focusNode.context;
+    if (editable == null || !editable.mounted) return;
+    Actions.maybeInvoke(editable, const PasteTextIntent(SelectionChangedCause.keyboard));
+  }
+
+  /// The text field's menu with a Paste that goes through [_paste], so a
+  /// screenshot pasted from the menu is staged like one pasted with the
+  /// keyboard. Always offered: with only an image on the clipboard the
+  /// field's own menu has no Paste at all.
+  Widget _contextMenu(BuildContext context, EditableTextState state) {
+    final l = ShadcnLocalizations.of(context);
+    final items = state.contextMenuButtonItems;
+    VoidCallback? action(ContextMenuButtonType type) => items.where((i) => i.type == type).firstOrNull?.onPressed;
+    MenuButton button(String label, VoidCallback? onPressed) => MenuButton(
+      enabled: onPressed != null,
+      onPressed: (_) => onPressed?.call(),
+      child: Text(label),
+    );
+    final mobile = defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android;
+    final anchors = state.contextMenuAnchors;
+    return TextFieldTapRegion(
+      child: ContextMenuPopup(
+        anchorSize: Size.zero,
+        anchorContext: context,
+        position: mobile
+            ? (anchors.secondaryAnchor ?? anchors.primaryAnchor) + const Offset(-8, 8)
+            : anchors.primaryAnchor + const Offset(8, -8),
+        direction: mobile ? Axis.horizontal : Axis.vertical,
+        children: [
+          if (!mobile || action(ContextMenuButtonType.cut) != null)
+            button(l.menuCut, action(ContextMenuButtonType.cut)),
+          if (!mobile || action(ContextMenuButtonType.copy) != null)
+            button(l.menuCopy, action(ContextMenuButtonType.copy)),
+          button(l.menuPaste, () {
+            state.hideToolbar();
+            unawaited(_paste());
+          }),
+          button(l.menuSelectAll, action(ContextMenuButtonType.selectAll)),
+        ],
+      ),
+    );
+  }
+
+  void _showAttachSheet(BuildContext context) {
+    // Resolve the strings NOW: the dropdown lives in the app overlay and can
+    // rebuild after this widget's context is defunct (e.g. the file-picker
+    // round trip). Localizations.of on a dead context returns null in release
+    // builds, which broke the attach menu with a null-check error.
+    final i18n = context.i18n;
+    showDropdown(
+      context: context,
+      builder: (c) => DropdownMenu(
+        children: [
+          MenuButton(
+            leading: const Icon(LucideIcons.image),
+            onPressed: (_) async {
+              await _pickImage();
+            },
+            child: Text(i18n.attachImage),
+          ),
+          MenuButton(
+            leading: const Icon(LucideIcons.fileText),
+            onPressed: (_) async {
+              await _pickFile();
+            },
+            child: Text(i18n.attachDocument),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _submit() async {
+    if (!_canSend) return;
+    final userText = _controller.text.trim();
+    final attachments = List<StagedAttachment>.of(_attachments);
+    final pinned = _pinnedContext;
+    // The rider's words first, the machine-readable result last: support
+    // reads the top of a chat, and the bundle line is what gets grepped.
+    final body = pinned == null ? userText : '$userText\n\n$pinned';
+    final preservedText = userText;
+    setState(() {
+      _controller.clear();
+      _attachments.clear();
+      _pinnedContext = null;
+    });
+    try {
+      await widget.onSend(body, attachments);
+    } catch (_) {
+      // Terminal on purpose: the page-level handlers already reported and
+      // toasted this failure; their rethrow only exists so we know to restore
+      // the composer. Rethrowing again would escape into the zone as an
+      // unhandled error (the button drops the returned Future) and get logged
+      // as an app crash.
+      if (!mounted) return;
+      setState(() {
+        _controller.text = preservedText;
+        _attachments
+          ..clear()
+          ..addAll(attachments);
+        _pinnedContext = pinned;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final hasDiagnostic = (widget.diagnosticPreview ?? '').isNotEmpty;
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: cs.background,
+        border: Border(top: BorderSide(color: cs.border)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // GDPR transparency: telemetry is attached to every support message
+          // and a screenshot is pre-staged on the first one. Say so here rather
+          // than sending it silently — the ⓘ button and the attachment chip
+          // both let the user inspect/remove before sending.
+          if (hasDiagnostic) _diagnosticsNotice(cs) else _retentionOnlyNotice(cs),
+          if (_pinnedContext != null) _pinnedContextChip(cs),
+          for (final attachment in _attachments) _stagedAttachmentChip(attachment),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Builder(
+                builder: (context) {
+                  return BkIconButton.ghost(
+                    icon: const Icon(LucideIcons.paperclip, size: 20),
+                    label: context.i18n.a11yAttachFile,
+                    tooltip: false,
+                    onPressed: widget.sending ? null : () => _showAttachSheet(context),
+                  );
+                },
+              ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: CallbackShortcuts(
+                  bindings: {
+                    SingleActivator(
+                      LogicalKeyboardKey.keyV,
+                      meta: _isApple,
+                      control: !_isApple,
+                    ): () =>
+                        unawaited(_paste()),
+                  },
+                  child: TextArea(
+                    controller: _controller,
+                    focusNode: _focusNode,
+                    placeholder: Text(
+                      _describing
+                          ? context.i18n.supportDescribeProblemPlaceholder
+                          : context.i18n.messageComposerPlaceholder,
+                    ),
+                    expandableHeight: true,
+                    initialHeight: 56,
+                    contextMenuBuilder: _contextMenu,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              if (hasDiagnostic) ...[
+                _diagnosticPreview(cs),
+                const SizedBox(width: 8),
+              ],
+              BkIconButton.primary(
+                icon: widget.sending ? const SmallProgressIndicator() : const Icon(LucideIcons.send, size: 18),
+                label: context.i18n.a11ySendMessage,
+                onPressed: _canSend ? () => unawaited(_submit()) : null,
+              ),
+            ],
+          ),
+          // Only while the description is what's holding the send back: once
+          // it is long enough the hint would just be nagging.
+          if (!widget.sending && _needsDescription)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(
+                _pinnedContext != null
+                    ? context.i18n.supportDescribeProblemHint
+                    : context.i18n.supportDescribeFirstMessageHint,
+                style: context.typography.caption.copyWith(color: cs.mutedForeground, height: 1.3),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// Display-only: the pinned result cannot be removed, that is the point.
+  /// Same muted styling as the attachment chip so the two read as one row
+  /// of "things going out with this message".
+  Widget _pinnedContextChip(ColorScheme cs) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: cs.muted.withAlpha(80),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: cs.border),
+        ),
+        child: Row(
+          children: [
+            Icon(LucideIcons.clipboardCheck, size: 16, color: cs.mutedForeground),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                context.i18n.supportPinnedContextChip(widget.pinnedContextLabel!),
+                overflow: TextOverflow.ellipsis,
+                style: context.typography.xSmall.copyWith(fontWeight: FontWeight.w500, color: cs.mutedForeground),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _diagnosticsNotice(ColorScheme cs) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(LucideIcons.shieldCheck, size: 13, color: cs.mutedForeground),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Names what actually goes out: the screenshot only while one
+                // is staged.
+                if (_attachments.any((a) => a.isImage))
+                  Text(
+                    context.i18n.supportDiagnosticsNotice,
+                    style: context.typography.caption.copyWith(color: cs.mutedForeground, height: 1.3),
+                  )
+                else
+                  _noticeWithInfoIcon(cs),
+                const SizedBox(height: 4),
+                _retentionText(cs),
+                _privacyPolicyLink(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Without diagnostics there is nothing else to disclose, but how long the
+  /// conversation is kept still applies, so it gets the same compact row.
+  Widget _retentionOnlyNotice(ColorScheme cs) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(LucideIcons.clock, size: 13, color: cs.mutedForeground),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [_retentionText(cs), _privacyPolicyLink()],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// GDPR storage limitation: how long the conversation is kept, and that
+  /// only anonymised trainer data outlives it.
+  Widget _retentionText(ColorScheme cs) {
+    return Text(
+      context.i18n.supportRetentionNotice,
+      key: const ValueKey('support-retention-notice'),
+      style: context.typography.caption.copyWith(color: cs.mutedForeground, height: 1.3),
+    );
+  }
+
+  Widget _privacyPolicyLink() {
+    return Button.text(
+      onPressed: () => launchUrlString('https://bikecontrol.app/privacy-policy'),
+      child: Text(context.i18n.privacyPolicy).xSmall.muted.underline,
+    );
+  }
+
+  /// The no-screenshot notice, with the info button's icon drawn inline where
+  /// the message names it.
+  Widget _noticeWithInfoIcon(ColorScheme cs) {
+    const marker = '\uFFFC';
+    final style = context.typography.caption.copyWith(color: cs.mutedForeground, height: 1.3);
+    final parts = context.i18n.supportDiagnosticsNoticeNoScreenshot(marker).split(marker);
+    return Text.rich(
+      key: const ValueKey('support-diagnostics-notice-no-screenshot'),
+      TextSpan(
+        children: [
+          for (var i = 0; i < parts.length; i++) ...[
+            if (i > 0)
+              WidgetSpan(
+                alignment: PlaceholderAlignment.middle,
+                child: Icon(LucideIcons.info, size: (style.fontSize ?? 11) + 2, color: cs.mutedForeground),
+              ),
+            TextSpan(text: parts[i]),
+          ],
+        ],
+      ),
+      style: style,
+    );
+  }
+
+  Widget _diagnosticPreview(ColorScheme cs) {
+    return Container(
+      decoration: BoxDecoration(
+        color: cs.muted.withAlpha(40),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: cs.border),
+      ),
+      child: Button.outline(
+        style: ButtonStyle.outlineIcon(),
+        child: Icon(LucideIcons.info),
+        // The payload includes the full log buffer, so it can be far taller
+        // than the screen: cap the sheet height (keeps the dismiss barrier
+        // reachable) and scroll the payload instead of overflowing.
+        onPressed: () => openBottomSheet(
+          context: context,
+          constraints: BoxConstraints(
+            maxWidth: 360,
+            maxHeight: MediaQuery.sizeOf(context).height * 0.6,
+          ),
+          builder: (c) => _DiagnosticsSheet(
+            payload: widget.diagnosticPreview!,
+            screenshotAttached: _attachments.any((a) => a.isImage),
+            onClose: () => closeSheet(c),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _stagedAttachmentChip(StagedAttachment att) {
+    final cs = Theme.of(context).colorScheme;
+    Widget? preview;
+    if (att.isImage) {
+      if (att.file.bytes != null) {
+        preview = Image.memory(att.file.bytes!, height: 36, width: 36, fit: BoxFit.cover);
+      } else if (att.file.path != null) {
+        preview = Image.file(File(att.file.path!), height: 36, width: 36, fit: BoxFit.cover);
+      }
+    }
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: cs.muted.withAlpha(80),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: cs.border),
+        ),
+        child: Row(
+          children: [
+            if (preview != null) ...[
+              ClipRRect(borderRadius: BorderRadius.circular(4), child: preview),
+              const SizedBox(width: 8),
+            ] else ...[
+              Icon(LucideIcons.fileText, size: 16, color: cs.mutedForeground),
+              const SizedBox(width: 8),
+            ],
+            Expanded(
+              child: Text(
+                att.name,
+                overflow: TextOverflow.ellipsis,
+                style: context.typography.xSmall.copyWith(fontWeight: FontWeight.w500),
+              ),
+            ),
+            BkIconButton.ghost(
+              icon: const Icon(LucideIcons.x, size: 14),
+              label: context.i18n.a11yRemoveAttachment,
+              onPressed: widget.sending ? null : () => setState(() => _attachments.remove(att)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The info sheet: a plain summary of what goes out with the message first, the
+/// raw payload behind "Show technical details".
+class _DiagnosticsSheet extends StatefulWidget {
+  const _DiagnosticsSheet({required this.payload, required this.screenshotAttached, required this.onClose});
+
+  final String payload;
+  final bool screenshotAttached;
+  final VoidCallback onClose;
+
+  @override
+  State<_DiagnosticsSheet> createState() => _DiagnosticsSheetState();
+}
+
+class _DiagnosticsSheetState extends State<_DiagnosticsSheet> {
+  bool _technical = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final l = context.i18n;
+    final summary = SupportDiagnosticsSummary.parse(widget.payload);
+    final rows = <(String, String)>[
+      (l.supportDiagAppVersion, summary.appVersion ?? l.unknown),
+      (l.supportDiagPlatform, summary.platform ?? l.unknown),
+      (l.supportDiagDevices, summary.devices ?? l.supportDiagNone),
+      (l.supportDiagConnections, summary.connections ?? l.supportDiagNone),
+      (l.supportDiagLogLines, '${summary.logLines}'),
+      (
+        l.supportDiagScreenshot,
+        widget.screenshotAttached ? l.supportDiagScreenshotAttached : l.supportDiagScreenshotNone,
+      ),
+    ];
+    return Container(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text(l.supportDiagSummaryTitle).small.semiBold),
+              BkIconButton.ghost(
+                icon: const Icon(LucideIcons.x, size: 16),
+                label: l.close,
+                onPressed: widget.onClose,
+              ),
+            ],
+          ),
+          Flexible(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final (label, value) in rows)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(flex: 2, child: Text(label).xSmall.muted),
+                          const SizedBox(width: 8),
+                          Expanded(flex: 3, child: Text(value).xSmall.semiBold),
+                        ],
+                      ),
+                    ),
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Button.ghost(
+                      onPressed: () => setState(() => _technical = !_technical),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(_technical ? LucideIcons.chevronUp : LucideIcons.chevronDown, size: 14),
+                          const SizedBox(width: 6),
+                          Text(_technical ? l.supportDiagHideTechnical : l.supportDiagShowTechnical).xSmall,
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (_technical)
+                    Text(
+                      widget.payload,
+                      style: context.typography.caption.copyWith(color: cs.mutedForeground, fontFamily: 'monospace'),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

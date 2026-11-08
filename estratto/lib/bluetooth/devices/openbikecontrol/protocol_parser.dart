@@ -1,0 +1,364 @@
+// OpenBikeControl Protocol Parser (Dart)
+
+// This file is a translation of the Python `protocol_parser.py` example into Dart.
+// It provides simple encoding/decoding utilities for the OpenBikeControl message
+// types used in the Python example. This is intentionally a small, focused
+// module that mirrors the original Python API.
+
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:bike_control/utils/keymap/buttons.dart';
+import 'package:dartx/dartx.dart';
+import 'package:prop/prop.dart';
+
+class ProtocolParseException implements Exception {
+  final String message;
+  final Uint8List? raw;
+  ProtocolParseException(this.message, [this.raw]);
+
+  @override
+  String toString() => 'ProtocolParseException: $message${raw != null ? ' raw=${bytesToReadableHex(raw!)}' : ''}';
+}
+
+class OpenBikeProtocolParser {
+  // Button ID to name mapping (based on PROTOCOL.md in Python example)
+  static const Map<int, ControllerButton> BUTTON_NAMES = {
+    // Gear Shifting (0x01-0x0F)
+    0x01: ControllerButton('Shift Up', identifier: 0x01, action: InGameAction.shiftUp),
+    0x02: ControllerButton('Shift Down', identifier: 0x02, action: InGameAction.shiftDown),
+    0x03: ControllerButton('Gear Set', identifier: 0x03, action: InGameAction.gearSet),
+    // Navigation (0x10-0x1F)
+    0x10: ControllerButton('Up', identifier: 0x10, action: InGameAction.up),
+    0x11: ControllerButton('Down', identifier: 0x11, action: InGameAction.down),
+    0x12: ControllerButton('Left/Look Left', identifier: 0x12, action: InGameAction.navigateLeft),
+    0x13: ControllerButton('Right/Look Right', identifier: 0x13, action: InGameAction.navigateRight),
+    0x14: ControllerButton('Select/Confirm', identifier: 0x14, action: InGameAction.select),
+    0x15: ControllerButton('Back/Cancel', identifier: 0x15, action: InGameAction.back),
+    0x16: ControllerButton('Menu', identifier: 0x16, action: InGameAction.menu),
+    0x17: ControllerButton('Home', identifier: 0x17, action: InGameAction.home),
+    0x18: ControllerButton('Steer Left', identifier: 0x18, action: InGameAction.steerLeft),
+    0x19: ControllerButton('Steer Right', identifier: 0x19, action: InGameAction.steerRight),
+    // Social/Emotes (0x20-0x2F)
+    0x20: ControllerButton('Emote', identifier: 0x20, action: InGameAction.emote),
+    0x21: ControllerButton('Push to Talk', identifier: 0x21, action: InGameAction.pushToTalk),
+    // Training Controls (0x30-0x3F)
+    0x30: ControllerButton('Increase Difficulty', identifier: 0x30, action: InGameAction.increaseResistance),
+    0x31: ControllerButton('Decrease Difficulty', identifier: 0x31, action: InGameAction.decreaseResistance),
+    0x32: ControllerButton('Skip Interval', identifier: 0x32, action: InGameAction.skipInterval),
+    0x33: ControllerButton('Pause', identifier: 0x33, action: InGameAction.pause),
+    0x34: ControllerButton('Resume', identifier: 0x34, action: InGameAction.resume),
+    0x35: ControllerButton('Lap', identifier: 0x35, action: InGameAction.lap),
+    0x36: ControllerButton('Previous Interval', identifier: 0x36, action: InGameAction.previousInterval),
+    0x37: ControllerButton('U-Turn', identifier: 0x37, action: InGameAction.uturn),
+    0x38: ControllerButton('Change Mode', identifier: 0x38, action: InGameAction.changeMode),
+    0x39: ControllerButton('Take a Break', identifier: 0x39, action: InGameAction.takeBreak),
+    0x3A: ControllerButton('Join Rider', identifier: 0x3A, action: InGameAction.joinRider),
+    0x3B: ControllerButton('Change Route', identifier: 0x3B, action: InGameAction.changeRoute),
+    // View Controls (0x40-0x4F)
+    0x40: ControllerButton('Camera View', identifier: 0x40, action: InGameAction.cameraAngle),
+    0x41: ControllerButton('Camera 1', identifier: 0x41, action: InGameAction.cameraAngle),
+    0x42: ControllerButton('Camera 2', identifier: 0x42, action: InGameAction.cameraAngle),
+    0x43: ControllerButton('Camera 3', identifier: 0x43, action: InGameAction.cameraAngle),
+    0x44: ControllerButton('HUD Toggle', identifier: 0x44, action: InGameAction.toggleUi),
+    0x45: ControllerButton('Map Toggle', identifier: 0x45, action: InGameAction.mapToggle),
+    0x46: ControllerButton('Spectate Rider', identifier: 0x46, action: InGameAction.spectateRider),
+    // Power-ups (0x50-0x5F)
+    0x50: ControllerButton('Power-up 1', identifier: 0x50, action: InGameAction.usePowerUp),
+    0x51: ControllerButton('Power-up 2', identifier: 0x51, action: InGameAction.usePowerUp),
+    0x52: ControllerButton('Power-up 3', identifier: 0x52, action: InGameAction.usePowerUp),
+  };
+
+  // Haptic feedback patterns
+  static const Map<String, int> HAPTIC_PATTERNS = {
+    'none': 0x00,
+    'short': 0x01,
+    'double': 0x02,
+    'triple': 0x03,
+    'long': 0x04,
+    'success': 0x05,
+    'warning': 0x06,
+    'error': 0x07,
+  };
+
+  // Message types (for TCP/mDNS protocol)
+  static const int MSG_TYPE_BUTTON_STATE = 0x01;
+  static const int MSG_TYPE_DEVICE_STATUS = 0x02;
+  static const int MSG_TYPE_HAPTIC_FEEDBACK = 0x03;
+  static const int MSG_TYPE_APP_INFO = 0x04;
+
+  /// Analog button `0x1B` Steering Angle: the calibrated handlebar angle.
+  /// Deliberately NOT in [BUTTON_NAMES] — it is a value, never a press.
+  static const int STEERING_ANGLE_BUTTON_ID = 0x1B;
+
+  /// `0x1B` value for "no angle available" (not calibrated, recalibrating,
+  /// sensor lost, device gone) — apps fall back to their own steering.
+  static const int STEERING_ANGLE_UNAVAILABLE = 0x00;
+
+  /// `0x1B` value for straight ahead.
+  static const int STEERING_ANGLE_CENTER = 0x80;
+
+  /// Encodes a calibrated steering angle for `0x1B`: signed 0.5° steps around
+  /// [STEERING_ANGLE_CENTER], **positive ⇒ right**, clamped to ±63°
+  /// (`0x02`–`0xFE`). Null / non-finite ⇒ [STEERING_ANGLE_UNAVAILABLE]. Never
+  /// yields the reserved `0x01` or `0xFF`.
+  static int encodeSteeringAngle(double? degreesRight) {
+    if (degreesRight == null || !degreesRight.isFinite) return STEERING_ANGLE_UNAVAILABLE;
+    return (STEERING_ANGLE_CENTER + (degreesRight * 2).round()).clamp(0x02, 0xFE);
+  }
+
+  /// A button-state message carrying only the `0x1B` [value].
+  static Uint8List encodeSteeringAngleState(int value) =>
+      Uint8List.fromList([MSG_TYPE_BUTTON_STATE, STEERING_ANGLE_BUTTON_ID, value & 0xFF]);
+
+  /// Parse button state data from binary format.
+  /// Data format: [Message_Type, Button_ID_1, State_1, Button_ID_2, State_2, ...]
+  static List<ButtonState> parseButtonState(Uint8List data) {
+    final buttons = <ButtonState>[];
+
+    if (data.isEmpty) return buttons;
+
+    if (data[0] != MSG_TYPE_BUTTON_STATE) return buttons;
+
+    for (var i = 1; i < data.length; i += 2) {
+      if (i + 1 < data.length) {
+        final buttonId = data[i];
+        final state = data[i + 1];
+        // An ID this version doesn't know (0x1B steering angle, a later
+        // addition) is skipped: parsers MUST NOT drop the IDs they do know.
+        final button = BUTTON_NAMES[buttonId];
+        if (button != null) buttons.add(ButtonState(button, state));
+      }
+    }
+
+    return buttons;
+  }
+
+  /// The state a press of [button] sends: an Emote with a chosen [value]
+  /// (the Emote menu's 1-6) carries it as value + 1, in the spec's app-specific
+  /// emote range (`0x02-0x1F`); every other press is `0x01`.
+  static int pressedState(ControllerButton button, int? value) {
+    if (button.action == InGameAction.emote && value != null && value >= 1 && value <= 0x1E) {
+      return value + 1;
+    }
+    return 0x01;
+  }
+
+  static Uint8List encodeButtonState(List<ButtonState> buttons) {
+    final bytes = BytesBuilder();
+    bytes.addByte(MSG_TYPE_BUTTON_STATE);
+    for (final b in buttons) {
+      bytes.addByte(b.button.identifier!);
+      bytes.addByte(b.state);
+    }
+    return bytes.toBytes();
+  }
+
+  static DeviceStatus parseDeviceStatus(Uint8List data) {
+    if (data.length < 3) {
+      throw ProtocolParseException('Device status message too short', data);
+    }
+    if (data[0] != MSG_TYPE_DEVICE_STATUS) {
+      throw ProtocolParseException('Invalid message type: ${data[0]}, expected $MSG_TYPE_DEVICE_STATUS', data);
+    }
+    final battery = data[1] == 0xFF ? null : data[1];
+    final connected = data[2] == 0x01;
+    return DeviceStatus(battery: battery, connected: connected);
+  }
+
+  static Uint8List encodeDeviceStatus({int? battery, bool connected = true}) {
+    final batteryByte = battery == null ? 0xFF : (battery & 0xFF);
+    final connectedByte = connected ? 0x01 : 0x00;
+    return Uint8List.fromList([MSG_TYPE_DEVICE_STATUS, batteryByte, connectedByte]);
+  }
+
+  static Uint8List encodeHapticFeedback({String pattern = 'short', int duration = 0, int intensity = 0}) {
+    final patternByte = HAPTIC_PATTERNS[pattern] ?? HAPTIC_PATTERNS['short']!;
+    final bytes = Uint8List(4);
+    bytes[0] = MSG_TYPE_HAPTIC_FEEDBACK;
+    bytes[1] = patternByte;
+    bytes[2] = duration & 0xFF;
+    bytes[3] = intensity & 0xFF;
+    return bytes;
+  }
+
+  static HapticFeedbackMessage parseHapticFeedback(Uint8List data) {
+    if (data.length < 4) {
+      throw ProtocolParseException('Haptic feedback message too short', data);
+    }
+    if (data[0] != MSG_TYPE_HAPTIC_FEEDBACK) {
+      throw ProtocolParseException('Invalid message type: ${data[0]}', data);
+    }
+    final patternByte = data[1];
+    final duration = data[2];
+    final intensity = data[3];
+    String patternName = 'unknown';
+    HAPTIC_PATTERNS.forEach((name, value) {
+      if (value == patternByte) patternName = name;
+    });
+
+    return HapticFeedbackMessage(
+      pattern: patternName,
+      patternByte: patternByte,
+      duration: duration,
+      intensity: intensity,
+    );
+  }
+
+  static Uint8List encodeAppInfo({
+    required String appId,
+    required String appVersion,
+    required List<ControllerButton> supportedButtons,
+  }) {
+    final appIdBytes = utf8.encode(appId).take(32).toList();
+    final appVersionBytes = utf8.encode(appVersion).take(32).toList();
+
+    final builder = BytesBuilder();
+    builder.addByte(MSG_TYPE_APP_INFO);
+    builder.addByte(0x01); // Version
+    builder.addByte(appIdBytes.length);
+    builder.add(appIdBytes);
+    builder.addByte(appVersionBytes.length);
+    builder.add(appVersionBytes);
+    builder.addByte(supportedButtons.length);
+    builder.add(supportedButtons.map((e) => e.identifier!).toList());
+
+    return builder.toBytes();
+  }
+
+  static AppInfo parseAppInfo(Uint8List data) {
+    if (data.isEmpty || data[0] != MSG_TYPE_APP_INFO) {
+      throw ProtocolParseException('Invalid message type', data);
+    }
+
+    var idx = 1;
+    if (data.length < idx + 3) {
+      throw ProtocolParseException('App info message too short', data);
+    }
+
+    final version = data[idx];
+    idx += 1;
+    if (version != 0x01) {
+      throw ProtocolParseException('Unsupported app info version: $version', data);
+    }
+
+    if (idx >= data.length) throw ProtocolParseException('Missing app ID length', data);
+    final appIdLen = data[idx];
+    idx += 1;
+    if (idx + appIdLen > data.length) throw ProtocolParseException('App ID length exceeds buffer', data);
+    final appId = utf8.decode(data.sublist(idx, idx + appIdLen));
+    idx += appIdLen;
+
+    if (idx >= data.length) throw ProtocolParseException('Missing app version length', data);
+    final appVersionLen = data[idx];
+    idx += 1;
+    if (idx + appVersionLen > data.length) throw ProtocolParseException('App version length exceeds buffer', data);
+    final appVersion = utf8.decode(data.sublist(idx, idx + appVersionLen));
+    idx += appVersionLen;
+
+    if (idx >= data.length) throw ProtocolParseException('Missing button count', data);
+    final buttonCount = data[idx];
+    idx += 1;
+    if (idx + buttonCount > data.length) throw ProtocolParseException('Button count exceeds buffer', data);
+    final buttonIds = data.sublist(idx, idx + buttonCount).toList();
+
+    // BLE.md: "0 indicates the app supports all button types". One button per
+    // action, since a press sends every supported button of its action (Camera
+    // View, not Camera View + Camera 1-3). The 0x1B steering angle stays
+    // opt-in: steering buttons are then sent only as an angle.
+    final controllerButtons = buttonCount == 0
+        ? BUTTON_NAMES.values.distinctBy((b) => b.action).toList()
+        : buttonIds.mapNotNull((id) => BUTTON_NAMES[id]).toList();
+
+    return AppInfo(
+      appId: appId,
+      appVersion: appVersion,
+      supportedButtonIds: buttonIds,
+      supportedButtons: controllerButtons,
+      supportedActions: controllerButtons.mapNotNull((b) => b.action).toList(),
+    );
+  }
+}
+
+class AppInfo {
+  final String appId;
+  final String appVersion;
+  final List<ControllerButton> supportedButtons;
+  final List<InGameAction> supportedActions;
+
+  /// Every button ID the app listed, including ones that are not presses
+  /// (e.g. `0x1B` Steering Angle) and so have no [supportedButtons] entry.
+  final List<int> supportedButtonIds;
+
+  AppInfo({
+    required this.appId,
+    required this.appVersion,
+    required this.supportedButtons,
+    required this.supportedActions,
+    this.supportedButtonIds = const [],
+  });
+
+  /// The app steers from `0x1B` Steering Angle, so Steer Left / Right presses
+  /// from an angle input may be left out for it.
+  bool get supportsSteeringAngle => supportedButtonIds.contains(OpenBikeProtocolParser.STEERING_ANGLE_BUTTON_ID);
+
+  @override
+  String toString() =>
+      'AppInfo(appId: $appId, appVersion: $appVersion, supportedButtons: $supportedButtons, supportedActions: $supportedActions)';
+}
+
+/// DeviceStatus message representation
+class DeviceStatus {
+  final int? battery; // 0-100, null if 0xFF
+  final bool connected;
+
+  DeviceStatus({required this.battery, required this.connected});
+
+  @override
+  String toString() => 'DeviceStatus(battery: ${battery ?? 'unknown'}, connected: $connected)';
+}
+
+class ButtonState {
+  /// Represents a single button id/state pair.class ButtonState {
+  final ControllerButton button;
+  final int state; // 0=released,1=pressed,2-255=analog
+
+  const ButtonState(this.button, this.state);
+
+  @override
+  String toString() => formatButtonState(button, state);
+
+  String formatButtonState(ControllerButton button, int state) {
+    final buttonName = button.name;
+
+    String stateStr;
+    if (state == 0) {
+      stateStr = 'RELEASED';
+    } else if (state == 1) {
+      stateStr = 'PRESSED';
+    } else {
+      final percentage = ((state - 2) / (255 - 2) * 100).round();
+      stateStr = 'ANALOG $percentage%';
+    }
+
+    return '$buttonName: $stateStr';
+  }
+}
+
+/// Haptic feedback representation
+class HapticFeedbackMessage {
+  final String pattern;
+  final int patternByte;
+  final int duration; // in 10ms units
+  final int intensity; // 0-255
+
+  HapticFeedbackMessage({
+    required this.pattern,
+    required this.patternByte,
+    required this.duration,
+    required this.intensity,
+  });
+
+  @override
+  String toString() => 'HapticFeedback(pattern: $pattern, duration: $duration, intensity: $intensity)';
+}

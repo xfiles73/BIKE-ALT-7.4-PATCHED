@@ -1,0 +1,359 @@
+import 'package:dartx/dartx.dart';
+import 'package:prop/utils/network_address.dart';
+
+import '../../../bluetooth/devices/openbikecontrol/obp_mdns_backend.dart';
+import '../../debug_diagnostics.dart';
+import '../address_warning_kind.dart';
+import '../network_check.dart';
+import '../network_probe_context.dart';
+
+export '../address_warning_kind.dart';
+
+/// The seven passive checks (spec checks 1–6, 14): everything derivable from
+/// one `DebugDiagnostics.gather()` snapshot plus the cheap emulator/settings
+/// getters already sitting on [NetworkProbeContext] — no network I/O of their
+/// own, so they are plain, synchronous, pure functions.
+
+/// 100.64.0.0/10, the CGNAT range mesh VPNs (Tailscale, ZeroTier) hand out.
+/// Mirrors `DebugDiagnostics._isCgnat`, which is private to that file.
+bool _isCgnat(String address) {
+  final parts = address.split('.').map(int.tryParse).toList();
+  if (parts.length != 4 || parts.any((p) => p == null)) return false;
+  return parts[0] == 100 && parts[1]! >= 64 && parts[1]! <= 127;
+}
+
+/// The first three dotted octets, used to tell whether two IPv4 addresses
+/// are plausibly on the same /24.
+String _subnetPrefix(String address) {
+  final parts = address.split('.');
+  return parts.length >= 3 ? parts.take(3).join('.') : address;
+}
+
+/// Check 1: is the TCP server behind the network method the selected trainer
+/// app rides on ([NetworkProbeContext.methodServerLabel]: OpenBikeControl,
+/// Rouvy's Click, Zwift's DirCon) actually running and listening?
+NetworkCheck methodListeningCheck(NetworkProbeContext ctx) {
+  final snapshot = ctx.snapshot;
+  if (snapshot == null) {
+    return NetworkCheck(
+      id: NetworkCheckId.methodListening,
+      verdict: NetworkVerdict.unknown,
+      detail: {'error': ctx.snapshotError.toString()},
+    );
+  }
+  if (!ctx.emulatorStarted) {
+    return const NetworkCheck(
+      id: NetworkCheckId.methodListening,
+      verdict: NetworkVerdict.fail,
+      detail: {'reason': 'not started'},
+      fixes: [NetworkFixId.restartMethod],
+    );
+  }
+  final server = snapshot.servers.firstOrNullWhere((s) => s.label == ctx.methodServerLabel && s.listening);
+  if (server == null) {
+    return const NetworkCheck(
+      id: NetworkCheckId.methodListening,
+      verdict: NetworkVerdict.fail,
+      fixes: [NetworkFixId.restartMethod],
+    );
+  }
+  final port = server.port;
+  if (port == ctx.methodPreferredPort) {
+    return NetworkCheck(id: NetworkCheckId.methodListening, verdict: NetworkVerdict.pass, detail: {'port': '$port'});
+  }
+  // Off the preferred port: something else held it when this server bound —
+  // historically a previous instance of ours that was never stopped (an
+  // un-awaited stop racing the next start), so every restart walked one port
+  // further up. A restart now supersedes any leak of ours and lands back on
+  // the preferred port, so offer it instead of leaving the rider to discover
+  // that only force-closing the app helps. Only a foreign holder (another
+  // process on this host) leaves the warning standing afterwards.
+  return NetworkCheck(
+    id: NetworkCheckId.methodListening,
+    verdict: NetworkVerdict.warn,
+    detail: {'port': '$port'},
+    fixes: const [NetworkFixId.restartMethod],
+  );
+}
+
+/// Whether the picker's choice sits on an interface other devices are unlikely
+/// to reach: one the picker itself flagged virtual (tunnels, bridges,
+/// cellular), or a VPN tunnel by name — see [DebugDiagnostics.tunnelCandidates].
+bool _chosenLooksUnreachable(AddressPickReport report, String chosen) {
+  final chosenCandidate = report.candidates.firstOrNullWhere((c) => c.address == chosen);
+  final chosenIsTunnel = DebugDiagnostics.tunnelCandidatesIn(report.candidates).any((c) => c.address == chosen);
+  final chosenIsExtraVirtual = _extraVirtualNamePattern.hasMatch(chosenCandidate?.interfaceName ?? '');
+  return (chosenCandidate?.isVirtual ?? false) || chosenIsTunnel || chosenIsExtraVirtual;
+}
+
+/// Addresses no other device can ever route to: link-local 169.254/16, and the
+/// IANA 192.0.0.0/24 block — the iPhone's always-present `ipsec` interface and
+/// Android's 464XLAT CLAT interface both carry a 192.0.0.x dummy from it.
+bool _isUnreachableAddress(String address) => address.startsWith('169.254.') || address.startsWith('192.0.0.');
+
+/// Interface names of a real Wi-Fi or Ethernet port: `en0`/`enp3s0`/`eth0`,
+/// `wlan0`/`wlp2s0`, and Windows' "Ethernet"/"Wi-Fi"/"WLAN" (numbered when
+/// there are several, the same in every Windows language).
+final _lanPortNamePattern = RegExp(r'^(en|eth|wl|wi-?fi)', caseSensitive: false);
+
+/// Virtual adapters the address picker's own list (in prop) does not know:
+/// the iPhone's `ipsec` and the `vgate` gateway NIC some Android vendors
+/// (Oplus/OnePlus/Realme) add next to the Wi-Fi.
+final _extraVirtualNamePattern = RegExp(r'^(ipsec|vgate)', caseSensitive: false);
+
+/// The physical candidates when they are spread over more than one subnet —
+/// a second adapter that could just as well be the one the trainer app is on,
+/// so whichever the picker chose is a coin toss. Empty when the pick is
+/// unambiguous.
+///
+/// Only real Wi-Fi/Ethernet ports count: a network the trainer app could be
+/// on is one a rider plugs into or joins. The address picker's own virtual
+/// list misses the iPhone's `ipsec` interface (192.0.0.x) and Android vendor
+/// NICs like `vgate0` (172.30.x), and each flagged the rider's real Wi-Fi
+/// address as "a VPN or hotspot address". A VPN tunnel is the VPN row's
+/// business, not a second LAN.
+List<AddressCandidate> _competingPhysical(AddressPickReport report) {
+  final tunnels = DebugDiagnostics.tunnelCandidatesIn(report.candidates).map((c) => c.address).toSet();
+  final physical = report.candidates
+      .where(
+        (c) =>
+            !c.isVirtual &&
+            !_isUnreachableAddress(c.address) &&
+            !tunnels.contains(c.address) &&
+            _lanPortNamePattern.hasMatch(c.interfaceName),
+      )
+      .toList();
+  final subnets = physical.map((c) => _subnetPrefix(c.address)).toSet();
+  return physical.length >= 2 && subnets.length >= 2 ? physical : const [];
+}
+
+/// The kind of [advertisedAddressWarning], or null when that is null.
+AddressWarningKind? advertisedAddressWarningKind(AddressPickReport report) {
+  final chosen = report.chosen?.address;
+  if (chosen == null) return null;
+  if (_chosenIsCellular(report, chosen)) return AddressWarningKind.noWifi;
+  if (_chosenLooksUnreachable(report, chosen)) return AddressWarningKind.unreachable;
+  if (_competingPhysical(report).isNotEmpty) return AddressWarningKind.twoNetworks;
+  return null;
+}
+
+/// True when the pick is a mobile-data address — the picker only falls back
+/// to one when there is no Wi-Fi or Ethernet address to choose instead.
+bool _chosenIsCellular(AddressPickReport report, String chosen) {
+  final candidate = report.candidates.firstOrNullWhere((c) => c.address == chosen);
+  if (candidate == null) return false;
+  return DebugDiagnostics.cellularNamePattern.hasMatch(candidate.interfaceName) || _isUnreachableAddress(chosen);
+}
+
+/// The advertised address [advertisedAddressCheck] would flag, or null when
+/// the pick looks reachable. Also null when nothing was picked at all: that
+/// is "no network", a different problem the self-test reports on its own.
+///
+/// The home card's "your network looks unusual" step reads this, so a rider
+/// hears about a VPN address before they ever find the self-test page — and
+/// hears the same verdict, because it is the same rule.
+String? advertisedAddressWarning(AddressPickReport report) =>
+    advertisedAddressWarningKind(report) == null ? null : report.chosen?.address;
+
+/// Check 2: is the address picked for the mDNS advertisement one that other
+/// devices on the LAN can actually reach?
+NetworkCheck advertisedAddressCheck(NetworkProbeContext ctx) {
+  final snapshot = ctx.snapshot;
+  if (snapshot == null) {
+    return NetworkCheck(
+      id: NetworkCheckId.advertisedAddress,
+      verdict: NetworkVerdict.unknown,
+      detail: {'error': ctx.snapshotError.toString()},
+    );
+  }
+  final report = snapshot.addressReport;
+  final chosen = report.chosen;
+  if (chosen == null) {
+    return const NetworkCheck(
+      id: NetworkCheckId.advertisedAddress,
+      verdict: NetworkVerdict.fail,
+      fixes: [NetworkFixId.restartMethod],
+    );
+  }
+
+  // Before the tunnel rule: a mobile-data interface is "virtual" to the
+  // picker too, but restarting the method or turning a VPN off does nothing
+  // for it — the rider has to join the trainer app's Wi-Fi.
+  if (_chosenIsCellular(report, chosen.address)) {
+    return NetworkCheck(
+      id: NetworkCheckId.advertisedAddress,
+      verdict: NetworkVerdict.warn,
+      detail: {'address': chosen.address, 'note': 'no wifi'},
+    );
+  }
+
+  if (_chosenLooksUnreachable(report, chosen.address)) {
+    return NetworkCheck(
+      id: NetworkCheckId.advertisedAddress,
+      verdict: NetworkVerdict.warn,
+      detail: {'address': chosen.address},
+      fixes: [NetworkFixId.restartMethod],
+    );
+  }
+
+  final competing = _competingPhysical(report);
+  if (competing.isNotEmpty) {
+    final detail = <String, String>{for (final c in competing) c.interfaceName: '${c.address}=${c.score}'};
+    return NetworkCheck(id: NetworkCheckId.advertisedAddress, verdict: NetworkVerdict.warn, detail: detail);
+  }
+
+  return NetworkCheck(
+    id: NetworkCheckId.advertisedAddress,
+    verdict: NetworkVerdict.pass,
+    detail: {'address': chosen.address},
+  );
+}
+
+/// Check 3: advisory row — does a VPN/mesh tunnel interface carry a routable
+/// IPv4, and if so is it the harmless CGNAT-mesh kind or a full tunnel that
+/// can blackhole inbound LAN connections?
+NetworkCheck vpnCheck(NetworkProbeContext ctx) {
+  final snapshot = ctx.snapshot;
+  if (snapshot == null) {
+    return NetworkCheck(
+      id: NetworkCheckId.vpn,
+      verdict: NetworkVerdict.unknown,
+      detail: {'error': ctx.snapshotError.toString()},
+    );
+  }
+  final tunnels = snapshot.tunnelCandidates;
+  if (tunnels.isEmpty) {
+    return const NetworkCheck(id: NetworkCheckId.vpn, verdict: NetworkVerdict.pass);
+  }
+  final allMesh = tunnels.every((c) => _isCgnat(c.address));
+  final detail = <String, String>{
+    if (allMesh) 'note': 'mesh',
+    for (final c in tunnels) c.interfaceName: c.address,
+  };
+  return NetworkCheck(
+    id: NetworkCheckId.vpn,
+    verdict: allMesh ? NetworkVerdict.pass : NetworkVerdict.warn,
+    detail: detail,
+  );
+}
+
+/// Check 4: did the OS's own mDNS browser see our advertisement echoed back?
+///
+/// Only the advertisement of the method under test counts: the records
+/// served by a [NetworkProbeContext.methodServerLabel] server, matched by
+/// port. Zwift's DirCon record is named after the bridged trainer and Rouvy's
+/// Click record after the emulated device, so a name is no discriminator, and
+/// the service type alone is not either — Click and DirCon share
+/// `_wahoo-fitness-tnp._tcp`.
+NetworkCheck advertisementVisibleCheck(NetworkProbeContext ctx) {
+  final snapshot = ctx.snapshot;
+  if (snapshot == null) {
+    return NetworkCheck(
+      id: NetworkCheckId.advertisementVisible,
+      verdict: NetworkVerdict.unknown,
+      detail: {'error': ctx.snapshotError.toString()},
+    );
+  }
+  if (!snapshot.discoveryRan) {
+    return const NetworkCheck(id: NetworkCheckId.advertisementVisible, verdict: NetworkVerdict.skipped);
+  }
+
+  // The ports the method's server(s) bound. Several DirCon servers can run at
+  // once (one per bridged trainer); without a listening one, fall back to the
+  // port the method prefers.
+  final serverPorts = snapshot.servers
+      .where((s) => s.label == ctx.methodServerLabel && s.listening && s.port != null)
+      .map((s) => s.port!)
+      .toSet();
+  final methodPorts = serverPorts.isEmpty ? {ctx.methodPreferredPort} : serverPorts;
+  final methodRecords = snapshot.advertised.where((r) => methodPorts.contains(r.port));
+  final seen = methodRecords.any(
+    (r) => snapshot.discovered.any((d) => d.isSelf && d.type == r.type && (d.port == r.port || d.name == r.name)),
+  );
+  if (seen) {
+    return const NetworkCheck(id: NetworkCheckId.advertisementVisible, verdict: NetworkVerdict.pass);
+  }
+  return const NetworkCheck(
+    id: NetworkCheckId.advertisementVisible,
+    verdict: NetworkVerdict.fail,
+    detail: {'hint': 'advertisement not seen by the OS browser'},
+    fixes: [NetworkFixId.restartMethod],
+  );
+}
+
+/// Check 5: Apple's Local Network privacy permission (iOS/macOS only).
+NetworkCheck localNetworkPermissionCheck(NetworkProbeContext ctx) {
+  if (ctx.platform != 'ios' && ctx.platform != 'macos') {
+    return const NetworkCheck(id: NetworkCheckId.localNetworkPermission, verdict: NetworkVerdict.skipped);
+  }
+  // A missing snapshot (gather() threw) and a snapshot whose probe never
+  // completed both mean "we don't know" — both fall out of this the same way.
+  final localNetwork = ctx.snapshot?.permissions.localNetwork;
+  switch (localNetwork) {
+    case LocalNetworkStatus.denied:
+      return const NetworkCheck(
+        id: NetworkCheckId.localNetworkPermission,
+        verdict: NetworkVerdict.fail,
+        fixes: [NetworkFixId.openLocalNetworkSettings],
+      );
+    case LocalNetworkStatus.granted:
+      return const NetworkCheck(id: NetworkCheckId.localNetworkPermission, verdict: NetworkVerdict.pass);
+    case LocalNetworkStatus.unknown:
+    case null:
+      return const NetworkCheck(id: NetworkCheckId.localNetworkPermission, verdict: NetworkVerdict.unknown);
+  }
+}
+
+/// Check 6: info row — which mDNS backend is registering the OBC
+/// advertisement, and under what hostname.
+NetworkCheck backendCheck(NetworkProbeContext ctx) {
+  final hostname = ctx.advertisedHostname;
+  return NetworkCheck(
+    id: NetworkCheckId.backend,
+    verdict: NetworkVerdict.pass,
+    detail: {'backend': ctx.backend.name, if (hostname != null) 'hostname': hostname},
+    fixes: ctx.backend == ObpMdnsBackend.osResponder ? const [NetworkFixId.useResponderForObc] : const [],
+  );
+}
+
+/// Check 14: info row (Android only) — does the responder hold the
+/// multicast lock it needs to see mDNS traffic at all?
+NetworkCheck multicastLockCheck(NetworkProbeContext ctx) {
+  if (ctx.platform != 'android') {
+    return const NetworkCheck(id: NetworkCheckId.multicastLock, verdict: NetworkVerdict.skipped);
+  }
+  // The WifiManager multicast lock is only acquired by MulticastMdnsSocket
+  // (the platformDefault backend); the OS responder (NsdManager) manages its
+  // own multicast and never touches it, so the lock legitimately doesn't
+  // apply there.
+  if (ctx.backend == ObpMdnsBackend.osResponder) {
+    return const NetworkCheck(
+      id: NetworkCheckId.multicastLock,
+      verdict: NetworkVerdict.skipped,
+      detail: {'reason': 'os responder manages its own multicast'},
+    );
+  }
+  // OBC isn't advertising — methodListeningCheck already reports that, so a
+  // second warn here would be redundant.
+  if (!ctx.emulatorStarted) {
+    return const NetworkCheck(
+      id: NetworkCheckId.multicastLock,
+      verdict: NetworkVerdict.skipped,
+      detail: {'reason': 'OBC is not advertising'},
+    );
+  }
+  final snapshot = ctx.snapshot;
+  if (snapshot == null) {
+    return NetworkCheck(
+      id: NetworkCheckId.multicastLock,
+      verdict: NetworkVerdict.unknown,
+      detail: {'error': ctx.snapshotError.toString()},
+    );
+  }
+  final held = snapshot.holdsMulticastLock;
+  return NetworkCheck(
+    id: NetworkCheckId.multicastLock,
+    verdict: held ? NetworkVerdict.pass : NetworkVerdict.warn,
+    detail: {'held': held.toString()},
+  );
+}

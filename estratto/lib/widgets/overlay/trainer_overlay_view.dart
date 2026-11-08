@@ -1,0 +1,497 @@
+import 'package:bike_control/gen/l10n.dart';
+import 'package:bike_control/widgets/ui/app_theme.dart';
+import 'package:bike_control/widgets/ui/bk_tappable.dart';
+import 'package:bike_control/services/overlay/overlay_state.dart';
+import 'package:bike_control/utils/gear_readout.dart';
+import 'package:bike_control/widgets/ui/type_scale.dart';
+import 'package:flutter/foundation.dart';
+import 'package:prop/emulators/definitions/fitness_bike_definition.dart';
+import 'package:shadcn_flutter/shadcn_flutter.dart';
+
+class TrainerOverlayView extends StatelessWidget {
+  final ValueListenable<TrainerOverlayState> state;
+
+  /// On desktop, called to toggle ERG/SIM. Pass `null` to render the mode
+  /// pill as a static label.
+  final VoidCallback? onModeToggle;
+
+  /// Called when the user starts dragging. Desktop wires this to
+  /// `windowManager.startDragging()`. Pass `null` on Android (the package
+  /// handles dragging natively).
+  final VoidCallback? onDragStart;
+
+  /// Called when the user taps the − button next to the primary value.
+  /// In SIM mode this should shift down a gear; in ERG mode it should
+  /// decrement target watts. Required when `OverlayField.controls` is in
+  /// `state.fields`; otherwise unused.
+  final VoidCallback? onPrimaryDecrement;
+
+  /// Called when the user taps the + button next to the primary value.
+  final VoidCallback? onPrimaryIncrement;
+
+  /// Draws the floating pill (card colour, hairline, fully rounded) and
+  /// keeps the row to the window's width. Defaults to the platforms whose
+  /// overlay floats over the trainer app on its own (Android); the settings
+  /// page's preview asks for it everywhere.
+  final bool? pill;
+
+  const TrainerOverlayView({
+    super.key,
+    required this.state,
+    this.onModeToggle,
+    this.onDragStart,
+    this.onPrimaryDecrement,
+    this.onPrimaryIncrement,
+    this.pill,
+  });
+
+  /// The gear numeral's design size at 1.0x text. It is the one thing a
+  /// rider glances at the overlay for: it grows with the text size and is
+  /// never scaled down to make room — the window is sized around it instead.
+  static const double gearSize = 36;
+
+  /// Default window width on desktop; wider when the text size needs it.
+  static const double defaultWindowWidth = 220;
+
+  static const EdgeInsets _padding = EdgeInsets.all(8);
+
+  /// The drag handle at the end of the row (desktop).
+  static const double _dragSlot = 16;
+
+  /// The −/+ circles on a touch screen (the Android overlay): the whole
+  /// circle is the hit area, a full 48 dp thumb target.
+  static const double touchHit = 48;
+
+  /// The −/+ circles under a mouse (the desktop window), a step smaller so
+  /// the window stays compact.
+  static const double pointerHit = 44;
+
+  /// Whether the overlay is driven by touch on this platform.
+  static bool get _isTouchPlatform =>
+      defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
+
+  static double _hitFor(bool touch) => touch ? touchHit : pointerHit;
+
+  /// Space between the parts of the row.
+  static const double _gap = 6;
+
+  /// The hairline between the gear and the mode/readings, with its margins.
+  static const double _dividerSlot = 1 + 2 * 8.0;
+
+  /// Space between the mode pill and the readings under it.
+  static const double _sideGap = 6;
+
+  /// The widest things the numeral shows: a front/rear readout (wider than
+  /// a bare gear) and an ERG target.
+  static const List<String> _widestReadouts = ['2×88', '888 W'];
+
+  /// The widest single reading; the side column always has room for one.
+  static const String _widestReading = '8888 rpm';
+
+  static TextStyle _gearStyle(Color? color) =>
+      BkNumerals.gear(gearSize, color: color, height: 1.0).copyWith(letterSpacing: -1.0);
+
+  /// Readings are numbers in the display face, a step below the gear.
+  static const double _readingSize = 20;
+  static TextStyle _readingStyle(Color? color) => BkNumerals.display(_readingSize, color: color, height: 1.0);
+
+  static TextStyle _microStyle(Typography typography, Color? color) =>
+      typography.caption.copyWith(fontWeight: FontWeight.w600, letterSpacing: 1.1, color: color, height: 1.2);
+
+  static Size _measure(String text, TextStyle style, TextScaler textScaler) {
+    final painter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      textDirection: TextDirection.ltr,
+      textScaler: textScaler,
+    )..layout();
+    final size = painter.size;
+    painter.dispose();
+    return size;
+  }
+
+  /// The window the overlay needs at [textScaler]: one row of −, the numeral
+  /// at full size with its label, +, and the mode pill over one reading.
+  /// [touch] defaults to whether this platform is a touch platform, and
+  /// sizes the −/+ circles for it.
+  static Size windowSize(TextScaler textScaler, {bool controls = true, bool? touch}) {
+    final hit = _hitFor(touch ?? _isTouchPlatform);
+    const typography = Typography.geist();
+    final gearStyle = typography.sans.merge(_gearStyle(null));
+    var numeral = Size.zero;
+    for (final readout in _widestReadouts) {
+      final size = _measure(readout, gearStyle, textScaler);
+      numeral = Size(
+        numeral.width > size.width ? numeral.width : size.width,
+        numeral.height > size.height ? numeral.height : size.height,
+      );
+    }
+    final label = _measure('GEAR', typography.sans.merge(_microStyle(typography, null)), textScaler);
+    final reading = _measure(_widestReading, typography.sans.merge(_readingStyle(null)), textScaler);
+    final pill = _measure('SIM', typography.sans.merge(_pillTextStyle(typography, null)), textScaler);
+
+    // Room for cadence and the ratio side by side, as the rider usually
+    // has them on; power goes first when all three are on.
+    final pair =
+        _measure('188 rpm', typography.sans.merge(_readingStyle(null)), textScaler).width +
+        10 +
+        _measure('×8.88', typography.sans.merge(_readingStyle(null)), textScaler).width;
+    var side = reading.width > pill.width + 16 ? reading.width : pill.width + 16;
+    if (pair > side) side = pair;
+    final width =
+        (controls ? 2 * (hit + _gap) : 0) +
+        numeral.width +
+        _dividerSlot +
+        side +
+        _gap +
+        _dragSlot +
+        _padding.horizontal;
+    final numeralBlock = numeral.height + label.height;
+    final sideBlock = pill.height + 4 + _sideGap + reading.height;
+    var height = controls ? hit : 0.0;
+    if (numeralBlock > height) height = numeralBlock;
+    if (sideBlock > height) height = sideBlock;
+    // + the Android card's hairline border on each side.
+    return Size((width + 2).ceilToDouble(), (height + _padding.vertical + 2).ceilToDouble());
+  }
+
+  /// The widest value each reading keeps room for: three-digit watts,
+  /// three-digit rpm, a ratio under ten. In tabular figures every digit is as
+  /// wide as an 8, so values within these ranges never change the width. A
+  /// sprint past 999 W shrinks the readings a little rather than keeping
+  /// room for it all ride.
+  static const (String, String) _widestPower = ('888', 'W');
+  static const (String, String) _widestCadence = ('188', 'rpm');
+  static const (String, String) _widestRatio = ('×8.88', '');
+
+  /// What the gear numeral keeps room for in [mode]: two digits, with the
+  /// chainring in front when front shifting is on; three-digit watts in ERG.
+  static String _widestNumeral(TrainerMode mode, {required bool frontShift}) =>
+      mode == TrainerMode.ergMode ? '888 W' : (frontShift ? '2×88' : '88');
+
+  /// The desktop window for [state]'s mode and fields at [textScaler]: as
+  /// wide as the content, with room for the widest value of each reading
+  /// that is on and none for the ones that are off. Only the fields, the
+  /// mode and front shifting change it, never the values. The gear numeral
+  /// is measured at its full size; nothing is scaled down to fit.
+  static Size fitWindowSize({
+    required TrainerOverlayState state,
+    required TextScaler textScaler,
+    Typography typography = const Typography.geist(),
+    String gearLabel = 'GEAR',
+    bool? touch,
+    bool drag = true,
+  }) {
+    final isErg = state.mode == TrainerMode.ergMode;
+    final controls = state.fields.contains(OverlayField.controls);
+    final hit = _hitFor(touch ?? _isTouchPlatform);
+    final numeral = _measure(
+      _widestNumeral(state.mode, frontShift: state.frontShiftEnabled),
+      typography.sans.merge(_gearStyle(null)),
+      textScaler,
+    );
+    final microStyle = typography.sans.merge(_microStyle(typography, null));
+    // In ERG the label line stays (empty), so the height doesn't jump.
+    final labelHeight = _measure('GEAR', microStyle, textScaler).height;
+    final label = isErg ? 0.0 : _measure(gearLabel, microStyle, textScaler).width;
+    final numeralWidth = numeral.width > label ? numeral.width : label;
+
+    final pill = _measure(isErg ? 'ERG' : 'SIM', typography.sans.merge(_pillTextStyle(typography, null)), textScaler);
+    final readings = [
+      if (state.fields.contains(OverlayField.power)) _widestPower,
+      if (state.fields.contains(OverlayField.cadence)) _widestCadence,
+      if (!isErg && state.fields.contains(OverlayField.gearRatio)) _widestRatio,
+    ];
+    final unitStyle = typography.sans.merge(typography.caption);
+    var readingsWidth = 0.0;
+    var readingHeight = 0.0;
+    for (final (i, r) in readings.indexed) {
+      final painter = TextPainter(
+        text: TextSpan(
+          style: unitStyle,
+          children: [
+            TextSpan(text: r.$1, style: _readingStyle(null)),
+            if (r.$2.isNotEmpty) TextSpan(text: ' ${r.$2}', style: unitStyle),
+          ],
+        ),
+        textDirection: TextDirection.ltr,
+        textScaler: textScaler,
+      )..layout();
+      readingsWidth += painter.width + (i == 0 ? 0 : _readingGap);
+      if (painter.height > readingHeight) readingHeight = painter.height;
+      painter.dispose();
+    }
+    final pillWidth = pill.width + 16;
+    // A pixel to spare, so a rounding step never drops the last reading.
+    final side = (pillWidth > readingsWidth ? pillWidth : readingsWidth) + 1;
+
+    final width =
+        (controls ? 2 * (hit + _gap) : 0) +
+        numeralWidth +
+        _dividerSlot +
+        side +
+        (drag ? _gap + _dragSlot : 0) +
+        _padding.horizontal;
+    final numeralBlock = numeral.height + labelHeight;
+    final sideBlock = pill.height + 4 + (readings.isEmpty ? 0 : _sideGap + readingHeight);
+    var height = controls ? hit : 0.0;
+    if (numeralBlock > height) height = numeralBlock;
+    if (sideBlock > height) height = sideBlock;
+    // + a hairline each side, for when it is drawn as the bordered pill.
+    return Size((width + 2).ceilToDouble(), (height + _padding.vertical + 2).ceilToDouble());
+  }
+
+  /// [fitWindowSize] for [state] with [context]'s text size, type and
+  /// language. [drag] keeps room for the drag handle; the Android window
+  /// drags as a whole and has none.
+  static Size fitWindowSizeOf(BuildContext context, TrainerOverlayState state, {bool drag = true}) => fitWindowSize(
+    state: state,
+    drag: drag,
+    textScaler: MediaQuery.textScalerOf(context),
+    typography: Theme.of(context).typography,
+    gearLabel: AppLocalizations.maybeOf(context)?.rideGear.toUpperCase() ?? 'GEAR',
+  );
+
+  /// Space between two readings.
+  static const double _readingGap = 10;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final useConstraints = pill ?? defaultTargetPlatform == TargetPlatform.android;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    return ValueListenableBuilder<TrainerOverlayState>(
+      valueListenable: state,
+      builder: (context, s, _) {
+        final controls = s.fields.contains(OverlayField.controls);
+        return Container(
+          // As wide as what it shows, like the desktop window: no empty room
+          // for fields that are off. The Android window follows this size.
+          constraints: useConstraints
+              ? BoxConstraints.tightFor(width: fitWindowSizeOf(context, s, drag: onDragStart != null).width)
+              : null,
+          // On Android the overlay floats over the trainer app: a pill in the
+          // card colour, nearly opaque. The desktop window paints the card
+          // colour itself (it can't be transparent everywhere).
+          decoration: useConstraints
+              ? BoxDecoration(
+                  color: cs.card.withValues(alpha: dark ? 0.94 : 0.95),
+                  borderRadius: BorderRadius.circular(BkComponentThemes.cardRadius),
+                  border: Border.all(color: cs.border),
+                )
+              : null,
+          padding: _padding,
+          child: _row(context, cs, s, controls: controls),
+        );
+      },
+    );
+  }
+
+  /// −, the big numeral (gear in SIM, target watts in ERG) with its label, +,
+  /// a hairline, then the mode pill over the readings, and the drag handle.
+  Widget _row(BuildContext context, ColorScheme cs, TrainerOverlayState s, {required bool controls}) {
+    final isErg = s.mode == TrainerMode.ergMode;
+    // The overlay engine may run without localizations (older hosts); the
+    // buttons are still buttons, just unlabelled, rather than a crash.
+    final l10n = AppLocalizations.maybeOf(context);
+    final primary = isErg
+        ? '${s.ergTargetW ?? '--'} W'
+        : formatGearReadout(
+            currentGear: s.gear,
+            maxGear: s.maxGear,
+            frontShiftEnabled: s.frontShiftEnabled,
+            largeRing: s.frontRingLarge,
+            // "12" with GEAR under it; the total is not what a rider
+            // glances at the overlay for.
+            withTotal: false,
+          );
+    final microStyle = _microStyle(context.typography, cs.mutedForeground);
+    final numeral = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(primary, maxLines: 1, softWrap: false, style: _gearStyle(cs.foreground)),
+        // In ERG the numeral carries its own unit; the label keeps its line
+        // so the numeral doesn't jump when the mode changes.
+        Text(
+          isErg ? '' : (l10n?.rideGear.toUpperCase() ?? 'GEAR'),
+          maxLines: 1,
+          style: microStyle,
+        ),
+      ],
+    );
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        if (controls) ...[
+          _shiftButton(
+            cs,
+            LucideIcons.minus,
+            onPrimaryDecrement,
+            label: isErg ? l10n?.a11yDecrease : l10n?.actionShiftDown,
+          ),
+          const SizedBox(width: _gap),
+        ],
+        numeral,
+        if (controls) ...[
+          const SizedBox(width: _gap),
+          _shiftButton(
+            cs,
+            LucideIcons.plus,
+            onPrimaryIncrement,
+            label: isErg ? l10n?.a11yIncrease : l10n?.actionShiftUp,
+          ),
+        ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: SizedBox(width: 1, height: 40, child: ColoredBox(color: cs.border)),
+        ),
+        Expanded(child: _side(context, cs, s)),
+        if (onDragStart != null) ...[
+          const SizedBox(width: _gap),
+          SizedBox(
+            width: _dragSlot,
+            // Opaque, so the whole slot drags, not just the 14 px icon.
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onPanStart: (_) => onDragStart!(),
+              child: Center(
+                child: Icon(LucideIcons.gripVertical, size: 14, color: cs.mutedForeground),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  /// The SIM/ERG pill over the readings. When the column is short of room
+  /// the readings go first (gear ratio, then cadence); the gear never does.
+  Widget _side(BuildContext context, ColorScheme cs, TrainerOverlayState s) {
+    final isErg = s.mode == TrainerMode.ergMode;
+    final pill = _modePill(context, cs, s.mode);
+    final pillWidget = onModeToggle != null
+        ? Button.ghost(
+            onPressed: onModeToggle,
+            style: ButtonStyle.ghost().withPadding(padding: EdgeInsets.zero),
+            child: pill,
+          )
+        : pill;
+
+    // In the order they give way: the first is the last to go.
+    final readings = <(String, String)>[
+      if (s.fields.contains(OverlayField.power)) ('${s.powerW ?? '--'}', 'W'),
+      if (s.fields.contains(OverlayField.cadence)) ('${s.cadenceRpm ?? '--'}', 'rpm'),
+      // Gear ratio is meaningless in ERG mode; only show it in SIM.
+      if (!isErg && s.fields.contains(OverlayField.gearRatio)) (formatGearRatio(s.gearRatio), ''),
+    ];
+    final valueStyle = _readingStyle(cs.foreground);
+    final unitStyle = context.typography.caption.copyWith(color: cs.mutedForeground);
+    const readingGap = _readingGap;
+
+    Widget reading((String, String) r) => Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(text: r.$1, style: valueStyle),
+          if (r.$2.isNotEmpty) TextSpan(text: ' ${r.$2}', style: unitStyle),
+        ],
+      ),
+      style: unitStyle,
+      maxLines: 1,
+      softWrap: false,
+    );
+
+    final readingsRow = LayoutBuilder(
+      builder: (context, constraints) {
+        final textScaler = MediaQuery.textScalerOf(context);
+        double widthOf((String, String) r) {
+          final painter = TextPainter(
+            text: TextSpan(
+              style: DefaultTextStyle.of(context).style.merge(unitStyle),
+              children: [
+                TextSpan(text: r.$1, style: valueStyle),
+                if (r.$2.isNotEmpty) TextSpan(text: ' ${r.$2}', style: unitStyle),
+              ],
+            ),
+            textDirection: TextDirection.ltr,
+            textScaler: textScaler,
+          )..layout();
+          final width = painter.width;
+          painter.dispose();
+          return width;
+        }
+
+        // The window keeps room for three-digit watts; a sprint's fourth
+        // digit shrinks the row a little instead of pushing a reading out.
+        var room = constraints.maxWidth + widthOf(('8', ''));
+        final shown = <(String, String)>[];
+        for (final r in readings) {
+          final needed = widthOf(r) + (shown.isEmpty ? 0 : readingGap);
+          if (shown.isNotEmpty && needed > room) break;
+          shown.add(r);
+          room -= needed;
+        }
+        if (shown.isEmpty) return const SizedBox.shrink();
+        // What is still too wide (that digit, or a huge text size in the
+        // narrowest window) scales down; the gear doesn't.
+        return Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: readingGap,
+              children: [for (final r in shown) reading(r)],
+            ),
+          ),
+        );
+      },
+    );
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        pillWidget,
+        if (readings.isNotEmpty) ...[const SizedBox(height: _sideGap), readingsRow],
+      ],
+    );
+  }
+
+  /// A −/+ circle: a quiet fill that doesn't draw more attention than the
+  /// gear.
+  Widget _shiftButton(ColorScheme cs, IconData icon, VoidCallback? onPressed, {String? label}) {
+    final disabled = onPressed == null;
+    final hit = _hitFor(_isTouchPlatform);
+    return BkTappable(
+      onPressed: onPressed,
+      label: label,
+      excludeChildSemantics: true,
+      borderRadius: BorderRadius.circular(hit / 2),
+      child: Container(
+        width: hit,
+        height: hit,
+        decoration: BoxDecoration(color: cs.muted, shape: BoxShape.circle),
+        child: Opacity(
+          opacity: disabled ? 0.4 : 1.0,
+          child: Icon(icon, size: 22, color: cs.foreground),
+        ),
+      ),
+    );
+  }
+
+  static TextStyle _pillTextStyle(Typography typography, Color? color) =>
+      typography.caption.copyWith(fontWeight: FontWeight.w700, letterSpacing: 0.7, color: color);
+
+  Widget _modePill(BuildContext context, ColorScheme cs, TrainerMode mode) {
+    final label = mode == TrainerMode.ergMode ? 'ERG' : 'SIM';
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: cs.primary,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Text(label, style: _pillTextStyle(context.typography, cs.primaryForeground)),
+    );
+  }
+}
